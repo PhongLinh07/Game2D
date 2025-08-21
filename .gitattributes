@@ -1,0 +1,27 @@
+# Handle line endings automatically
+* text=auto
+
+# Unity YAML files
+*.unity merge=unityyamlmerge eol=lf
+*.prefab merge=unityyamlmerge eol=lf
+*.asset merge=unityyamlmerge eol=lf
+*.meta merge=unityyamlmerge eol=lf
+
+# Binary files (don’t try to merge)
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.tga binary
+*.psd binary
+*.mp3 binary
+*.wav binary
+*.ogg binary
+*.fbx binary
+*.mp4 binary
+*.mov binary
+*.anim binary
+*.controller binary
+*.dll binary
+*.so binary
+*.dylib binary

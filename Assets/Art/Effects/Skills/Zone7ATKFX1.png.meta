@@ -1,0 +1,510 @@
+fileFormatVersion: 2
+guid: a346101d79abb494a8a34da4589124e0
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Zone7ATKFX1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 361
+        width: 60
+        height: 139
+      alignment: 9
+      pivot: {x: 0.5, y: 0.085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0488f1a41cdb1f3478bfaa83c0041fac
+      internalID: 1421717262
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone7ATKFX1_1
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 361
+        width: 60
+        height: 139
+      alignment: 9
+      pivot: {x: 0.5, y: 0.085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a3c7cf97abcd86a4ea34229d76b82249
+      internalID: 1920106281
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone7ATKFX1_2
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 361
+        width: 60
+        height: 139
+      alignment: 9
+      pivot: {x: 0.5, y: 0.085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a9a3e1fc765ab44bb8d3ac1f0f41bf3
+      internalID: 838333916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone7ATKFX1_3
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 361
+        width: 60
+        height: 139
+      alignment: 9
+      pivot: {x: 0.5, y: 0.085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ffb12ae061ef894782cc329d2376b81
+      internalID: 5362789
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone7ATKFX1_4
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 361
+        width: 60
+        height: 139
+      alignment: 9
+      pivot: {x: 0.5, y: 0.085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c458937590774e4686c0ece826a4a34
+      internalID: -1847819916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone7ATKFX1_5
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 361
+        width: 60
+        height: 139
+      alignment: 9
+      pivot: {x: 0.5, y: 0.085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 017509154acbc674291373128481a748
+      internalID: -983287370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone7ATKFX1_6
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 361
+        width: 60
+        height: 139
+      alignment: 9
+      pivot: {x: 0.5, y: 0.085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c2dbf2c12179af41b8c1c89d77275de
+      internalID: 744356951
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone7ATKFX1_7
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 361
+        width: 60
+        height: 139
+      alignment: 9
+      pivot: {x: 0.5, y: 0.085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d7251aa71fb0db46861bc1e41f113d3
+      internalID: -405123991
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone7ATKFX1_8
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 361
+        width: 60
+        height: 139
+      alignment: 9
+      pivot: {x: 0.5, y: 0.085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 04574ed59047902419c4184c8b450db7
+      internalID: -1829968916
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone7ATKFX1_9
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 111
+        width: 60
+        height: 139
+      alignment: 9
+      pivot: {x: 0.5, y: 0.085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3c7be9b59a8f2504d86b0343c52b2980
+      internalID: -2067135133
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone7ATKFX1_10
+      rect:
+        serializedVersion: 2
+        x: 60
+        y: 111
+        width: 60
+        height: 139
+      alignment: 9
+      pivot: {x: 0.5, y: 0.085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b02d9d15f0bb6894bbf211570f3ac6cf
+      internalID: 56600335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone7ATKFX1_11
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 111
+        width: 60
+        height: 139
+      alignment: 9
+      pivot: {x: 0.5, y: 0.085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 003375bbceb38d94da22e22308784107
+      internalID: -392066275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone7ATKFX1_12
+      rect:
+        serializedVersion: 2
+        x: 180
+        y: 111
+        width: 60
+        height: 139
+      alignment: 9
+      pivot: {x: 0.5, y: 0.085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1181ad434f155b647a1e2b16948f8717
+      internalID: 1330055235
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone7ATKFX1_13
+      rect:
+        serializedVersion: 2
+        x: 240
+        y: 111
+        width: 60
+        height: 139
+      alignment: 9
+      pivot: {x: 0.5, y: 0.085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a0b13a25d9a73234f8f05400bcd68b82
+      internalID: -929063641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone7ATKFX1_14
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 111
+        width: 60
+        height: 139
+      alignment: 9
+      pivot: {x: 0.5, y: 0.085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d9acd2fbf9799f4ba74a2d8768c6d02
+      internalID: 638330534
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone7ATKFX1_15
+      rect:
+        serializedVersion: 2
+        x: 360
+        y: 111
+        width: 60
+        height: 139
+      alignment: 9
+      pivot: {x: 0.5, y: 0.085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f7f6ad1538d5c47488f17beaa733fbe8
+      internalID: -1517066846
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone7ATKFX1_16
+      rect:
+        serializedVersion: 2
+        x: 420
+        y: 111
+        width: 60
+        height: 139
+      alignment: 9
+      pivot: {x: 0.5, y: 0.085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a59a25818a11e184cb9eae31b8d531f9
+      internalID: 670004861
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Zone7ATKFX1_17
+      rect:
+        serializedVersion: 2
+        x: 480
+        y: 111
+        width: 60
+        height: 139
+      alignment: 9
+      pivot: {x: 0.5, y: 0.085}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b9684e607fd9394ab4a8760684b2f82
+      internalID: 79130508
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      Zone7ATKFX1_0: 1421717262
+      Zone7ATKFX1_1: 1920106281
+      Zone7ATKFX1_10: 56600335
+      Zone7ATKFX1_11: -392066275
+      Zone7ATKFX1_12: 1330055235
+      Zone7ATKFX1_13: -929063641
+      Zone7ATKFX1_14: 638330534
+      Zone7ATKFX1_15: -1517066846
+      Zone7ATKFX1_16: 670004861
+      Zone7ATKFX1_17: 79130508
+      Zone7ATKFX1_2: 838333916
+      Zone7ATKFX1_3: 5362789
+      Zone7ATKFX1_4: -1847819916
+      Zone7ATKFX1_5: -983287370
+      Zone7ATKFX1_6: 744356951
+      Zone7ATKFX1_7: -405123991
+      Zone7ATKFX1_8: -1829968916
+      Zone7ATKFX1_9: -2067135133
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

@@ -1,0 +1,189 @@
+fileFormatVersion: 2
+guid: f549cac437c992144aafb76853e02b87
+TextureImporter:
+  internalIDToNameTable: []
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 32
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: dungeonc_atlas0_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 657
+        width: 284
+        height: 367
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7ccf6a0073215d14380d923d03221bf8
+      internalID: 1732974467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: dungeonc_atlas0_1
+      rect:
+        serializedVersion: 2
+        x: 662
+        y: 228
+        width: 184
+        height: 184
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed82c528f67fbb9459c49ce24399b1e6
+      internalID: -1070773180
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    nameFileIdTable:
+      dungeonc_atlas0_0: 1732974467
+      dungeonc_atlas0_1: -1070773180
+      dungeonc_atlas0_10: -1064569379
+      dungeonc_atlas0_11: 1536480914
+      dungeonc_atlas0_12: -315775431
+      dungeonc_atlas0_13: -1980139336
+      dungeonc_atlas0_14: 244552730
+      dungeonc_atlas0_15: -2122414392
+      dungeonc_atlas0_16: 1580159301
+      dungeonc_atlas0_17: -208306448
+      dungeonc_atlas0_18: 349955079
+      dungeonc_atlas0_19: 932597724
+      dungeonc_atlas0_2: -1174678333
+      dungeonc_atlas0_20: -511220184
+      dungeonc_atlas0_21: -419576882
+      dungeonc_atlas0_22: -1978268066
+      dungeonc_atlas0_23: 2133242450
+      dungeonc_atlas0_24: 621533791
+      dungeonc_atlas0_25: -1136921440
+      dungeonc_atlas0_26: 567319975
+      dungeonc_atlas0_27: -270476954
+      dungeonc_atlas0_28: 1942003473
+      dungeonc_atlas0_29: -418854329
+      dungeonc_atlas0_3: -1438953232
+      dungeonc_atlas0_30: -842221981
+      dungeonc_atlas0_31: -2113389943
+      dungeonc_atlas0_32: 1280392456
+      dungeonc_atlas0_4: -193104187
+      dungeonc_atlas0_5: 1879359706
+      dungeonc_atlas0_6: -766499581
+      dungeonc_atlas0_7: -1707162115
+      dungeonc_atlas0_8: -1965462874
+      dungeonc_atlas0_9: 503542229
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

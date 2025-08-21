@@ -1,0 +1,59 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!78 &1
+TagManager:
+  serializedVersion: 2
+  tags:
+  - Enemy
+  layers:
+  - Default
+  - TransparentFX
+  - Ignore Raycast
+  - Player
+  - Water
+  - UI
+  - Interactable
+  - Damageable
+  - Enemy
+  - Solid (Dynamic)
+  - Obstacle (Static)
+  - PlayerWeapon
+  - EnemyWeapon
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  - 
+  m_SortingLayers:
+  - name: Tilemap_ Bottom
+    uniqueID: 1571309259
+    locked: 0
+  - name: Tilemap_Between
+    uniqueID: 1616566289
+    locked: 0
+  - name: Default
+    uniqueID: 0
+    locked: 0
+  - name: Player
+    uniqueID: 826174393
+    locked: 0
+  - name: Tilemap_Top
+    uniqueID: 241790137
+    locked: 0
+  - name: UI_Top
+    uniqueID: 2030179541
+    locked: 0
