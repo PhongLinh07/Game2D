@@ -2,63 +2,55 @@
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 public abstract class ISkillButton : MonoBehaviour
 {
-    [Header("UI Components")]
-    public Image skillIcon;          // Icon skill hiển thị
-    public Image cooldownOverlay;    // Overlay hiển thị cooldown
-    public TextMeshProUGUI cooldownText;
-    public Button btnSkill;          // Button UI
+    [Header("UI References")]
+    public Image skillIcon;              // Icon skill chính (UI Image gốc)
+    public Image cooldownOverlay;        // Hình cover cooldown (UI Image)
+    public TextMeshProUGUI cooldownText; // Số giây còn lại cooldown
+    public Image dragWorld;              // Icon target di chuyển theo drag
+
 
     [Header("Skill Data")]
-    public SkillCfgSkill data;      // ScriptableObject chứa info skill
-    public SkillInputType inputType = SkillInputType.Drag; // Kiểu input skill
-   
-    protected bool isOnCooldown = false;
-    protected Transform transOfPlayer;
-    public void SetData(Transform player, SkillCfgSkill skill)
-    {
-        transOfPlayer = player;
-        data = skill;
+    public SkillCfgSkill data;               // ScriptableObject / data chứa logic, cooldown
+    protected ObjectState oStatePlayer;       // Transform nhân vật
+    public SkillInputType inputType = SkillInputType.Drag;
 
-        if (btnSkill != null) btnSkill.onClick.AddListener(OnTapSkill);
+
+    protected bool isDragging = false;
+    protected bool isOnCooldown = false;
+    protected Vector3 velocity = Vector3.zero;
+    protected RectTransform rectTransform;
+
+    void Awake()
+    {
+        rectTransform = GetComponent<RectTransform>();
+        if (cooldownText != null) cooldownText.text = "0"; // ban đầu không phủ
+        if (cooldownOverlay != null) cooldownOverlay.gameObject.SetActive(false);
+        if (dragWorld != null) dragWorld.gameObject.SetActive(false);
+    }
+
+    public void SetData(ObjectState objectState, SkillCfgSkill skill)
+    {
+        oStatePlayer = objectState;
+        data = skill;
 
         if (skillIcon != null && data != null) skillIcon.sprite = data.Icon;
 
-        if (cooldownOverlay != null) cooldownOverlay.gameObject.SetActive(false); // ban đầu không phủ
-
-        if (cooldownText != null) cooldownText.text = "0"; // ban đầu không phủ
-
-        cooldownOverlay.gameObject.SetActive(false);
-
         ASkillLogic.GetLogic(data);
     }
-
-    public abstract void OnTapSkill();
+    protected abstract void CastSkill(params object[] args);
 }
-
-public class SkillButton : ISkillButton
+ class SkillButton : ISkillButton, IPointerUpHandler
 {
     
-    // Khi nhấn nút
-    public override void OnTapSkill()
-    {
-        if (isOnCooldown || data == null) return;
-
-        // Kiểm tra kiểu skill
-        if (inputType == SkillInputType.Tap)
-        {
-            CastSkill();
-            StartCoroutine(StartCooldown());
-        }
-    }
-
-    private void CastSkill()
+    protected override void CastSkill(params object[] args)
     {
         if (data.Logic == null) return;
-        StartCoroutine(data.Logic.Cast((Vector2)(transOfPlayer.position)));
+        StartCoroutine(data.Logic.Cast((Vector2)(oStatePlayer.bottomTrans.position)));
     }
 
     // Hiển thị cooldown
@@ -79,4 +71,12 @@ public class SkillButton : ISkillButton
         cooldownOverlay.gameObject.SetActive(false);
         isOnCooldown = false;
     }
+
+    
+    public void OnPointerUp(PointerEventData eventData)
+    {
+        CastSkill();
+        StartCoroutine(StartCooldown());
+    }
+
 }

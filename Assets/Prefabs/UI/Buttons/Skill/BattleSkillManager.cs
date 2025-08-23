@@ -2,7 +2,6 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
-using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class BattleSkillManager : MonoBehaviour
@@ -25,7 +24,7 @@ public class BattleSkillManager : MonoBehaviour
     public GameObject rotateSkillButtonPrefab;
 
     [SerializeField]
-    private Transform transOfPlayer;
+    private ObjectState oStatePlayer;
 
     public static BattleSkillManager Instance;
 
@@ -48,7 +47,7 @@ public class BattleSkillManager : MonoBehaviour
             ISkillButton newSkillButton = GetSkillButton(skill.InputType);
 
             newSkillButton.gameObject.SetActive(true);
-            newSkillButton.SetData(transOfPlayer, skill);
+            newSkillButton.SetData(oStatePlayer, skill);
             skillButtons.Add(skill.Id, newSkillButton);
         }
     }
@@ -72,7 +71,7 @@ public class BattleSkillManager : MonoBehaviour
             player.skillEquipped.Add(skill.Id); // gán skill vào list
             skillButtons[skill.Id] = GetSkillButton(skill.InputType);
             skillButtons[skill.Id].gameObject.SetActive(true);
-            skillButtons[skill.Id].SetData(transOfPlayer, skill);
+            skillButtons[skill.Id].SetData(oStatePlayer, skill);
             return true;
         }
     }

@@ -1,30 +1,20 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /// <summary>
 /// Slot or Cell
 /// This is elementUI of Inventory
-/*
- *  Slot( Button, Script_SlotUI)
- *    |
- *    |___View
- *    |     |___Icon( Image )
- *    |
- *    |___Highlight( Image )
-*/
 /// </summary>
-
 public class SkillSlotUI : ASlotUI, IPointerClickHandler
 {
     public Image equipped;
     public SkillCfgSkill dataOfSlot;
-    
+
     private BattleSkillManager battleSkillManager;      // ScriptableObject chứa info skill
+
+    private float doubleTapTime = 0.25f; // Khoảng thời gian tối đa giữa 2 lần tap
+    private float lastTapTime = 0;
 
     private void Awake()
     {
@@ -47,25 +37,24 @@ public class SkillSlotUI : ASlotUI, IPointerClickHandler
         view.SetActive(true);
         icon.sprite = dataOfSlot.Icon;
     }
-     
+
     public void OnPointerClick(PointerEventData eventData)
     {
+        // Gọi container click bình thường
         AContainer<SkillCfgSkill> container = transform.parent.GetComponent<AContainer<SkillCfgSkill>>();
-        // Gọi hàm Instance đã override từ hàm ảo ItemPanel
         container.OnClick(thisIndex);
 
-        if (eventData.clickCount != 2) return;
-
-
-        if (battleSkillManager.EquipSKill(dataOfSlot))
-        {
-            equipped.gameObject.SetActive(true);
-        }
-        else
-        {
-            equipped.gameObject.SetActive(false);
-        }
-
+        // ---------------- Double Tap logic ----------------
+        if (Time.time < lastTapTime + doubleTapTime) TryEquipSkill();
+        
+        lastTapTime = Time.time;
     }
 
+    private void TryEquipSkill()
+    {
+        if (battleSkillManager.EquipSKill(dataOfSlot))
+            equipped.gameObject.SetActive(true);
+        else
+            equipped.gameObject.SetActive(false);
+    }
 }

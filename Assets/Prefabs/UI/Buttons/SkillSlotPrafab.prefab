@@ -37,8 +37,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -549.3043, y: 225.12457}
-  m_SizeDelta: {x: -1178.3911, y: -620.6024}
+  m_AnchoredPosition: {x: -497.30435, y: 21.411682}
+  m_SizeDelta: {x: -1074.3912, y: -213.17664}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1269145445859432275
 MonoBehaviour:
@@ -110,8 +110,6 @@ MonoBehaviour:
     cooldown: 0
     ESkillLg: 0
     InputType: 0
-  playerData: {fileID: 11400000, guid: 431dee2bb279eb24ca6fb55c8f24588e, type: 2}
-  goBattleSkillManager: {fileID: 3766622393258597150, guid: 89ca62662a0ac2f49b33d64afed5c937, type: 3}
 --- !u!1 &883981899280770892
 GameObject:
   m_ObjectHideFlags: 0
@@ -129,7 +127,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &3911593746164370872
 RectTransform:
   m_ObjectHideFlags: 0
@@ -139,15 +137,15 @@ RectTransform:
   m_GameObject: {fileID: 883981899280770892}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.41, y: 0.41, z: 0.41}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 5841975732190090319}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 7.200012, y: -9.700012}
-  m_SizeDelta: {x: 102, y: 99}
+  m_AnchoredPosition: {x: 16.400024, y: -20.699997}
+  m_SizeDelta: {x: 64, y: 64}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &715512698272001652
 CanvasRenderer:

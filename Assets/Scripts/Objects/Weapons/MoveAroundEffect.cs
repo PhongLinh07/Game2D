@@ -8,7 +8,7 @@ public class MoveAroundEffect : MonoBehaviour
     private float sortingWithOwner;
 
     public Transform PrivotWithOwner;       // vị trí trung tâm, thường là Player
-    public float radiusX = 1.5f;   // bán kính ngang (elip theo trục X)
+    public float radiusX = 2.0f;   // bán kính ngang (elip theo trục X)
     public float radiusY = 0.7f;   // bán kính dọc (elip theo trục Y)
     public float offsetAngleDeg = 0f; // để chỉnh lệch góc nếu cần
 
@@ -19,8 +19,10 @@ public class MoveAroundEffect : MonoBehaviour
     }
     void Update()
     {
+        if(Input.touchCount <= 0) return;
+
         // Lấy hướng chuột so với player
-        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+        Vector3 mouseWorld = Camera.main.ScreenToWorldPoint(Input.GetTouch(0).position);
         mouseWorld.z = 0;
         Vector3 dir = (mouseWorld - PrivotWithOwner.position).normalized;
 

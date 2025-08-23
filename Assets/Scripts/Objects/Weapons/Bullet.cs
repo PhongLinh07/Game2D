@@ -49,13 +49,14 @@ public class Bullet : PoolableObject
         if(Time.time >= lastUpdateTime + deltaTime) DealDamage();
     }
 
-    public void Init(Vector2 beginPos, float angle, Vector2 direction, int attackValue)
+    public void Init(Vector2 beginPos, float angle, Vector2 direction, int attackValue, int speed = 20)
     {
         transform.position = beginPos;
         this.beginPos = beginPos;
         transform.rotation = Quaternion.Euler(0, 0, angle);
         directionMove = direction.normalized;
         atkNum = attackValue;
+        moveSpeed = speed;
     }
 
 

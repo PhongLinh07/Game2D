@@ -9,6 +9,7 @@ public class MovementFSMController : MonoBehaviour
     private Rigidbody2D rb;
     private AnimatorController animatorController;
     private PlayerInputHandler playerInputHandler;
+    private bool isDash = false;
 
     public float dashDuration = 0.2f;
     public float lastDashTime = -9999;
@@ -44,7 +45,7 @@ public class MovementFSMController : MonoBehaviour
             {
                 rb.velocity = playerInputHandler.moveInput * charStats.combat.agility;
                 if (playerInputHandler.moveInput.magnitude < 0.01f) fsm.Trigger(PlayerMovementTrigger.NoInput);
-                else if (Input.GetKeyDown(KeyCode.Space) && Time.time >= lastDashTime + cooldownDashtime) fsm.Trigger(PlayerMovementTrigger.DashPressed);
+                else if (isDash && Time.time >= lastDashTime + cooldownDashtime) fsm.Trigger(PlayerMovementTrigger.DashPressed);
             },
             onExit: ctx => rb.velocity = Vector2.zero
         );
@@ -67,7 +68,11 @@ public class MovementFSMController : MonoBehaviour
                     fsm.Trigger(PlayerMovementTrigger.DashFinished);
                 }
             },
-            onExit: ctx => rb.velocity = Vector2.zero
+            onExit: ctx =>
+            {
+                rb.velocity = Vector2.zero;
+                isDash = false;
+            }
         );
 
         // TRANSITIONS
@@ -88,5 +93,10 @@ public class MovementFSMController : MonoBehaviour
     {
         if (Time.time >= lastDashTime + cooldownDashtime) dashBar.Full();
         fsm.OnLogic();
+    }
+
+    public void Dash()
+    {
+        isDash = true;   
     }
 }

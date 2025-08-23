@@ -10,6 +10,13 @@ public abstract class ASkillLogic
     {
         switch (skill.ESkillLg)
         {
+            case ESkillLogic.BaseAttack:
+                {
+                    BaseAttack newLogic = new BaseAttack();
+                    newLogic.Init(skill);
+                    skill.Logic = newLogic;
+                    return newLogic;
+                }
             case ESkillLogic.FallingSword:
                 {
                     CastFallingSword newLogic = new CastFallingSword();
@@ -21,6 +28,13 @@ public abstract class ASkillLogic
             case ESkillLogic.SpreadSword:
                 {
                     SpreadShot newLogic = new SpreadShot();
+                    newLogic.Init(skill);
+                    skill.Logic = newLogic;
+                    return newLogic;
+                }
+            case ESkillLogic.Teleport:
+                {
+                    SkillTeleport newLogic = new SkillTeleport();
                     newLogic.Init(skill);
                     skill.Logic = newLogic;
                     return newLogic;

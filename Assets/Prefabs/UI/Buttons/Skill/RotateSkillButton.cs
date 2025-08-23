@@ -1,31 +1,17 @@
 ﻿using System.Collections;
+using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.UI;
 using UnityEngine.EventSystems;
+using UnityEngine.UI;
 
 public class RotateSkillButton : ISkillButton, IPointerDownHandler, IPointerUpHandler, IDragHandler
 {
-    private bool isDragging = false;
-    private Vector2 dragPosition;
-    public Image dragWorld;
 
-    private Vector3 velocity = Vector3.zero;
-
-    // Nhấn nhanh (tap)
-    public override void OnTapSkill()
-    {
-        if (isOnCooldown || data == null) return;
-
-        //// Cast ngay hướng mặc định (hướng nhìn Player)
-        //Vector2 dir = Vector2.right; // Hoặc lấy từ Player.currentFacing
-        //CastSkill(dir);
-        //StartCoroutine(StartCooldown());
-    }
-
-    private void CastSkill(Vector2 direct)
+   
+    protected override void CastSkill(params object[] args)
     {
         if (data?.Logic == null) return;
-        StartCoroutine(data.Logic.Cast((Vector2)transOfPlayer.position, direct));
+        StartCoroutine(data.Logic.Cast((Vector2)oStatePlayer.centerTrans.position, args[0]));
     }
 
     private IEnumerator StartCooldown()
@@ -34,7 +20,7 @@ public class RotateSkillButton : ISkillButton, IPointerDownHandler, IPointerUpHa
         isOnCooldown = true;
 
         float timer = data.cooldown;
-        while (timer > 0f)
+        while (timer > 0.0f)
         {
             timer -= Time.deltaTime;
             cooldownText.text = Mathf.CeilToInt(timer).ToString();
@@ -54,23 +40,14 @@ public class RotateSkillButton : ISkillButton, IPointerDownHandler, IPointerUpHa
 
         isDragging = true;
         dragWorld.gameObject.SetActive(true);
+        ShowDragUI(eventData);
+
     }
 
     public void OnDrag(PointerEventData eventData)
     {
         if (!isDragging) return;
-        dragPosition = eventData.position;
-
-        Vector2 buttonScreenPos = RectTransformUtility.WorldToScreenPoint(null, btnSkill.transform.position);
-        Vector2 drag = eventData.position - buttonScreenPos; // Pixel
-        float distance = drag.magnitude;
-
-        distance = Mathf.Clamp01(distance / 32.0f) * 5.0f;
-
-        Vector2 taget = (Vector2)transOfPlayer.position + drag.normalized * distance;
-
-        dragWorld.transform.position = Vector3.SmoothDamp(dragWorld.transform.position, Camera.main.WorldToScreenPoint(taget), ref velocity, 0.05f); // Gán trực t
-        
+        ShowDragUI(eventData);
     }
 
     public void OnPointerUp(PointerEventData eventData)
@@ -79,15 +56,16 @@ public class RotateSkillButton : ISkillButton, IPointerDownHandler, IPointerUpHa
         isDragging = false;
         dragWorld.gameObject.SetActive(false);
 
-        Vector2 buttonScreenPos = RectTransformUtility.WorldToScreenPoint(null, btnSkill.transform.position);
-        Vector2 drag = eventData.position - buttonScreenPos;
-
-        float distance = Mathf.Clamp01(drag.magnitude / 32f) * 5f;
-        Vector2 target = (Vector2)transOfPlayer.position + drag.normalized * distance;
-
-        // Cast theo hướng kéo
-        Vector2 direction = (target - (Vector2)transOfPlayer.position).normalized;
-        CastSkill(direction);
+        CastSkill(eventData.position -  RectTransformUtility.WorldToScreenPoint(null, rectTransform.position));
         StartCoroutine(StartCooldown());
+    }
+
+    private void ShowDragUI(PointerEventData eventData)
+    {
+        Vector2 buttonScreenPos = RectTransformUtility.WorldToScreenPoint(null, rectTransform.position);
+        dragWorld.transform.position = (Vector2)Camera.main.WorldToScreenPoint(oStatePlayer.bottomTrans.position);
+        Vector2 dir = (eventData.position - RectTransformUtility.WorldToScreenPoint(null, rectTransform.position)).normalized;
+        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
+        dragWorld.rectTransform.localRotation = Quaternion.Euler(0f, 0f, angle - 90);
     }
 }

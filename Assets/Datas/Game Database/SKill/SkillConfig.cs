@@ -5,8 +5,10 @@ using UnityEngine;
 public enum ESkillLogic
 {
     None = -1,
-    SpreadSword = 0,
-    FallingSword = 1
+    BaseAttack = 0,
+    SpreadSword = 1,
+    FallingSword = 2,
+    Teleport = 3,
 }
 
 
