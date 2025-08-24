@@ -37,7 +37,7 @@ public class ItemConfig : ConfigBase<ItemCfgItem> { }
 
 
 [System.Serializable]
-public class PlayerItem : ConfigItem<PlayerItem>
+public class EnhanceCfgItem : ConfigItem<EnhanceCfgItem>
 { 
     public ItemCfgItem Data;     
     public int Level;
@@ -47,7 +47,7 @@ public class PlayerItem : ConfigItem<PlayerItem>
     public int Def;
 
 
-    public override void CopyFrom(PlayerItem other)
+    public override void CopyFrom(EnhanceCfgItem other)
     {
         Data = other.Data;
         Id = other.Id;

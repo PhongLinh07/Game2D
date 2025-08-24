@@ -17,7 +17,7 @@ public class DetailsItem : MonoBehaviour
     public TextMeshProUGUI descriptionItem;
 
     // Start is called before the first frame updatehuws trong scrip 
-    public void SetData(PlayerItem playerItem)
+    public void SetData(EnhanceCfgItem playerItem)
     {
         headerCard.sprite = data.rarityDict[playerItem.Rarity];
         bg.sprite = rarityCell.rarityDict[playerItem.Rarity];

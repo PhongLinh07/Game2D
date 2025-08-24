@@ -12,7 +12,7 @@ public class ItemSpawnManager : MonoBehaviour
     }
 
     public GameObject ItemPrefab;
-    public void SpawnItem(Vector3 position, PlayerItem playerItem)
+    public void SpawnItem(Vector3 position, EnhanceCfgItem playerItem)
     {
         GameObject go = Instantiate(ItemPrefab, position, Quaternion.identity);
         go.GetComponent<PickUpItem>().SetItemPickUp(playerItem);

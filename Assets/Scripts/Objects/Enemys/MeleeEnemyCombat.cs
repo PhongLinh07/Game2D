@@ -17,15 +17,15 @@ public class MeleeEnemyCombat : EnemyCombatBase
     }
     protected override void SetupFSM()
     {
-        fsm = new StateMachine<EnemyCombatStateID, EnemyCombatTrigger>();
+        fsm = new StateMachine<EAnimParametor, EFsmAction>();
 
         // IDLE
-        fsm.AddState(EnemyCombatStateID.None);
+        fsm.AddState(EAnimParametor.None);
 
-        fsm.AddState(EnemyCombatStateID.BaseAttack,
+        fsm.AddState(EAnimParametor.Attack,
             onEnter: ctx =>
             {
-                animatorController.SetCombatState(EnemyCombatStateID.BaseAttack);
+                animatorController.SetState(EAnimParametor.Attack);
 
                 rb.velocity = Vector2.zero;
             },
@@ -44,7 +44,7 @@ public class MeleeEnemyCombat : EnemyCombatBase
         );
 
         
-        fsm.SetStartState(EnemyCombatStateID.None);
+        fsm.SetStartState(EAnimParametor.None);
         fsm.Init();
 
         //ký sinh tạm thời 
@@ -57,7 +57,7 @@ public class MeleeEnemyCombat : EnemyCombatBase
     {
         if (!Recovered()) return;
 
-        fsm?.RequestStateChange(EnemyCombatStateID.BaseAttack);
+        fsm?.RequestStateChange(EAnimParametor.Attack);
     }
 
     private void DealDamage()

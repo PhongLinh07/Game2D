@@ -1,21 +1,48 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
-using UnityEngine;
-using UnityEngine.UI;
+﻿using System.Collections.Generic;
 
-[CreateAssetMenu(menuName = "Data/Player")]
+/// <summary>
+/// Runtime
+/// </summary>
 
-public class PlayerData : ScriptableObject
+[System.Serializable]
+public class PlayerData : ConfigItem<PlayerData>
 {
-    // Thông tin cơ bản
-    public int ID;
-    public string playerName;
-    public List<int> skills; //id
-    public List<int> skillEquipped = new();
-    public List<PlayerItem> playerItems; // Id(Only), quantity
+    //Method
+    public string name;
+    public List<int> skillsLearned;
+    public List<int> skillsEquipped;
+    public List<EnhanceCfgItem> items;
 
+    public PlayerData()
+    {
+        name = "Vuong That Phong";
+        skillsLearned = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7}; //id
+        skillsEquipped = new List<int>();
+
+
+        EnhanceCfgItem test = new EnhanceCfgItem();
+        test.Id = 0;
+        items = new List<EnhanceCfgItem> { test }; // Id(Only), quantity
+    }
+    //Attribute
+    public override void CopyFrom(PlayerData other)
+    {
+        Id = other.Id;
+        name = other.name;
+        skillsLearned = other.skillsLearned;
+        skillsEquipped = other.skillsEquipped;
+        items = other.items;
+    }
+
+    public void SkillEuipped(int idSkill)
+    {
+        skillsEquipped.Add(idSkill);
+        SaveSystem.Save<PlayerData>("player", this);
+    }
+
+    public void SkillRemoveEuipped(int idSkill)
+    {
+        skillsEquipped.Remove(idSkill);
+        SaveSystem.Save<PlayerData>("player", this);
+    }
 }
-

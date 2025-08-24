@@ -10,8 +10,7 @@ using UnityEngine.Rendering;
 public class EnemyAnimatorController : MonoBehaviour
 {
   
-    private EnemyMovementStateID currMoveState;
-    private EnemyCombatStateID currCombatState;
+    private EAnimParametor currState;
 
     //Controller variable use global
     public Animator animator;
@@ -23,46 +22,25 @@ public class EnemyAnimatorController : MonoBehaviour
 
     public void Update()
     {
-        MovementAnimation();
-        CombatAnimation();
-    }
-
-    private void MovementAnimation()
-    {
-        switch (currMoveState)
+        switch (currState)
         {
-            case EnemyMovementStateID.Idle:
+            case EAnimParametor.Idle:
                 PlayIfNotAlready("Idle_Right");
                 break;
 
-            case EnemyMovementStateID.Chase:
+            case EAnimParametor.Run:
                 PlayIfNotAlready("Run_Right");
                 break;
-        }
-    }
-
-    private void CombatAnimation()
-    {
-        switch (currCombatState)
-        {
-            case EnemyCombatStateID.BaseAttack:
+            case EAnimParametor.Attack:
                 PlayIfNotAlready("Attack_Right");
                 break;
         }
     }
 
-    public void SetMovementState(EnemyMovementStateID newState)
-    {
-        currMoveState = newState;
-        currCombatState = EnemyCombatStateID.None;
-    }
 
-    public void SetCombatState(EnemyCombatStateID newState)
+    public void SetState(EAnimParametor newState)
     {
-        {
-            currMoveState = EnemyMovementStateID.None;
-            currCombatState = newState;
-        }
+        this.currState = newState;
     }
 
 

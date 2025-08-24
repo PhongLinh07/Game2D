@@ -8,7 +8,7 @@ using UnityHFSM;
 
 public class EnemyMovementFSMController : MonoBehaviour
 {
-    public StateMachine<EnemyMovementStateID, EnemyMovementTrigger> fsm;
+    public StateMachine<EAnimParametor, EFsmAction> fsm;
     private MonsterStats MonsterStats;
     private ObjectState objState;
     private Rigidbody2D rb;
@@ -33,18 +33,16 @@ public class EnemyMovementFSMController : MonoBehaviour
         objState = GetComponent<ObjectState>();
         enemyAIController = GetComponent<EnemyAIController>();
 
-        fsm = new StateMachine<EnemyMovementStateID, EnemyMovementTrigger>();
+        fsm = new StateMachine<EAnimParametor, EFsmAction>();
 
-        fsm.AddState(EnemyMovementStateID.None);
 
-        // NONE
-        fsm.AddState(EnemyMovementStateID.None);
+        fsm.AddState(EAnimParametor.None);
 
         // IDLE
-        fsm.AddState(EnemyMovementStateID.Idle,
+        fsm.AddState(EAnimParametor.Idle,
             onEnter: ctx => 
             { 
-                animatorController.SetMovementState(EnemyMovementStateID.Idle); 
+                animatorController.SetState(EAnimParametor.Idle); 
                 rb.velocity = Vector2.zero; 
             },
             onLogic: ctx =>
@@ -59,15 +57,15 @@ public class EnemyMovementFSMController : MonoBehaviour
                 }
                 else if (distanceToTarget <= chaseRadius)
                 {
-                    fsm.Trigger(EnemyMovementTrigger.TargetSpotted);
+                    fsm?.RequestStateChange(EAnimParametor.Run);
                 }
                 
             }
         );
 
         // CHASE
-        fsm.AddState(EnemyMovementStateID.Chase,
-            onEnter: ctx => { animatorController.SetMovementState(EnemyMovementStateID.Chase); },
+        fsm.AddState(EAnimParametor.Run,
+            onEnter: ctx => { animatorController.SetState(EAnimParametor.Run); },
             onLogic: ctx =>
             {
                 if (objState.isAttacking) return; // ✅ Không di chuyển khi tấn công
@@ -76,29 +74,20 @@ public class EnemyMovementFSMController : MonoBehaviour
 
                 if (distanceToTarget <= attackRadius || distanceToTarget > chaseRadius)
                 {
-                    fsm.Trigger(EnemyMovementTrigger.TargetLost);
+                    fsm?.RequestStateChange(EAnimParametor.Idle);
                 }
             },
             onExit: ctx => rb.velocity = Vector2.zero
         );
  
 
-        // TRANSITIONS
-        fsm.AddTriggerTransition(EnemyMovementTrigger.TargetSpotted, new Transition<EnemyMovementStateID>(EnemyMovementStateID.Idle, EnemyMovementStateID.Chase));
-
-        fsm.AddTriggerTransition(EnemyMovementTrigger.TargetLost, new Transition<EnemyMovementStateID>(EnemyMovementStateID.Chase, EnemyMovementStateID.Idle));
-
-        fsm.AddTriggerTransitionFromAny(EnemyMovementTrigger.None, new Transition<EnemyMovementStateID>(EnemyMovementStateID.Any, EnemyMovementStateID.None));
-
-        fsm.AddTriggerTransition(EnemyMovementTrigger.TargetLost, new Transition<EnemyMovementStateID>(EnemyMovementStateID.None, EnemyMovementStateID.Idle));
-
-
-        fsm.SetStartState(EnemyMovementStateID.Idle);
+       
+        fsm.SetStartState(EAnimParametor.Idle);
         fsm.Init();
     }
 
-    private void Pause() => fsm.Trigger(EnemyMovementTrigger.None);
-    public void Resume() => fsm.Trigger(EnemyMovementTrigger.TargetLost);
+    private void Pause() => fsm?.RequestStateChange(EAnimParametor.None);
+    public void Resume() => fsm?.RequestStateChange(EAnimParametor.Idle);
 
     public void UpdateMovement()
     {

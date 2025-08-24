@@ -8,17 +8,16 @@ using UnityEngine.UI;
 public class SkillBook : AContainer<SkillCfgSkill>
 {  
     public DetailsSkill details;
-    public PlayerData player;
   
 
     public override void Init()
     {
         slotUIs.Clear();
 
-        for (int i = 0; i < player.skills.Count; i++)
+        for (int i = 0; i < GameManager.Instance.R_PlayerData.skillsLearned.Count; i++)
         {
             SkillCfgSkill cpy = new SkillCfgSkill();
-            cpy.CopyFrom(GameManager.Instance.DB_Skill.GetById(player.skills[i]));
+            cpy.CopyFrom(GameManager.Instance.DB_Skill.GetById(GameManager.Instance.R_PlayerData.skillsLearned[i]));
             datas.Add(cpy);
       
         }
@@ -34,7 +33,7 @@ public class SkillBook : AContainer<SkillCfgSkill>
         // Cập nhật vào UI
         for (int i = 0; i < datas.Count; i++)
         {
-            index = playerData.skillEquipped.IndexOf(datas[i].Id);
+            index = GameManager.Instance.R_PlayerData.skillsEquipped.IndexOf(datas[i].Id);
             ((SkillSlotUI)slotUIs[i]).Equip(index == -1 ? false : true);
         }
     }

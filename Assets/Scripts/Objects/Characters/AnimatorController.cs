@@ -13,7 +13,7 @@ public class AnimatorController : MonoBehaviour
     public Vector2 directionLast = Vector2.zero;
 
     private float dotInputVsLook = 0.0f;
-    private PlayerMovementStateID currState;
+    private EAnimParametor currState;
     //Controller variable use global
     public Animator animator;
 
@@ -31,44 +31,13 @@ public class AnimatorController : MonoBehaviour
 
     public void Update()
     {
-        //dotInputVsLook = Vector2.Dot(lookAtMouseHandler.direction, playerInputHandler.moveInput);
-
-        //switch (currState)
-        //{
-        //    case PlayerMovementStateID.Idle:
-        //        PlayIfNotAlready("Idle_Right");
-        //        break;
-
-        //    case PlayerMovementStateID.Move:
-        //        if (dotInputVsLook < 0.0f)
-        //            PlayIfNotAlready("Run_WalkBack");
-        //        else
-        //            PlayIfNotAlready("Run_Right");
-        //        break;
-
-        //    case PlayerMovementStateID.Dash:
-        //        if (dotInputVsLook < 0.0f)
-        //            PlayIfNotAlready("Dash_Backward");
-        //        else
-        //            PlayIfNotAlready("Dash_Forward");
-        //        break;
-        //}
-
-
         dotInputVsLook = playerInputHandler.moveInput.x;
 
         switch (currState)
         {
-            case PlayerMovementStateID.Idle: PlayIfNotAlready("Idle_Right"); break;
+            case EAnimParametor.Idle: PlayIfNotAlready("Idle_Right"); break;
 
-            case PlayerMovementStateID.Move: PlayIfNotAlready("Run_Right"); break;
-
-            case PlayerMovementStateID.Dash:
-                if (dotInputVsLook < 0.0f)
-                    PlayIfNotAlready("Dash_Backward");
-                else
-                    PlayIfNotAlready("Dash_Forward");
-                break;
+            case EAnimParametor.Run: PlayIfNotAlready("Run_Right"); break;
         }
 
         if (playerInputHandler.moveInput.x != 0.0f) directionLast = playerInputHandler.moveInput;
@@ -76,7 +45,7 @@ public class AnimatorController : MonoBehaviour
     
     }
 
-    public void SetState(PlayerMovementStateID newState)
+    public void SetState(EAnimParametor newState)
     {
         this.currState = newState;
     }

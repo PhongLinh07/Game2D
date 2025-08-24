@@ -9,23 +9,27 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private SkillConfig gameSkill;
     [SerializeField] private ItemConfig gameItem;
-    [SerializeField] private PlayerData userData;
 
     public GameObject Character;
     public GameObject HighlightController;
 
+    public PlayerData R_PlayerData;
     public Database<SkillCfgSkill> DB_Skill;
     public Database<ItemCfgItem> DB_Item;
+
     // Start is called before the first frame update
     void Awake()
     {
         Instance = this;
         DB_Skill = new();
         DB_Item = new();
-            
+
         DB_Skill.datas = gameSkill.GetRuntimeCopy();
         DB_Item.datas = gameItem.GetRuntimeCopy();
 
+        // Load data khi bắt đầu game
+        R_PlayerData = SaveSystem.Load<PlayerData>("player");
+        Debug.Log("Start Game with: " + R_PlayerData.name);
     }
 
     private void Start()
@@ -34,5 +38,4 @@ public class GameManager : MonoBehaviour
         QualitySettings.vSyncCount = 0; // Tắt VSync để FPS thực sự giới hạn bởi targetFrameRate
 
     }
-
 }

@@ -5,7 +5,7 @@ public abstract class EnemyCombatBase : MonoBehaviour, IEnemyCombat
 {
     protected EnemyAIController ai;
     protected Rigidbody2D rb;
-    protected StateMachine<EnemyCombatStateID, EnemyCombatTrigger> fsm;
+    protected StateMachine<EAnimParametor, EFsmAction> fsm;
     private float _lastAttackTime;
     protected float _recoveryTime;
     protected EnemyAnimatorController animatorController;
@@ -35,7 +35,7 @@ public abstract class EnemyCombatBase : MonoBehaviour, IEnemyCombat
 
     public virtual void ResetCombat()
     {
-        fsm?.RequestStateChange(EnemyCombatStateID.None);
+        fsm?.RequestStateChange(EAnimParametor.None);
         _lastAttackTime = Time.time;
     }
 

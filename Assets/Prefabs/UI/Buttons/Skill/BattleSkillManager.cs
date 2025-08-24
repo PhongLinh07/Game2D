@@ -14,7 +14,7 @@ public class BattleSkillManager : MonoBehaviour
     public Dictionary<int, ISkillButton> skillButtons = new();
 
     [Header("Data of Player")]
-    public PlayerData player;
+   // public PlayerData player;
 
     
     [Header("Skill button UI Prefab")]
@@ -35,9 +35,9 @@ public class BattleSkillManager : MonoBehaviour
     }
     void Start()
     {
-        for (int i = 0; i < player.skillEquipped.Count; i++)
+        for (int i = 0; i < GameManager.Instance.R_PlayerData.skillsEquipped.Count; i++)
         {
-            SkillCfgSkill skill = GameManager.Instance.DB_Skill.GetById(player.skillEquipped[i]);
+            SkillCfgSkill skill = GameManager.Instance.DB_Skill.GetById(GameManager.Instance.R_PlayerData.skillsEquipped[i]);
             if (skill == null)
             {
                 Debug.Log("skill Null");
@@ -54,9 +54,9 @@ public class BattleSkillManager : MonoBehaviour
 
     public bool EquipSKill(SkillCfgSkill skill)
     {
-        if (player.skillEquipped.Contains(skill.Id)) // nếu đã tồn tại thì remove
+        if (GameManager.Instance.R_PlayerData.skillsEquipped.Contains(skill.Id)) // nếu đã tồn tại thì remove
         {
-            player.skillEquipped.Remove(skill.Id); 
+            GameManager.Instance.R_PlayerData.SkillRemoveEuipped(skill.Id); 
             if (skillButtons.ContainsKey(skill.Id))
             {
                 Destroy(skillButtons[skill.Id].gameObject);
@@ -66,14 +66,16 @@ public class BattleSkillManager : MonoBehaviour
         }
         else
         {
-            if (player.skillEquipped.Count >= 7) return false;
+            if (GameManager.Instance.R_PlayerData.skillsEquipped.Count >= 7) return false;
 
-            player.skillEquipped.Add(skill.Id); // gán skill vào list
+            GameManager.Instance.R_PlayerData.SkillEuipped(skill.Id); // gán skill vào list
             skillButtons[skill.Id] = GetSkillButton(skill.InputType);
             skillButtons[skill.Id].gameObject.SetActive(true);
             skillButtons[skill.Id].SetData(oStatePlayer, skill);
             return true;
         }
+
+        
     }
 
     private ISkillButton GetSkillButton(SkillInputType type)

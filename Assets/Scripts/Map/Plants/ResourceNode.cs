@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class ResourceNode : MonoBehaviour, IDamageable
 {
-    public PlayerItem thisPlayerItem;
+    public EnhanceCfgItem thisPlayerItem;
     public int quantityPlayerItem = 4;
     public SpriteRenderer mSr;
     public ResourceNodeType resourceNodeType;

@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public enum ESkillLogic
+public enum EHeroSkillType
 {
     None = -1,
-    BaseAttack = 0,
+    Normal = 0,
     SpreadSword = 1,
     FallingSword = 2,
     Teleport = 3,
@@ -20,7 +20,7 @@ public class SkillCfgSkill : ConfigItem<SkillCfgSkill>
     public string Description;
     public int atk;
     public float cooldown;
-    public ESkillLogic ESkillLg;
+    public EHeroSkillType ESkillLg;
     public ASkillLogic Logic;
     public SkillInputType InputType;
 

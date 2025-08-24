@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 
 
-public class Inventory : AContainer<PlayerItem>
+public class Inventory : AContainer<EnhanceCfgItem>
 {
     public DetailsItem details;
 
@@ -15,10 +15,10 @@ public class Inventory : AContainer<PlayerItem>
     {
         slotUIs.Clear();
 
-        for (int i = 0; i < player.playerItems.Count; i++)
+        for (int i = 0; i < player.items.Count; i++)
         {
-            PlayerItem cpy = new PlayerItem();
-            cpy.CopyFrom(player.playerItems[i]);
+            EnhanceCfgItem cpy = new EnhanceCfgItem();
+            cpy.CopyFrom(player.items[i]);
             cpy.Data = GameManager.Instance.DB_Item.GetById(cpy.Data.Id);
             datas.Add(cpy);
         }

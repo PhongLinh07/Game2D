@@ -28,7 +28,7 @@ public class ItemSlotUI : ASlotUI, IPointerClickHandler
     public Image bg;
     public TextMeshProUGUI quantity;
 
-    public PlayerItem dataOfSlot;
+    public EnhanceCfgItem dataOfSlot;
 
     public override void SetData<T>(T data)
     {
@@ -37,7 +37,7 @@ public class ItemSlotUI : ASlotUI, IPointerClickHandler
             Reset();
             return;
         }
-        dataOfSlot = data as PlayerItem;
+        dataOfSlot = data as EnhanceCfgItem;
         view.SetActive(true);
         bg.sprite = rarityCell.rarityDict[dataOfSlot.Rarity];
         icon.sprite = dataOfSlot.Data.Icon;
@@ -56,7 +56,7 @@ public class ItemSlotUI : ASlotUI, IPointerClickHandler
 
     public void OnPointerClick(PointerEventData eventData)
     {
-        AContainer<PlayerItem> container = transform.parent.GetComponent<AContainer<PlayerItem>>();
+        AContainer<EnhanceCfgItem> container = transform.parent.GetComponent<AContainer<EnhanceCfgItem>>();
         // Gọi hàm Instance đã override từ hàm ảo ItemPanel
         container.OnClick(thisIndex);
     }

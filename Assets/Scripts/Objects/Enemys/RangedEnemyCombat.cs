@@ -12,20 +12,20 @@ public class RangedEnemyCombat : EnemyCombatBase
 
     protected override void SetupFSM()
     {
-        fsm = new StateMachine<EnemyCombatStateID, EnemyCombatTrigger>();
+        fsm = new StateMachine<EAnimParametor, EFsmAction>();
 
         // IDLE
-        fsm.AddState(EnemyCombatStateID.None);
+        fsm.AddState(EAnimParametor.None);
 
-        fsm.AddState(EnemyCombatStateID.BaseAttack,
+        fsm.AddState(EAnimParametor.Attack,
             onEnter: ctx =>
             {
-                animatorController.SetCombatState(EnemyCombatStateID.BaseAttack);
+                animatorController.SetState(EAnimParametor.Attack);
                 rb.velocity = Vector2.zero;
             },
             onLogic: ctx =>
             {
-                // rb.velocity = isAttackPhase * objState.lookDirection * monsterStats.combat.agility * 7.0f;
+                
             },
             onExit: ctx =>
             {
@@ -36,12 +36,12 @@ public class RangedEnemyCombat : EnemyCombatBase
         );
 
         // TRANSITIONS
-        fsm.AddTriggerTransition(EnemyCombatTrigger.InRange, new Transition<EnemyCombatStateID>(EnemyCombatStateID.None, EnemyCombatStateID.BaseAttack));
-
-        fsm.AddTriggerTransition(EnemyCombatTrigger.OutOfRange, new Transition<EnemyCombatStateID>(EnemyCombatStateID.BaseAttack, EnemyCombatStateID.None));
+        //fsm.AddTriggerTransition(EFsmAction.Attack, new Transition<EAnimParametor>(EAnimParametor.Idle, EAnimParametor.Attack));
 
 
-        fsm.SetStartState(EnemyCombatStateID.None);
+
+
+        fsm.SetStartState(EAnimParametor.None);
         fsm.Init();
 
         //ký sinh tạm thời 
@@ -54,7 +54,7 @@ public class RangedEnemyCombat : EnemyCombatBase
     {
         if (!Recovered()) return;
 
-        fsm.Trigger(EnemyCombatTrigger.InRange);
+        fsm?.RequestStateChange(EAnimParametor.Attack);
     }
 
     // Gọi từ animation event

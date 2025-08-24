@@ -1741,6 +1741,18 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6819607989882613120, guid: 25503e975bdc163479426d353883919b, type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6819607989882613120, guid: 25503e975bdc163479426d353883919b, type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6819607989882613120, guid: 25503e975bdc163479426d353883919b, type: 3}
+      propertyPath: m_LocalScale.z
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6819607989882613120, guid: 25503e975bdc163479426d353883919b, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
       objectReference: {fileID: 0}
@@ -1779,6 +1791,10 @@ PrefabInstance:
     - target: {fileID: 6819607989882613120, guid: 25503e975bdc163479426d353883919b, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6819607989882613120, guid: 25503e975bdc163479426d353883919b, type: 3}
+      propertyPath: m_ConstrainProportionsScale
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8405728360498125045, guid: 25503e975bdc163479426d353883919b, type: 3}
       propertyPath: m_Name
@@ -2431,6 +2447,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 4336601461872827064, guid: 6cc088e0cc9a0d94ab353de0f8774bd7, type: 3}
+      propertyPath: player
+      value: 
+      objectReference: {fileID: 11400000, guid: 431dee2bb279eb24ca6fb55c8f24588e, type: 2}
+    - target: {fileID: 4336601461872827064, guid: 6cc088e0cc9a0d94ab353de0f8774bd7, type: 3}
       propertyPath: Character
       value: 
       objectReference: {fileID: 344427035}
@@ -2438,6 +2458,10 @@ PrefabInstance:
       propertyPath: HighlightController
       value: 
       objectReference: {fileID: 614627143}
+    - target: {fileID: 4336601461872827064, guid: 6cc088e0cc9a0d94ab353de0f8774bd7, type: 3}
+      propertyPath: R_PlayerData.items.Array.data[0].Atk
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6095250779407338622, guid: 6cc088e0cc9a0d94ab353de0f8774bd7, type: 3}
       propertyPath: mTimeText
       value: 
@@ -2956,7 +2980,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 595845527154875735, guid: a8e40897172e4634ea833d70e59179cf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0.0025024
+      value: 0.0025024414
       objectReference: {fileID: 0}
     - target: {fileID: 664852046072685799, guid: a8e40897172e4634ea833d70e59179cf, type: 3}
       propertyPath: m_SizeDelta.x
@@ -3712,7 +3736,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4711796353886525489, guid: a8e40897172e4634ea833d70e59179cf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -46.27014
+      value: -46.27008
       objectReference: {fileID: 0}
     - target: {fileID: 4934560373440330861, guid: a8e40897172e4634ea833d70e59179cf, type: 3}
       propertyPath: m_AnchorMax.x
