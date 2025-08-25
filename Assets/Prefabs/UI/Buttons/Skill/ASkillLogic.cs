@@ -6,7 +6,7 @@ using UnityEngine;
 
 public abstract class ASkillLogic
 {
-    public static ASkillLogic GetLogic(SkillCfgSkill skill)
+    public static ASkillLogic GetLogic(SkillCfgItem skill)
     {
         switch (skill.ESkillLg)
         {
@@ -45,7 +45,7 @@ public abstract class ASkillLogic
     }
 
     public string tagOfTarget;
-    public SkillCfgSkill owner;
+    public SkillCfgItem owner;
 
     public abstract IEnumerator Cast(params object[] args);
 }

@@ -19,7 +19,7 @@ public class Inventory : AContainer<EnhanceCfgItem>
         {
             EnhanceCfgItem cpy = new EnhanceCfgItem();
             cpy.CopyFrom(player.items[i]);
-            cpy.Data = GameManager.Instance.DB_Item.GetById(cpy.Data.Id);
+            cpy.Data = ItemConfig.GetInstance.GetConfigItem(cpy.Data.Id);
             datas.Add(cpy);
         }
 

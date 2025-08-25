@@ -7,11 +7,11 @@ using UnityEngine;
 
 public class CastFallingSword : ASkillLogic
 {
-    private SkillCfgSkill data;
+    private SkillCfgItem data;
     private Vector2 posCast;
     
     // Start is called before the first frame updateS
-    public void Init(SkillCfgSkill skill)
+    public void Init(SkillCfgItem skill)
     {
         data = skill;
     }
@@ -34,6 +34,6 @@ public class CastFallingSword : ASkillLogic
         int y = UnityEngine.Random.Range((int)(posCast.y - 2.0f), (int)(posCast.y + 2.0f));
 
         GameObject go = ObjectPoolManager.Instance.Spawn(EObjectPool.FallingSword);
-        go.GetComponent<FallingSword>().Init(new Vector2(x, y), data.atk);
+        go.GetComponent<FallingSword>().Init(new Vector2(x, y), 10);
     }
 }

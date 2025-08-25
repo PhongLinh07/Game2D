@@ -4,6 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using static UnityEditor.Progress;
 
 public abstract class ISkillButton : MonoBehaviour
 {
@@ -15,7 +16,7 @@ public abstract class ISkillButton : MonoBehaviour
 
 
     [Header("Skill Data")]
-    public SkillCfgSkill data;               // ScriptableObject / data chứa logic, cooldown
+    public SkillCfgItem data;               // ScriptableObject / data chứa logic, cooldown
     protected ObjectState oStatePlayer;       // Transform nhân vật
     public SkillInputType inputType = SkillInputType.Drag;
 
@@ -33,7 +34,7 @@ public abstract class ISkillButton : MonoBehaviour
         if (dragWorld != null) dragWorld.gameObject.SetActive(false);
     }
 
-    public void SetData(ObjectState objectState, SkillCfgSkill skill)
+    public void SetData(ObjectState objectState, SkillCfgItem skill)
     {
         oStatePlayer = objectState;
         data = skill;

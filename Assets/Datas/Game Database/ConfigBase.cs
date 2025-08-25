@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+public interface ConfigItem
+{
+}
+
 [System.Serializable]
 public abstract class ConfigItem<T> // Data
 {
@@ -28,4 +32,13 @@ public class ConfigBase<T> : ScriptableObject where T : ConfigItem<T>, new() //D
 
         return copyList;
     }
+}
+
+public interface ConfigBase
+{
+    string fileName { get; set; }
+
+    void InitData(IList<IDictionary<string, object>> configs);
+
+    void Clear();
 }

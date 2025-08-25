@@ -6,11 +6,11 @@ using UnityEngine.UIElements;
 
 public class BaseAttack : ASkillLogic
 {
-    private SkillCfgSkill data;
+    private SkillCfgItem data;
     private Vector2 posCast;
     private Vector2 dirCast;
 
-    public void Init(SkillCfgSkill skill)
+    public void Init(SkillCfgItem skill)
     {
         data = skill;
     }
@@ -32,7 +32,7 @@ public class BaseAttack : ASkillLogic
         float angle = Mathf.Atan2(dirCast.y, dirCast.x) * Mathf.Rad2Deg;
 
         GameObject go = ObjectPoolManager.Instance.Spawn(EObjectPool.FlyingSword);
-        go.GetComponent<Bullet>().Init(posCast, angle + 90.0f, dirCast, data.atk, 30);
+        go.GetComponent<Bullet>().Init(posCast, angle + 90.0f, dirCast, 10, 30);
     }
 
 }

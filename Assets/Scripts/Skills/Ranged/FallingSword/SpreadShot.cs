@@ -8,12 +8,12 @@ using UnityEngine.UIElements;
 
 public class SpreadShot : ASkillLogic
 {
-    private SkillCfgSkill data;
+    private SkillCfgItem data;
     private Vector2 posCast;
     private Vector2 dirCast;
     
     // Start is called before the first frame updateS
-    public void Init(SkillCfgSkill skill)
+    public void Init(SkillCfgItem skill)
     {
         data = skill;
     }
@@ -48,7 +48,7 @@ public class SpreadShot : ASkillLogic
 
             // Tạo đạn
             GameObject go = ObjectPoolManager.Instance.Spawn(EObjectPool.FlyingSword);
-            go.GetComponent<Bullet>().Init(posCast, currentAngle + 90.0f, shootDir, data.atk);
+            go.GetComponent<Bullet>().Init(posCast, currentAngle + 90.0f, shootDir, 10);
         }
     }
 

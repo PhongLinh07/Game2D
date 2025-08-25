@@ -9,27 +9,33 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private SkillConfig gameSkill;
     [SerializeField] private ItemConfig gameItem;
+    [SerializeField] private SkillConfigSO skillConfigSO;
+    [SerializeField] private SpriteConfigSO spriteConfigSO;
+    [SerializeField] private ItemConfigSO itemConfigSO;
+
 
     public GameObject Character;
     public GameObject HighlightController;
 
     public PlayerData R_PlayerData;
-    public Database<SkillCfgSkill> DB_Skill;
-    public Database<ItemCfgItem> DB_Item;
+   
+
+    
 
     // Start is called before the first frame update
     void Awake()
     {
+        
         Instance = this;
-        DB_Skill = new();
-        DB_Item = new();
-
-        DB_Skill.datas = gameSkill.GetRuntimeCopy();
-        DB_Item.datas = gameItem.GetRuntimeCopy();
+  
 
         // Load data khi bắt đầu game
         R_PlayerData = SaveSystem.Load<PlayerData>("player");
         Debug.Log("Start Game with: " + R_PlayerData.name);
+
+        SpriteConfig.GetInstance.InitData(spriteConfigSO.ToDict());
+        SkillConfig.GetInstance.InitData(skillConfigSO.ToDict());
+        ItemConfig.GetInstance.InitData(itemConfigSO.ToDict());
     }
 
     private void Start()

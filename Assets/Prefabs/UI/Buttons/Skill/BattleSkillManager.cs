@@ -37,14 +37,14 @@ public class BattleSkillManager : MonoBehaviour
     {
         for (int i = 0; i < GameManager.Instance.R_PlayerData.skillsEquipped.Count; i++)
         {
-            SkillCfgSkill skill = GameManager.Instance.DB_Skill.GetById(GameManager.Instance.R_PlayerData.skillsEquipped[i]);
+            SkillCfgItem skill = SkillConfig.GetInstance.GetConfigItem(GameManager.Instance.R_PlayerData.skillsEquipped[i]);
             if (skill == null)
             {
                 Debug.Log("skill Null");
                 continue;
             }
 
-            ISkillButton newSkillButton = GetSkillButton(skill.InputType);
+            ISkillButton newSkillButton = GetSkillButton((SkillInputType)skill.InputType);
 
             newSkillButton.gameObject.SetActive(true);
             newSkillButton.SetData(oStatePlayer, skill);
@@ -52,7 +52,7 @@ public class BattleSkillManager : MonoBehaviour
         }
     }
 
-    public bool EquipSKill(SkillCfgSkill skill)
+    public bool EquipSKill(SkillCfgItem skill)
     {
         if (GameManager.Instance.R_PlayerData.skillsEquipped.Contains(skill.Id)) // nếu đã tồn tại thì remove
         {
@@ -69,7 +69,7 @@ public class BattleSkillManager : MonoBehaviour
             if (GameManager.Instance.R_PlayerData.skillsEquipped.Count >= 7) return false;
 
             GameManager.Instance.R_PlayerData.SkillEuipped(skill.Id); // gán skill vào list
-            skillButtons[skill.Id] = GetSkillButton(skill.InputType);
+            skillButtons[skill.Id] = GetSkillButton((SkillInputType)skill.InputType);
             skillButtons[skill.Id].gameObject.SetActive(true);
             skillButtons[skill.Id].SetData(oStatePlayer, skill);
             return true;

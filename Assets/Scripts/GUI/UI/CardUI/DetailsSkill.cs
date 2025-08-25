@@ -11,7 +11,7 @@ public class DetailsSkill : MonoBehaviour
     public TextMeshProUGUI skillDescription;
 
     // Start is called before the first frame updatehuws trong scrip 
-    public void SetData(SkillCfgSkill skill)
+    public void SetData(SkillCfgItem skill)
     {
         icon.sprite = skill.Icon;
         skillName.text = skill.Name;

@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class SkillSlotUI : ASlotUI, IPointerClickHandler
 {
     public Image equipped;
-    public SkillCfgSkill dataOfSlot;
+    public SkillCfgItem dataOfSlot;
 
     private BattleSkillManager battleSkillManager;      // ScriptableObject chứa info skill
 
@@ -33,7 +33,7 @@ public class SkillSlotUI : ASlotUI, IPointerClickHandler
             Reset();
             return;
         }
-        dataOfSlot = data as SkillCfgSkill;
+        dataOfSlot = data as SkillCfgItem;
         view.SetActive(true);
         icon.sprite = dataOfSlot.Icon;
     }
@@ -41,7 +41,7 @@ public class SkillSlotUI : ASlotUI, IPointerClickHandler
     public void OnPointerClick(PointerEventData eventData)
     {
         // Gọi container click bình thường
-        AContainer<SkillCfgSkill> container = transform.parent.GetComponent<AContainer<SkillCfgSkill>>();
+        AContainer<SkillCfgItem> container = transform.parent.GetComponent<AContainer<SkillCfgItem>>();
         container.OnClick(thisIndex);
 
         // ---------------- Double Tap logic ----------------

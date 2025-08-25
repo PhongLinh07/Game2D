@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class SkillBook : AContainer<SkillCfgSkill>
+public class SkillBook : AContainer<SkillCfgItem>
 {  
     public DetailsSkill details;
   
@@ -16,8 +16,8 @@ public class SkillBook : AContainer<SkillCfgSkill>
 
         for (int i = 0; i < GameManager.Instance.R_PlayerData.skillsLearned.Count; i++)
         {
-            SkillCfgSkill cpy = new SkillCfgSkill();
-            cpy.CopyFrom(GameManager.Instance.DB_Skill.GetById(GameManager.Instance.R_PlayerData.skillsLearned[i]));
+            SkillCfgItem cpy = new SkillCfgItem();
+            cpy.CopyFrom(SkillConfig.GetInstance.GetConfigItem(GameManager.Instance.R_PlayerData.skillsLearned[i]));
             datas.Add(cpy);
       
         }

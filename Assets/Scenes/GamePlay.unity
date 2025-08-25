@@ -2455,9 +2455,25 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 344427035}
     - target: {fileID: 4336601461872827064, guid: 6cc088e0cc9a0d94ab353de0f8774bd7, type: 3}
+      propertyPath: itemConfigSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 76f67792a720ea44b9222d8c01336c03, type: 2}
+    - target: {fileID: 4336601461872827064, guid: 6cc088e0cc9a0d94ab353de0f8774bd7, type: 3}
+      propertyPath: skillConfigSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 4ce11cd8d41e78e49a406cf7be1a0210, type: 2}
+    - target: {fileID: 4336601461872827064, guid: 6cc088e0cc9a0d94ab353de0f8774bd7, type: 3}
+      propertyPath: spriteConfigSO
+      value: 
+      objectReference: {fileID: 11400000, guid: 09adc74710877f44da22c13468bf7adf, type: 2}
+    - target: {fileID: 4336601461872827064, guid: 6cc088e0cc9a0d94ab353de0f8774bd7, type: 3}
       propertyPath: HighlightController
       value: 
       objectReference: {fileID: 614627143}
+    - target: {fileID: 4336601461872827064, guid: 6cc088e0cc9a0d94ab353de0f8774bd7, type: 3}
+      propertyPath: R.skills.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4336601461872827064, guid: 6cc088e0cc9a0d94ab353de0f8774bd7, type: 3}
       propertyPath: R_PlayerData.items.Array.data[0].Atk
       value: 10
@@ -3736,7 +3752,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4711796353886525489, guid: a8e40897172e4634ea833d70e59179cf, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: -46.27008
+      value: -46.27002
       objectReference: {fileID: 0}
     - target: {fileID: 4934560373440330861, guid: a8e40897172e4634ea833d70e59179cf, type: 3}
       propertyPath: m_AnchorMax.x
