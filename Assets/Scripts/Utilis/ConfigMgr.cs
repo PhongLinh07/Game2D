@@ -1,16 +1,16 @@
-﻿using System.Collections;
+﻿using Newtonsoft.Json;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
-
-//========== SkillConfig (Quản lý toàn bộ bảng Skill) ==========
-public class SkillConfig : SingletonBase<SkillConfig>, ConfigBase
+public class ConfigMgr<T>: SingletonBase<ConfigMgr<T>>, ConfigBase where T : ConfigItem, new()
 {
     // Dictionary cho truy xuất O(1) theo id
-    public IDictionary<int, SkillCfgItem> mCfgDict { get; private set; } = new Dictionary<int, SkillCfgItem>();
+    public IDictionary<int, T> mCfgDict { get; private set; } = new Dictionary<int, T>();
 
     // Tên file config (nếu hệ thống load của anh có dùng)
-    public string fileName { get; set; } = "SkillConfig.json";
+    public string fileName { get; set; } = typeof(T).Name + ".json";
 
     /// <summary>
     /// Nạp dữ liệu từ bảng (mỗi phần tử trong configs là một "row" = Dictionary<string, object>).
@@ -18,23 +18,39 @@ public class SkillConfig : SingletonBase<SkillConfig>, ConfigBase
     /// - Nên gọi hàm này sau khi đã đọc và chuyển file Excel/CSV/JSON vào dạng IList<IDictionary<string, object>>.
     /// - Hàm sẽ clear dict cũ và build lại hoàn toàn.
     /// </summary>
-    public void InitData(IList<IDictionary<string, object>> configs)
+    public void InitData(IList<IDictionary<string, object>> configs) { }
+
+    public void InitData()
     {
         mCfgDict.Clear();
-        if (configs == null) return;
 
-        foreach (var row in configs)
+        string path = Path.Combine(Application.persistentDataPath, fileName);
+        if (!File.Exists(path))
         {
-            if(row == null || !row.ContainsKey("id")) continue;
+            Debug.LogError("JSON file not found: " + path);
+            return;
+        }
 
-            var item = new SkillCfgItem();
+        string json = File.ReadAllText(path);
+
+        // Deserialize thành List<Dictionary<string, object>>
+        var dicts = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(json);
+
+
+        foreach (var row in dicts)
+        {
+            if (row == null || !row.ContainsKey("id")) continue;
+
+            var item = new T();
             item.ApplyFromRow(row);
 
             // Bảo vệ: id < 0 thì bỏ qua để tránh đè key 0 vô nghĩa
-            if (item.Id < 0) continue;
+            if (item.id < 0) continue;
 
-            mCfgDict[item.Id] = item;
+            mCfgDict[item.id] = item;
         }
+
+        Debug.Log($"Loaded {mCfgDict.Count} {typeof(T).Name} from JSON");
     }
 
     /// <summary>
@@ -48,7 +64,7 @@ public class SkillConfig : SingletonBase<SkillConfig>, ConfigBase
     /// <summary>
     /// Cho phép foreach(SkillConfig.Instance) ... nếu anh muốn.
     /// </summary>
-    public IEnumerator<KeyValuePair<int, SkillCfgItem>> GetEnumerator()
+    public IEnumerator<KeyValuePair<int, T>> GetEnumerator()
     {
         return mCfgDict.GetEnumerator();
     }
@@ -56,10 +72,8 @@ public class SkillConfig : SingletonBase<SkillConfig>, ConfigBase
     /// <summary>
     /// Lấy nhanh 1 skill theo id. Trả null nếu không có.
     /// </summary>
-    public SkillCfgItem GetConfigItem(int id)
+    public T GetConfigItem(int id)
     {
         return mCfgDict.TryGetValue(id, out var item) ? item : null;
     }
-   
 }
-

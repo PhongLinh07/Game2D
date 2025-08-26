@@ -7,12 +7,6 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager Instance;
 
-    [SerializeField] private SkillConfig gameSkill;
-    [SerializeField] private ItemConfig gameItem;
-    [SerializeField] private SkillConfigSO skillConfigSO;
-    [SerializeField] private SpriteConfigSO spriteConfigSO;
-    [SerializeField] private ItemConfigSO itemConfigSO;
-
 
     public GameObject Character;
     public GameObject HighlightController;
@@ -33,9 +27,10 @@ public class GameManager : MonoBehaviour
         R_PlayerData = SaveSystem.Load<PlayerData>("player");
         Debug.Log("Start Game with: " + R_PlayerData.name);
 
-        SpriteConfig.GetInstance.InitData(spriteConfigSO.ToDict());
-        SkillConfig.GetInstance.InitData(skillConfigSO.ToDict());
-        ItemConfig.GetInstance.InitData(itemConfigSO.ToDict());
+        SpriteConfig.GetInstance.InitData();
+        ConfigMgr<SkillCfgItem>.GetInstance.InitData();
+        ConfigMgr<ItemCfgItem>.GetInstance.InitData();
+  
     }
 
     private void Start()

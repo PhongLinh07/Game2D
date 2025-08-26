@@ -48,11 +48,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd419fb204cee484780812c3a524a6a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  gameSkill: {fileID: 11400000, guid: f860bc6606c7f16458bd211b15b7002f, type: 2}
-  gameItem: {fileID: 11400000, guid: 76f67792a720ea44b9222d8c01336c03, type: 2}
-  userData: {fileID: 11400000, guid: 431dee2bb279eb24ca6fb55c8f24588e, type: 2}
   Character: {fileID: 0}
   HighlightController: {fileID: 0}
+  R_PlayerData:
+    id: 0
+    name: Vuong That Phong
+    skillsLearned: 0000000001000000020000000300000004000000050000000600000007000000
+    skillsEquipped: 
+    items:
+    - id: 0
+      Data:
+        id: 0
+        Name: 
+        Stackable: 0
+        Icon: {fileID: 0}
+        Description: 
+      Level: 0
+      Rarity: 0
+      Quantity: 0
+      Atk: 10
+      Def: 0
 --- !u!114 &6095250779407338622
 MonoBehaviour:
   m_ObjectHideFlags: 0

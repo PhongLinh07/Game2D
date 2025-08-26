@@ -993,6 +993,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 50681356c855305419dd1e38ababe7b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  bottomTrans: {fileID: 2272246444133695629}
+  centerTrans: {fileID: 5572081228284524254}
   lookDirection: {x: 0, y: 0}
   moveDirection: {x: 0, y: 0}
   isAttacking: 0

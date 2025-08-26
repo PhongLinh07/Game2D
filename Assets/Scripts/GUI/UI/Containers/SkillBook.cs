@@ -17,7 +17,7 @@ public class SkillBook : AContainer<SkillCfgItem>
         for (int i = 0; i < GameManager.Instance.R_PlayerData.skillsLearned.Count; i++)
         {
             SkillCfgItem cpy = new SkillCfgItem();
-            cpy.CopyFrom(SkillConfig.GetInstance.GetConfigItem(GameManager.Instance.R_PlayerData.skillsLearned[i]));
+            cpy.CopyFrom(ConfigMgr<SkillCfgItem>.GetInstance.GetConfigItem(GameManager.Instance.R_PlayerData.skillsLearned[i]));
             datas.Add(cpy);
       
         }
@@ -33,7 +33,7 @@ public class SkillBook : AContainer<SkillCfgItem>
         // Cập nhật vào UI
         for (int i = 0; i < datas.Count; i++)
         {
-            index = GameManager.Instance.R_PlayerData.skillsEquipped.IndexOf(datas[i].Id);
+            index = GameManager.Instance.R_PlayerData.skillsEquipped.IndexOf(datas[i].id);
             ((SkillSlotUI)slotUIs[i]).Equip(index == -1 ? false : true);
         }
     }

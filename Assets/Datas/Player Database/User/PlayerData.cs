@@ -1,11 +1,12 @@
 ﻿using System.Collections.Generic;
+using UnityEngine;
 
 /// <summary>
 /// Runtime
 /// </summary>
 
 [System.Serializable]
-public class PlayerData : ConfigItem<PlayerData>
+public class PlayerData : ConfigItem
 {
     //Method
     public string name;
@@ -16,18 +17,41 @@ public class PlayerData : ConfigItem<PlayerData>
     public PlayerData()
     {
         name = "Vuong That Phong";
-        skillsLearned = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7}; //id
+        skillsLearned = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7 }; //id
         skillsEquipped = new List<int>();
 
 
-        EnhanceCfgItem test = new EnhanceCfgItem();
-        test.Id = 0;
-        items = new List<EnhanceCfgItem> { test }; // Id(Only), quantity
+
+        items = new List<EnhanceCfgItem>
+        {
+            new EnhanceCfgItem
+            {
+                id = 0,
+                Data = new ItemCfgItem { id = 0 },
+                Rarity = (ItemRarity)0,
+            },
+            new EnhanceCfgItem
+            {
+                id = 2,
+                Data = new ItemCfgItem { id = 3 },
+                Rarity = (ItemRarity)2
+            },
+            new EnhanceCfgItem
+            {
+                id = 3,
+                Data = new ItemCfgItem { id = 5 },
+                Rarity = (ItemRarity)4
+            }
+        };
+
     }
+
+    public override void ApplyFromRow(IDictionary<string, object> row) { }
+
     //Attribute
-    public override void CopyFrom(PlayerData other)
+    public void CopyFrom(PlayerData other)
     {
-        Id = other.Id;
+        id = other.id;
         name = other.name;
         skillsLearned = other.skillsLearned;
         skillsEquipped = other.skillsEquipped;

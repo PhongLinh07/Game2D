@@ -1,5 +1,7 @@
+using Newtonsoft.Json;
 using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using UnityEngine;
 
 [CreateAssetMenu(menuName = "DataBase/Item")]
@@ -19,7 +21,7 @@ public class ItemConfigSO : ScriptableObject
 
             var row = new Dictionary<string, object>
             {
-                ["id"] = data.Id,
+                ["id"] = data.id,
                 ["name"] = data.Name,
                 ["stackable"] = data.Stackable,
                 ["icon"] = data.Icon != null ? data.Icon.name : null,
@@ -30,5 +32,22 @@ public class ItemConfigSO : ScriptableObject
         }
 
         return dict;
+    }
+
+    // Serialize Dictionary -> JSON string
+    public string ToJson()
+    {
+        var dicts = ToDict();
+        return JsonConvert.SerializeObject(dicts, Formatting.Indented);
+
+    }
+
+    // Save JSON -> File
+    public void SaveJsonToFile(string fileName)
+    {
+        string path = Path.Combine(Application.persistentDataPath, fileName + ".json");
+        string json = ToJson();
+        File.WriteAllText(path, json);
+        Debug.Log($"JSON saved: {path}");
     }
 }

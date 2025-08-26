@@ -24,7 +24,7 @@ using UnityEngine.UI;
 
 public class ItemSlotUI : ASlotUI, IPointerClickHandler
 {
-    public RarityGUI rarityCell;
+    public RarityGUISO rarityCell;
     public Image bg;
     public TextMeshProUGUI quantity;
 

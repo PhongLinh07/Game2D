@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class DetailsItem : MonoBehaviour
 {
-    public RarityGUI data;
-    public RarityGUI rarityCell;
+    public RarityGUISO data;
+    public RarityGUISO rarityCell;
 
     public Image headerCard;
     public Image bg;

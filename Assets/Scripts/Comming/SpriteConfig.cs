@@ -1,50 +1,54 @@
-﻿using System.Collections;
+﻿using Newtonsoft.Json;
+using System.Collections;
 using System.Collections.Generic;
+using System.IO;
 using System.Linq;
 using UnityEngine;
 using UnityEngine.U2D;
+using static UnityEditor.Progress;
 
 public class SpriteConfig : SingletonBase<SpriteConfig>, ConfigBase
 {
-    public string fileName
-    {
-        get
-        {
-            return null;
-        }
-        set
-        {
-        }
-    }
+    public string fileName { get; set; } = typeof(SpriteCfgItem).Name + ".json";
 
-    private Dictionary<string, Sprite> mSpriteCache = new Dictionary<string, Sprite>();
-    private Dictionary<int, SpriteCfgItem> mCfgDict = new Dictionary<int, SpriteCfgItem>();
+    private Dictionary<string, SpriteCfgItem> mCfgDict = new Dictionary<string, SpriteCfgItem>();
 
-    public void InitData(IList<IDictionary<string, object>> configs)
+    public void InitData(IList<IDictionary<string, object>> configs) { }
+
+    public void InitData()
     {
         mCfgDict.Clear();
 
-        foreach (var dic in configs)
+        string path = Path.Combine(Application.persistentDataPath, fileName);
+        if (!File.Exists(path))
         {
-            var item = new SpriteCfgItem
-            {
-                id = (int)dic["id"],          
-                atlas = dic["atlas"].ToString(),
-                sprite = dic["sprite"].ToString()
-            };
-            mCfgDict[item.id] = item;
+            Debug.LogError("JSON file not found: " + path);
+            return;
+        }
 
+        string json = File.ReadAllText(path);
 
+        // Deserialize thành List<Dictionary<string, object>>
+        var dicts = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(json);
 
-            Sprite[] sprites = Resources.LoadAll<Sprite>(item.atlas);
+        foreach (var dic in dicts)
+        {
+            Sprite[] sprites = Resources.LoadAll<Sprite>("Art/" + dic["sprite"].ToString());
+            Debug.Log("Art/" + dic["sprite"].ToString());
             foreach (var s in sprites)
             {
-                mSpriteCache[s.name] = s;
+                var item = new SpriteCfgItem
+                {
+                    sprite = s
+                };
+                mCfgDict[s.name] = item;
             }
-            
+
         }
+
+        Debug.Log($"Loaded {mCfgDict.Count} {typeof(SpriteCfgItem).Name} from JSON");
     }
-    
+
 
     public void Clear()
     {
@@ -56,18 +60,18 @@ public class SpriteConfig : SingletonBase<SpriteConfig>, ConfigBase
         return null;
     }
 
-    public SpriteCfgItem GetConfigItem(int id)
+    public SpriteCfgItem GetConfigItem(string id)
     {
         return mCfgDict.TryGetValue(id, out var item) ? item : null;
     }
 
     // Lấy sprite theo tên sheet + sprite
-    public Sprite GetSprite(string spriteName, string sheetName)
+    public Sprite GetSprite(string spriteName)
     {
-        mSpriteCache.TryGetValue(sheetName, out var sprite);
+        mCfgDict.TryGetValue(spriteName, out var item);
 
-        if (!sprite) Debug.Log(sheetName);
+        if (!item.sprite) Debug.Log(spriteName);
   
-        return sprite;
+        return item.sprite;
     }
 }

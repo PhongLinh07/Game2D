@@ -365,9 +365,9 @@ MonoBehaviour:
   bg: {fileID: 638889473000951303}
   quantity: {fileID: 0}
   dataOfSlot:
-    Id: 0
+    id: 0
     Data:
-      Id: 0
+      id: 0
       Name: 
       Stackable: 0
       Icon: {fileID: 0}
@@ -375,6 +375,8 @@ MonoBehaviour:
     Level: 0
     Rarity: 0
     Quantity: 0
+    Atk: 0
+    Def: 0
 --- !u!1 &6499134226174504541
 GameObject:
   m_ObjectHideFlags: 0
@@ -722,8 +724,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc146a09da6ed374e8ad997754456a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: c5753bed8d00d4d4692488cd22e217e2, type: 2}
-  rarityCell: {fileID: 11400000, guid: ade1f1bbd8a51384ca8985900b02b0e4, type: 2}
+  data: {fileID: 11400000, guid: 8475c60b9a879bc4ba966b1d7b10020d, type: 2}
+  rarityCell: {fileID: 11400000, guid: 1647f2c27c95b384cabe2de3c548342b, type: 2}
   headerCard: {fileID: 3440601211648438829}
   bg: {fileID: 638889473000951303}
   icon: {fileID: 5912007793651108467}

@@ -8,18 +8,17 @@ using UnityEngine;
 public class Inventory : AContainer<EnhanceCfgItem>
 {
     public DetailsItem details;
-
-    public PlayerData player;
+  
 
     public override void Init()
     {
         slotUIs.Clear();
 
-        for (int i = 0; i < player.items.Count; i++)
+        for (int i = 0; i < GameManager.Instance.R_PlayerData.items.Count; i++)
         {
             EnhanceCfgItem cpy = new EnhanceCfgItem();
-            cpy.CopyFrom(player.items[i]);
-            cpy.Data = ItemConfig.GetInstance.GetConfigItem(cpy.Data.Id);
+            cpy.CopyFrom(GameManager.Instance.R_PlayerData.items[i]);
+            cpy.Data = ConfigMgr<ItemCfgItem>.GetInstance.GetConfigItem(cpy.Data.id);
             datas.Add(cpy);
         }
 

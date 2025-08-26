@@ -364,12 +364,22 @@ MonoBehaviour:
   icon: {fileID: 5697514828864302463}
   highlight: {fileID: 4149826200315244346}
   thisIndex: 0
-  rarityCell: {fileID: 11400000, guid: ade1f1bbd8a51384ca8985900b02b0e4, type: 2}
+  rarityCell: {fileID: 11400000, guid: 1647f2c27c95b384cabe2de3c548342b, type: 2}
   bg: {fileID: 1569437228363753739}
   quantity: {fileID: 4296266330777914549}
   dataOfSlot:
-    item: {fileID: 0}
-    quantity: 0
+    id: 0
+    Data:
+      id: 0
+      Name: 
+      Stackable: 0
+      Icon: {fileID: 0}
+      Description: 
+    Level: 0
+    Rarity: 0
+    Quantity: 0
+    Atk: 0
+    Def: 0
 --- !u!1 &7586793024484176911
 GameObject:
   m_ObjectHideFlags: 0

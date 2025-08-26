@@ -10,8 +10,7 @@ public static class SaveSystem
 {
     private static readonly Dictionary<string, string> fileMap = new()
     {
-        { "player", "player_save.json" },
-        { "SkillConfig", "SkillConfig.json" }
+        { "player", "player_save.json" }
     };
 
     public static void Save<T>(string key, T data)

@@ -37,7 +37,7 @@ public class BattleSkillManager : MonoBehaviour
     {
         for (int i = 0; i < GameManager.Instance.R_PlayerData.skillsEquipped.Count; i++)
         {
-            SkillCfgItem skill = SkillConfig.GetInstance.GetConfigItem(GameManager.Instance.R_PlayerData.skillsEquipped[i]);
+            SkillCfgItem skill = ConfigMgr<SkillCfgItem>.GetInstance.GetConfigItem(GameManager.Instance.R_PlayerData.skillsEquipped[i]);
             if (skill == null)
             {
                 Debug.Log("skill Null");
@@ -48,19 +48,19 @@ public class BattleSkillManager : MonoBehaviour
 
             newSkillButton.gameObject.SetActive(true);
             newSkillButton.SetData(oStatePlayer, skill);
-            skillButtons.Add(skill.Id, newSkillButton);
+            skillButtons.Add(skill.id, newSkillButton);
         }
     }
 
     public bool EquipSKill(SkillCfgItem skill)
     {
-        if (GameManager.Instance.R_PlayerData.skillsEquipped.Contains(skill.Id)) // nếu đã tồn tại thì remove
+        if (GameManager.Instance.R_PlayerData.skillsEquipped.Contains(skill.id)) // nếu đã tồn tại thì remove
         {
-            GameManager.Instance.R_PlayerData.SkillRemoveEuipped(skill.Id); 
-            if (skillButtons.ContainsKey(skill.Id))
+            GameManager.Instance.R_PlayerData.SkillRemoveEuipped(skill.id); 
+            if (skillButtons.ContainsKey(skill.id))
             {
-                Destroy(skillButtons[skill.Id].gameObject);
-                skillButtons.Remove(skill.Id);
+                Destroy(skillButtons[skill.id].gameObject);
+                skillButtons.Remove(skill.id);
             }
             return false;
         }
@@ -68,10 +68,10 @@ public class BattleSkillManager : MonoBehaviour
         {
             if (GameManager.Instance.R_PlayerData.skillsEquipped.Count >= 7) return false;
 
-            GameManager.Instance.R_PlayerData.SkillEuipped(skill.Id); // gán skill vào list
-            skillButtons[skill.Id] = GetSkillButton((SkillInputType)skill.InputType);
-            skillButtons[skill.Id].gameObject.SetActive(true);
-            skillButtons[skill.Id].SetData(oStatePlayer, skill);
+            GameManager.Instance.R_PlayerData.SkillEuipped(skill.id); // gán skill vào list
+            skillButtons[skill.id] = GetSkillButton((SkillInputType)skill.InputType);
+            skillButtons[skill.id].gameObject.SetActive(true);
+            skillButtons[skill.id].SetData(oStatePlayer, skill);
             return true;
         }
 

@@ -13,12 +13,6 @@ MonoBehaviour:
   m_Name: SpriteConfigSO
   m_EditorClassIdentifier: 
   datas:
-  - id: 0
-    atlas: Art/iconbattlea_atlas0_1
-    sprite: 
-  - id: 1
-    atlas: Art/iconbattlea_atlas0
-    sprite: 
-  - id: 2
-    atlas: Art/commona_atlas0_3
-    sprite: 
+  - {fileID: 2800000, guid: f487a2ce6521a2f41b7e8b78cad82865, type: 3}
+  - {fileID: 2800000, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
+  - {fileID: 2800000, guid: 2e934cc648b24724e8aec3f736c9e112, type: 3}
