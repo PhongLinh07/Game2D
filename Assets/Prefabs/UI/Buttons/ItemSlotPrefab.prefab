@@ -364,7 +364,7 @@ MonoBehaviour:
   icon: {fileID: 5697514828864302463}
   highlight: {fileID: 4149826200315244346}
   thisIndex: 0
-  rarityCell: {fileID: 11400000, guid: 1647f2c27c95b384cabe2de3c548342b, type: 2}
+  rarityCell: {fileID: 11400000, guid: 47f7df23bb8d0324c885c733b5c6c5e3, type: 2}
   bg: {fileID: 1569437228363753739}
   quantity: {fileID: 4296266330777914549}
   dataOfSlot:

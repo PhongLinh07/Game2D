@@ -9,14 +9,14 @@ public abstract class EnemyCombatBase : MonoBehaviour, IEnemyCombat
     private float _lastAttackTime;
     protected float _recoveryTime;
     protected EnemyAnimatorController animatorController;
-    protected ObjectState objState;
+    protected LogicMonster logicMonster;
 
     public virtual void Init(EnemyAIController aiController)
     {
         ai = aiController;
         rb = GetComponent<Rigidbody2D>();
         animatorController = GetComponent<EnemyAnimatorController>();
-        objState = GetComponent<ObjectState>();
+        logicMonster = GetComponent<LogicMonster>();
 
         _lastAttackTime = 0.0f;
         _recoveryTime = 0.0f;

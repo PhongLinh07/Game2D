@@ -6,8 +6,8 @@ using UnityEngine.UI;
 
 public class DetailsItem : MonoBehaviour
 {
-    public RarityGUISO data;
-    public RarityGUISO rarityCell;
+    public RarityConfigSO data;
+    public RarityConfigSO rarityCell;
 
     public Image headerCard;
     public Image bg;
@@ -21,8 +21,8 @@ public class DetailsItem : MonoBehaviour
     {
         headerCard.sprite = data.rarityDict[playerItem.Rarity];
         bg.sprite = rarityCell.rarityDict[playerItem.Rarity];
-        icon.sprite = playerItem.Data.Icon;
-        nameItem.text = playerItem.Data.Name;
+        icon.sprite = ConfigMgr<ItemCfgItem>.GetInstance.GetConfigItem(playerItem.idItem).Icon;
+        nameItem.text = ConfigMgr<ItemCfgItem>.GetInstance.GetConfigItem(playerItem.idItem).Name;
         descriptionItem.text = playerItem.GetDescription();
     }
 }

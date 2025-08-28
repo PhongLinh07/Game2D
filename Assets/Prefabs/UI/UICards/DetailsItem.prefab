@@ -724,8 +724,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fc146a09da6ed374e8ad997754456a5c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  data: {fileID: 11400000, guid: 8475c60b9a879bc4ba966b1d7b10020d, type: 2}
-  rarityCell: {fileID: 11400000, guid: 1647f2c27c95b384cabe2de3c548342b, type: 2}
+  data: {fileID: 11400000, guid: ddec8a274d3ed33418b3f588c1939966, type: 2}
+  rarityCell: {fileID: 11400000, guid: 47f7df23bb8d0324c885c733b5c6c5e3, type: 2}
   headerCard: {fileID: 3440601211648438829}
   bg: {fileID: 638889473000951303}
   icon: {fileID: 5912007793651108467}

@@ -88,11 +88,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6898a44cfdd1b448bd30e929bf6fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxValue: 1
   currValue: 1
   imageFilled: {fileID: 1246241197539090724}
   textInfor: {fileID: 0}
-  canvas: {fileID: 8412917844566118989}
 --- !u!1 &1569864194594642393
 GameObject:
   m_ObjectHideFlags: 0
@@ -257,11 +255,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a6898a44cfdd1b448bd30e929bf6fcc, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxValue: 1
   currValue: 1
   imageFilled: {fileID: 8783794462561514232}
   textInfor: {fileID: 0}
-  canvas: {fileID: 8412917844566118989}
 --- !u!1 &2370545872897330463
 GameObject:
   m_ObjectHideFlags: 0
@@ -723,12 +719,10 @@ GameObject:
   - component: {fileID: 992925097453990131}
   - component: {fileID: 5632026311028454078}
   - component: {fileID: 5173717328025541201}
-  - component: {fileID: 350423966295470682}
   - component: {fileID: 6289000072586335189}
-  - component: {fileID: 4056328469717247099}
-  - component: {fileID: 6081717403333941212}
   - component: {fileID: 7882892352980976370}
-  - component: {fileID: 4094082561117180868}
+  - component: {fileID: 6958870959373250566}
+  - component: {fileID: 6741001017423819642}
   m_Layer: 3
   m_Name: Character
   m_TagString: Player
@@ -923,50 +917,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a90e3b91f95410c459d0e27cfaef76ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &350423966295470682
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7312119166183241765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: dc8cd4d144bfc4a428561ba6e20f33e0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  infomation:
-    surName: Vuong
-    name: That Phong
-    sect: N/A
-    race: Human
-    sex: Male
-  general:
-    lifespan: 70
-    currLifespan: 18
-    vitality: 100
-    currVitality: 100
-    energy: 100
-    currEnergy: 100
-  combat:
-    atk: 7
-    def: 7
-    agility: 7
-  martialArts:
-    sword: 7
-    spear: 0
-  spiritualRoot:
-    wind: 1
-    fire: 0
-    water: 0
-    lightning: 0
-    earth: 0
-    wood: 0
-  textInformation: {fileID: 0}
-  cardGeneral: {fileID: 0}
-  cardCombat: {fileID: 0}
-  cardMartialArts: {fileID: 0}
-  cardSpiritualRoot: {fileID: 0}
 --- !u!114 &6289000072586335189
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -981,40 +931,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   directionLast: {x: 0, y: 0}
   animator: {fileID: 6169480117088123116}
---- !u!114 &4056328469717247099
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7312119166183241765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50681356c855305419dd1e38ababe7b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  bottomTrans: {fileID: 2272246444133695629}
-  centerTrans: {fileID: 5572081228284524254}
-  lookDirection: {x: 0, y: 0}
-  moveDirection: {x: 0, y: 0}
-  isAttacking: 0
---- !u!114 &6081717403333941212
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7312119166183241765}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7fcce0b0942926c4bbddecbccba58ffc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dashDuration: 0.3
-  lastDashTime: -9999
-  cooldownDashtime: 1
-  dashFX_Prefab: {fileID: 0}
-  dashBar: {fileID: 4701022496019760803}
 --- !u!114 &7882892352980976370
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1028,7 +944,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   joystick: {fileID: 0}
---- !u!114 &4094082561117180868
+--- !u!114 &6958870959373250566
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1037,9 +953,56 @@ MonoBehaviour:
   m_GameObject: {fileID: 7312119166183241765}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09dea947117ebe741bfd55328908b40f, type: 3}
+  m_Script: {fileID: 11500000, guid: f9b828b0c7cc7c6469b48e315637785b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAlive: 0
-  hpBar: {fileID: 5939577654358698479}
-  hpBarTry: {fileID: 0}
+  infomation:
+    surName: Vuong
+    name: That Phong
+    sect: N
+    race: N
+    sex: N
+  general:
+    lifespan: 100
+    currLifespan: 100
+    vitality: 100
+    currVitality: 100
+    energy: 100
+    currEnergy: 100
+  combat:
+    atk: 10
+    def: 0
+    agility: 10
+  mlogic: {fileID: 6741001017423819642}
+  martialArts:
+    sword: 0
+    spear: 0
+  spiritualRoot:
+    wind: 0
+    fire: 0
+    water: 0
+    lightning: 0
+    earth: 0
+    wood: 0
+  SkillsLearned: 
+  SkillsEquipped: 
+--- !u!114 &6741001017423819642
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7312119166183241765}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9a9e7c6d82c807c41bf713e09a927b81, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: 0, y: 0}
+  direction: {x: 0, y: 0}
+  isAttacking: 0
+  state: 8
+  fsmAction: 0
+  mOwner: {fileID: 6958870959373250566}
+  bottomTrans: {fileID: 2272246444133695629}
+  centerTrans: {fileID: 498900352617796342}

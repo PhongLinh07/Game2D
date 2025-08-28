@@ -17,7 +17,7 @@ public abstract class ISkillButton : MonoBehaviour
 
     [Header("Skill Data")]
     public SkillCfgItem data;               // ScriptableObject / data chứa logic, cooldown
-    protected ObjectState oStatePlayer;       // Transform nhân vật
+    protected LogicCharacter logicCharacter;       // Transform nhân vật
     public SkillInputType inputType = SkillInputType.Drag;
 
 
@@ -25,7 +25,7 @@ public abstract class ISkillButton : MonoBehaviour
     protected bool isOnCooldown = false;
     protected Vector3 velocity = Vector3.zero;
     protected RectTransform rectTransform;
-
+  
     void Awake()
     {
         rectTransform = GetComponent<RectTransform>();
@@ -34,9 +34,9 @@ public abstract class ISkillButton : MonoBehaviour
         if (dragWorld != null) dragWorld.gameObject.SetActive(false);
     }
 
-    public void SetData(ObjectState objectState, SkillCfgItem skill)
+    public void SetData(LogicCharacter logic, SkillCfgItem skill)
     {
-        oStatePlayer = objectState;
+        logicCharacter = logic;
         data = skill;
 
         if (skillIcon != null && data != null) skillIcon.sprite = data.Icon;
@@ -51,7 +51,7 @@ public abstract class ISkillButton : MonoBehaviour
     protected override void CastSkill(params object[] args)
     {
         if (data.Logic == null) return;
-        StartCoroutine(data.Logic.Cast((Vector2)(oStatePlayer.bottomTrans.position)));
+        StartCoroutine(data.Logic.Cast((Vector2)(logicCharacter.bottomTrans.position)));
     }
 
     // Hiển thị cooldown

@@ -14,11 +14,10 @@ public class Inventory : AContainer<EnhanceCfgItem>
     {
         slotUIs.Clear();
 
-        for (int i = 0; i < GameManager.Instance.R_PlayerData.items.Count; i++)
+        foreach(var item in ConfigMgr<ChacterCfgItem>.GetInstance.GetConfigItem(0).items)
         {
             EnhanceCfgItem cpy = new EnhanceCfgItem();
-            cpy.CopyFrom(GameManager.Instance.R_PlayerData.items[i]);
-            cpy.Data = ConfigMgr<ItemCfgItem>.GetInstance.GetConfigItem(cpy.Data.id);
+            cpy.CopyFrom(item);
             datas.Add(cpy);
         }
 

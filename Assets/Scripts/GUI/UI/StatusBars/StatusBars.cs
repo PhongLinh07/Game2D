@@ -7,38 +7,38 @@ using UnityEngine.UI;
 
 public class StatusBar : MonoBehaviour, IStatusBars
 {
-    public float maxValue = 1;
+    private float maxValue = 1;
     public float currValue = 1;
 
     public Image imageFilled;
     public TextMeshProUGUI textInfor;
 
-    public Canvas canvas;
-    
+    public void Init(float max, float value = 0)
+    {
+        maxValue = max;
+        currValue = value;
+    }
+
     public void Zero()
     {
         currValue = 0;
-        UpdateStatusBar();
+        SetValue(currValue);
     }
 
     public void Full()
     {
         currValue = maxValue;
-        UpdateStatusBar();
+        SetValue(currValue);
     }
-    public bool Add(int amount)
+  
+
+    public bool SetValue(float value)
     {
-        canvas.enabled = true;  // Hiện
-        currValue += amount;
+        currValue = value;
         currValue = Mathf.Clamp(currValue, 0, maxValue); // đảm bảo không vượt quá
-        UpdateStatusBar();
-        return currValue > 0.0f;
-    }
-
-    public void UpdateStatusBar()
-    {
         if (imageFilled) imageFilled.fillAmount = currValue / maxValue;
-
         if (textInfor) textInfor.text = currValue.ToString() + "/" + maxValue.ToString();
+
+        return currValue > 0;
     }
 }

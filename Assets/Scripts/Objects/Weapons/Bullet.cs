@@ -68,7 +68,7 @@ public class Bullet : PoolableObject
 
         if (hit)
         {
-            hit.gameObject.GetComponent<HPController>().TakeDamage(atkNum);
+            hit.gameObject.GetComponent<LogicUnit>().TakeDamage(atkNum);
             ReturnToPool(gameObject);
         }
 

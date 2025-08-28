@@ -28,8 +28,6 @@ public class SkillCfgItem : ConfigItem
     public EHeroSkillType ESkillLg;
     public ASkillLogic Logic;
     public SkillInputType InputType;
-
-
     public override void ApplyFromRow(IDictionary<string, object> row)
     {
         id              = row.ContainsKey("id") ? Convert.ToInt32(row["id"]) : -1;

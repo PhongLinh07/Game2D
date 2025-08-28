@@ -88,7 +88,6 @@ GameObject:
   - component: {fileID: 5315721591849246526}
   - component: {fileID: 5626595617119661385}
   - component: {fileID: 9074203180489658011}
-  - component: {fileID: 5426767129244878454}
   m_Layer: 5
   m_Name: HP
   m_TagString: Untagged
@@ -153,23 +152,6 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
---- !u!114 &5426767129244878454
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3898427601897872207}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5a6898a44cfdd1b448bd30e929bf6fcc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  maxValue: 1
-  currValue: 1
-  imageFilled: {fileID: 9074203180489658011}
-  textInfor: {fileID: 0}
-  canvas: {fileID: 8218800472770193082}
 --- !u!1 &4843065072450818621
 GameObject:
   m_ObjectHideFlags: 0
@@ -179,9 +161,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 350945089200733027}
-  - component: {fileID: 8218800472770193082}
   - component: {fileID: 5881242855400265540}
-  - component: {fileID: 842587571406859604}
+  - component: {fileID: 6539701606713235911}
+  - component: {fileID: 5773375702211463986}
+  - component: {fileID: 4947739695708789790}
   m_Layer: 5
   m_Name: StatusBars
   m_TagString: Untagged
@@ -209,14 +192,22 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 1.3073}
   m_SizeDelta: {x: 12.1282, y: 1.4222}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!223 &8218800472770193082
+--- !u!222 &5881242855400265540
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4843065072450818621}
+  m_CullTransparentMesh: 1
+--- !u!223 &6539701606713235911
 Canvas:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4843065072450818621}
-  m_Enabled: 0
+  m_Enabled: 1
   serializedVersion: 3
   m_RenderMode: 2
   m_Camera: {fileID: 0}
@@ -230,17 +221,9 @@ Canvas:
   m_AdditionalShaderChannelsFlag: 0
   m_UpdateRectTransformForStandalone: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_TargetDisplay: 0
---- !u!222 &5881242855400265540
-CanvasRenderer:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4843065072450818621}
-  m_CullTransparentMesh: 1
---- !u!114 &842587571406859604
+--- !u!114 &5773375702211463986
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -270,6 +253,21 @@ MonoBehaviour:
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
   m_PixelsPerUnitMultiplier: 1
+--- !u!114 &4947739695708789790
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4843065072450818621}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5a6898a44cfdd1b448bd30e929bf6fcc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currValue: 1
+  imageFilled: {fileID: 9074203180489658011}
+  textInfor: {fileID: 0}
 --- !u!1 &8467449568649580763
 GameObject:
   m_ObjectHideFlags: 0
@@ -286,12 +284,11 @@ GameObject:
   - component: {fileID: 9184128418710548452}
   - component: {fileID: 2105433852729540971}
   - component: {fileID: 7717049506798836073}
-  - component: {fileID: 3018593335420423357}
   - component: {fileID: 9157689028259663389}
   - component: {fileID: 2524696757047403000}
-  - component: {fileID: 2020856510461679369}
   - component: {fileID: 8447732144671145103}
-  - component: {fileID: 4870583393138942650}
+  - component: {fileID: 6762745035437304704}
+  - component: {fileID: 8897395358443581444}
   m_Layer: 8
   m_Name: Boar
   m_TagString: Enemy
@@ -309,7 +306,7 @@ Transform:
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 9.72, y: -5.44, z: 0}
-  m_LocalScale: {x: 2, y: 2, z: 1}
+  m_LocalScale: {x: 3, y: 3, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 7746191912163742235}
@@ -490,6 +487,7 @@ MonoBehaviour:
     atk: 7
     def: 0
     agility: 5
+  mlogic: {fileID: 8897395358443581444}
 --- !u!114 &2105433852729540971
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -515,21 +513,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   recoveryTime: 1.5
---- !u!114 &3018593335420423357
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8467449568649580763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 50681356c855305419dd1e38ababe7b6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  lookDirection: {x: 0, y: 0}
-  moveDirection: {x: 0, y: 0}
-  isAttacking: 0
 --- !u!114 &9157689028259663389
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -555,22 +538,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8820558193993926142}
---- !u!114 &2020856510461679369
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8467449568649580763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 1077ab16fea90aa45b583ef99620c43a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  directionToTarget: {x: 0, y: 0}
-  transOfPlayer: {fileID: 0}
-  chaseRadius: 20
-  attackRadius: 7
 --- !u!114 &8447732144671145103
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -585,10 +552,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   currentTarget: {fileID: 0}
-  stats: {fileID: 9184128418710548452}
-  movementFSM: {fileID: 2020856510461679369}
+  mOwner: {fileID: 0}
+  logicMonster: {fileID: 8897395358443581444}
   imageDie: {fileID: 5866718738098012018, guid: a6b85058152e9da45aab059ac1e64519, type: 3}
---- !u!114 &4870583393138942650
+--- !u!114 &6762745035437304704
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -597,9 +564,46 @@ MonoBehaviour:
   m_GameObject: {fileID: 8467449568649580763}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 09dea947117ebe741bfd55328908b40f, type: 3}
+  m_Script: {fileID: 11500000, guid: 4cc22332b5b01c5438649bc20c0035ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isAlive: 1
-  hpBar: {fileID: 5426767129244878454}
-  hpBarTry: {fileID: 0}
+  infomation:
+    surName: 
+    name: 
+    sect: 
+    race: 
+    sex: 
+  general:
+    lifespan: 0
+    currLifespan: 0
+    vitality: 200
+    currVitality: 200
+    energy: 0
+    currEnergy: 0
+  combat:
+    atk: 0
+    def: 0
+    agility: 10
+--- !u!114 &8897395358443581444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8467449568649580763}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e0afa493d214e1458242141891b17cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: 0, y: 0}
+  direction: {x: 0, y: 0}
+  isAttacking: 0
+  state: 8
+  fsmAction: 0
+  mOwner: {fileID: 9184128418710548452}
+  directionToTarget: {x: 0, y: 0}
+  transOfPlayer: {fileID: 0}
+  chaseRadius: 15
+  attackRadius: 10
+  hp: {fileID: 4947739695708789790}

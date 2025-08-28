@@ -1,19 +1,33 @@
 ﻿using JetBrains.Annotations;
+using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Diagnostics;
+using UnityEditor.Playables;
 using UnityEngine;
+
 
 /// <summary>
 /// Lưu trữ thông tin cá nhân cơ bản của nhân vật.
 /// </summary>
 [System.Serializable]
-public class Information 
+public class Information
 {
     public string surName; // Họ của nhân vật (ví dụ: Vương)
     public string name;    // Tên của nhân vật (ví dụ: Thất Phong)
     public string sect;    // Tông môn (có thể là "Không" nếu là tán tu)
     public string race;    // Chủng tộc (ví dụ: Nhân tộc, Yêu tộc)
     public string sex;     // Giới tính (Nam / Nữ / Khác)
+
+    public override string ToString()
+    {
+        return
+            $"Surname: {surName}\n" +
+            $"Name: {name}\n" +
+            $"Sect: {sect}\n" +
+            $"Race: {race}\n" +
+            $"Sex: {sex}";
+    }
 }
 
 /// <summary>
@@ -28,6 +42,15 @@ public class General
     public int currVitality;  // Sinh lực (HP), nếu về 0 có thể tử vong
     public int energy;    // Năng lượng (MP), dùng cho kỹ năng hoặc pháp thuật
     public int currEnergy;    // Năng lượng (MP), dùng cho kỹ năng hoặc pháp thuật
+
+    public override string ToString()
+    {
+        return
+            $"Lifespan: {currLifespan}/{lifespan}\n" +
+            $"Vitality: {currVitality}/{vitality}\n" +
+            $"Energy: {currEnergy}/{energy}";
+        
+    }
 }
 
 /// <summary>
@@ -39,6 +62,14 @@ public class Combat
     public int atk;       // Sức tấn công cơ bản
     public int def;       // Phòng thủ, giảm sát thương nhận vào
     public int agility;   // Nhanh nhẹn, ảnh hưởng tốc độ hành động và né đòn
+
+    public override string ToString()
+    {
+        return 
+            $"Attack: {atk}\n" +
+            $"Defense: {def}\n" +
+            $"Agility: {agility}";
+    }
 }
 
 /// <summary>
@@ -49,6 +80,12 @@ public class MartialArts
 {
     public int sword; // Kỹ năng dùng kiếm
     public int spear; // Kỹ năng dùng thương
+    public override string ToString()
+    {
+        return
+            $"Sword: {sword}\n" +
+            $"Spear: {spear}";
+    }
 }
 
 /// <summary>
@@ -63,27 +100,33 @@ public class SpiritualRoot
     public int lightning;  // Linh căn hệ Lôi
     public int earth;      // Linh căn hệ Thổ
     public int wood;       // Linh căn hệ Mộc
+
+    public override string ToString()
+    {
+        return
+            $"Wind: {wind}\n" +
+            $"Fire: {fire}\n" +
+            $"Water: {water}\n" +
+            $"Lightning: {lightning}\n" +
+            $"Earth: {earth}\n" +
+            $"Wood: {wood}";
+    }
 }
 
-/// <summary>
-/// Kỹ năng thủ công – dùng trong luyện đan, chế tạo, và các hoạt động sống.
-/// </summary>
 [System.Serializable]
-public class Artisanship
-{
-    public int alchemy;    // Kỹ năng luyện đan
-    public int forge;      // Kỹ năng luyện khí (chế tạo pháp bảo)
-    public int fengShui;   // Kỹ năng bố trí trận pháp, phong thủy
-    public int talismans;  // Kỹ năng chế tạo bùa chú
-    public int mining;     // Kỹ năng khai khoáng, thu thập tài nguyên
-}
 public class UnitStats : MonoBehaviour
 {
     public Information infomation;
     public General general;
     public Combat combat;
 
-    public virtual void UpdateStats() { }
-    public virtual void TakeDamage(int amount) { }
+    public virtual int TakeDamage(int damage)
+    {
+        return general.currVitality = Mathf.Clamp(general.currVitality - damage, 0, general.vitality);
+    }
 
+    public virtual int Heal(int amount)
+    {
+        return general.currVitality = Mathf.Clamp(general.currVitality + amount, 0, general.vitality);
+    }
 }

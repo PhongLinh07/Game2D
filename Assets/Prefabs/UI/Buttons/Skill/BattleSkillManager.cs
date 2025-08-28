@@ -24,7 +24,7 @@ public class BattleSkillManager : MonoBehaviour
     public GameObject rotateSkillButtonPrefab;
 
     [SerializeField]
-    private ObjectState oStatePlayer;
+    private LogicCharacter logicCharacter;
 
     public static BattleSkillManager Instance;
 
@@ -35,9 +35,9 @@ public class BattleSkillManager : MonoBehaviour
     }
     void Start()
     {
-        for (int i = 0; i < GameManager.Instance.R_PlayerData.skillsEquipped.Count; i++)
+        for (int i = 0; i < ConfigMgr<ChacterCfgItem>.GetInstance.GetConfigItem(0).SkillsEquipped.Count; i++)
         {
-            SkillCfgItem skill = ConfigMgr<SkillCfgItem>.GetInstance.GetConfigItem(GameManager.Instance.R_PlayerData.skillsEquipped[i]);
+            SkillCfgItem skill = ConfigMgr<SkillCfgItem>.GetInstance.GetConfigItem(ConfigMgr<ChacterCfgItem>.GetInstance.GetConfigItem(0).SkillsEquipped[i]);
             if (skill == null)
             {
                 Debug.Log("skill Null");
@@ -47,16 +47,16 @@ public class BattleSkillManager : MonoBehaviour
             ISkillButton newSkillButton = GetSkillButton((SkillInputType)skill.InputType);
 
             newSkillButton.gameObject.SetActive(true);
-            newSkillButton.SetData(oStatePlayer, skill);
+            newSkillButton.SetData(logicCharacter, skill);
             skillButtons.Add(skill.id, newSkillButton);
         }
     }
 
     public bool EquipSKill(SkillCfgItem skill)
     {
-        if (GameManager.Instance.R_PlayerData.skillsEquipped.Contains(skill.id)) // nếu đã tồn tại thì remove
+        if (ConfigMgr<ChacterCfgItem>.GetInstance.GetConfigItem(0).SkillsEquipped.Contains(skill.id)) // nếu đã tồn tại thì remove
         {
-            GameManager.Instance.R_PlayerData.SkillRemoveEuipped(skill.id); 
+            ConfigMgr<ChacterCfgItem>.GetInstance.GetConfigItem(0).UnequipSkill(skill.id); 
             if (skillButtons.ContainsKey(skill.id))
             {
                 Destroy(skillButtons[skill.id].gameObject);
@@ -66,12 +66,12 @@ public class BattleSkillManager : MonoBehaviour
         }
         else
         {
-            if (GameManager.Instance.R_PlayerData.skillsEquipped.Count >= 7) return false;
+            if (ConfigMgr<ChacterCfgItem>.GetInstance.GetConfigItem(0).SkillsEquipped.Count >= 7) return false;
 
-            GameManager.Instance.R_PlayerData.SkillEuipped(skill.id); // gán skill vào list
+            ConfigMgr<ChacterCfgItem>.GetInstance.GetConfigItem(0).EquipSkill(skill.id); // gán skill vào list
             skillButtons[skill.id] = GetSkillButton((SkillInputType)skill.InputType);
             skillButtons[skill.id].gameObject.SetActive(true);
-            skillButtons[skill.id].SetData(oStatePlayer, skill);
+            skillButtons[skill.id].SetData(logicCharacter, skill);
             return true;
         }
 

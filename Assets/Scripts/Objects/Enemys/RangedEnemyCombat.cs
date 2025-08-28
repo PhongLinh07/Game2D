@@ -63,7 +63,7 @@ public class RangedEnemyCombat : EnemyCombatBase
         Vector3 dir = (ai.currentTarget.transform.position - shootPoint.position).normalized;
         float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
         GameObject go = ObjectPoolManager.Instance.Spawn(EObjectPool.ProjectileChicken);
-        go.GetComponent<Bullet>().Init(shootPoint.position, angle, dir, ai.stats.combat.atk);
+        go.GetComponent<Bullet>().Init(shootPoint.position, angle, dir, ai.mOwner.combat.atk);
 
     }
 }

@@ -6,20 +6,20 @@ public class EnemyAIController : MonoBehaviour
 {
     public EnemyType type;
     public GameObject currentTarget;
-    public UnitStats stats;
-
+    public MonsterUnit mOwner;
     private EnemyCombatBase combatSystem;
 
-    public EnemyMovementFSMController movementFSM;
+    public LogicMonster logicMonster;
     public GameObject imageDie;
     private SpriteRenderer spriteRenderer;
 
-    private HPController hpController;
     private bool isAttacking;
 
 
     void Start()
     {
+        mOwner = GetComponent<MonsterUnit>();
+
         // Gán combat system tuỳ theo loại
         switch (type)
         {
@@ -33,13 +33,15 @@ public class EnemyAIController : MonoBehaviour
 
         
         spriteRenderer = GetComponent<SpriteRenderer>();
-        hpController = GetComponent<HPController>();
+        
         combatSystem.Init(this);
+
+        
     }
 
     void Update()
     {
-        if (!hpController.isAlive)
+        if (logicMonster.hp.currValue <= 0)
         {
             GameObject go = Instantiate(imageDie, transform.position, Quaternion.identity);
             go.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
@@ -51,7 +53,7 @@ public class EnemyAIController : MonoBehaviour
         {
             if (!combatSystem.Recovered()) return;
 
-            movementFSM.UpdateMovement();
+            logicMonster.UpdateMovement();
         }
         else
         {
@@ -75,7 +77,7 @@ public class EnemyAIController : MonoBehaviour
     public void HandleAttackFinished()
     {
         isAttacking = false;
-        movementFSM.Resume();
+        logicMonster.Resume();
     }
 
     

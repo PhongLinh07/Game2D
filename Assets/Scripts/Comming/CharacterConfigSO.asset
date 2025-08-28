@@ -1,0 +1,67 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0466fa84a40159d46b61acab863368a6, type: 3}
+  m_Name: CharacterConfigSO
+  m_EditorClassIdentifier: 
+  datas:
+  - id: 0
+    infomation:
+      surName: Vuong
+      name: That Phong
+      sect: N
+      race: N
+      sex: N
+    general:
+      lifespan: 70
+      currLifespan: 27
+      vitality: 100
+      currVitality: 100
+      energy: 100
+      currEnergy: 100
+    combat:
+      atk: 10
+      def: 10
+      agility: 10
+    martialArts:
+      sword: 7
+      spear: 0
+    spiritualRoot:
+      wind: 7
+      fire: 0
+      water: 0
+      lightning: 0
+      earth: 0
+      wood: 0
+    SkillsLearned: 0000000001000000020000000300000004000000050000000600000007000000
+    SkillsEquipped: 
+    items:
+    - id: 0
+      idItem: 0
+      Level: 0
+      Rarity: 0
+      Quantity: 0
+      Atk: 0
+      Def: 0
+    - id: 1
+      idItem: 2
+      Level: 0
+      Rarity: 2
+      Quantity: 0
+      Atk: 0
+      Def: 0
+    - id: 2
+      idItem: 5
+      Level: 0
+      Rarity: 4
+      Quantity: 0
+      Atk: 0
+      Def: 0

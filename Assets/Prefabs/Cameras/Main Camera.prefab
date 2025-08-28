@@ -107,6 +107,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   owner: {fileID: 0}
+  offset: {x: 0, y: 0, z: -10}
 --- !u!114 &4521495671635085532
 MonoBehaviour:
   m_ObjectHideFlags: 0

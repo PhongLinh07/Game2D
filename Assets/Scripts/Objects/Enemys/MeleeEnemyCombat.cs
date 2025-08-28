@@ -31,7 +31,7 @@ public class MeleeEnemyCombat : EnemyCombatBase
             },
             onLogic: ctx =>
             {
-                rb.velocity = isAttackPhase * objState.lookDirection * ai.stats.combat.agility * 7.0f;
+                rb.velocity = isAttackPhase * logicMonster.direction * ai.mOwner.combat.agility * 10.0f;
                 PivotNormalized();
             },
             onExit: ctx =>
@@ -68,7 +68,7 @@ public class MeleeEnemyCombat : EnemyCombatBase
 
         if (hit)
         {
-            hit.gameObject.GetComponent<HPController>().TakeDamage(ai.stats.combat.atk);
+            hit.gameObject.GetComponent<LogicUnit>().TakeDamage(ai.mOwner.combat.atk);
         }
 
     }

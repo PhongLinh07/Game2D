@@ -27,19 +27,19 @@ public class PlayerData : ConfigItem
             new EnhanceCfgItem
             {
                 id = 0,
-                Data = new ItemCfgItem { id = 0 },
+                idItem = 0,
                 Rarity = (ItemRarity)0,
             },
             new EnhanceCfgItem
             {
                 id = 2,
-                Data = new ItemCfgItem { id = 3 },
+                idItem = 2,
                 Rarity = (ItemRarity)2
             },
             new EnhanceCfgItem
             {
                 id = 3,
-                Data = new ItemCfgItem { id = 5 },
+                idItem = 5,
                 Rarity = (ItemRarity)4
             }
         };

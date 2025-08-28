@@ -6,10 +6,10 @@ using UnityEngine.UI;
 
 public interface IStatusBars
 {
+    public void Init(float maxValue, float value = 0);
     public void Zero();
     public void Full();
-    public bool Add(int mount); // true if > 0 || false <= 0
-    public void UpdateStatusBar();
+    public bool SetValue(float value);
 
 }
 

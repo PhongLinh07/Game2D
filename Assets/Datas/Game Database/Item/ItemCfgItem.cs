@@ -35,6 +35,20 @@ public class ItemCfgItem : ConfigItem
        
     }
 
+    public Dictionary<string, object> ToDict()
+    {
+        var row = new Dictionary<string, object>
+        {
+            ["id"] = id,
+            ["name"] = Name,
+            ["stackable"] = Stackable,
+            ["icon"] = Icon != null ? Icon.name : null,
+            ["desc"] = Description
+        };
+
+        return row;
+    }
+
     internal void CopyFrom(ItemCfgItem other)
     {
         id = other.id;
@@ -49,7 +63,7 @@ public class ItemCfgItem : ConfigItem
 [System.Serializable]
 public class EnhanceCfgItem : ConfigItem
 {
-    public ItemCfgItem Data;
+    public int idItem;
     public int Level;
     public ItemRarity Rarity;
     public int Quantity;
@@ -59,30 +73,56 @@ public class EnhanceCfgItem : ConfigItem
 
     internal void CopyFrom(EnhanceCfgItem other)
     {
-        Data = other.Data;
+        idItem = other.idItem;
         id = other.id;
         Rarity = other.Rarity;
         Level = other.Level;
-        Quantity = Data.Stackable ? other.Quantity : 1;
+        Quantity = ConfigMgr<ItemCfgItem>.GetInstance.GetConfigItem(idItem).Stackable ? other.Quantity : 1;
         Atk = other.Atk;
         Def = other.Def;
     }
 
-    public override void ApplyFromRow(IDictionary<string, object> row) { }
+    public override void ApplyFromRow(IDictionary<string, object> row) 
+    {
+        id          = row.ContainsKey("id") ? Convert.ToInt32(row["id"]) : -1;
+        idItem      = row.ContainsKey("idItem") ? Convert.ToInt32(row["idItem"]) : -1;
+        Level       = row.ContainsKey("Level") ? Convert.ToInt32(row["Level"]) : 0;
+        Rarity      = row.ContainsKey("Rarity") ? (ItemRarity)(row["Rarity"]) : 0;
+        Quantity    = row.ContainsKey("Quantity") ? Convert.ToInt32(row["Quantity"]) : 0;
+        Atk         = row.ContainsKey("Atk") ? Convert.ToInt32(row["Atk"]) : 0;
+        Def         = row.ContainsKey("Def") ? Convert.ToInt32(row["Def"]) : 0;
+
+    }
+
+    public Dictionary<string, object> ToDict()
+    {
+        var dict = new Dictionary<string, object>
+        {
+            ["id"] = id,
+            ["idItem"] = idItem,
+            ["Level"] = Level,
+            ["Rarity"] = (int)Rarity,
+            ["Quantity"] = Quantity,
+            ["Atk"] = Atk,
+            ["Def"] = Def,
+        };
+        return dict;
+    }
 
     public string GetDescription()
      {
       string des;
-      
-      if(Data.Stackable)
+      ItemCfgItem item = ConfigMgr < ItemCfgItem >.GetInstance.GetConfigItem(idItem);
+
+      if (item.Stackable)
       {
-          des = $"{Data.Description}\n";
+          des = $"{item.Description}\n";
       }
       else
       {
           des =
               $"Level: {Level}\n" +
-              $"{Data.Description}\n" +
+              $"{item.Description}\n" +
               $"Atk: {Atk}\n" +
               $"Def: {Def}\n";
       }  

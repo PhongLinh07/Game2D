@@ -64,7 +64,7 @@ public class DragSkillButton : ISkillButton, IPointerDownHandler, IPointerUpHand
 
         distance = Mathf.Clamp01(distance / 64.0f) * 5.0f;
 
-        Vector2 taget = (Vector2)oStatePlayer.bottomTrans.position + drag.normalized * distance;
+        Vector2 taget = (Vector2)logicCharacter.bottomTrans.position + drag.normalized * distance;
 
         // Khi thả, cast skill tại vị trí kéo
         CastSkill(taget);
@@ -78,7 +78,7 @@ public class DragSkillButton : ISkillButton, IPointerDownHandler, IPointerUpHand
 
         distance = Mathf.Clamp01(distance / 64) * 5.0f;
 
-        Vector2 taget = (Vector2)oStatePlayer.bottomTrans.position + drag.normalized * distance;
+        Vector2 taget = (Vector2)logicCharacter.bottomTrans.position + drag.normalized * distance;
 
         if (dragWorld == null) return;
         dragWorld.transform.position = Camera.main.WorldToScreenPoint(taget); // Gán trực tiếp vì Overlay dùng screen pixel

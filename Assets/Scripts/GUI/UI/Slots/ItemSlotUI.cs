@@ -24,7 +24,7 @@ using UnityEngine.UI;
 
 public class ItemSlotUI : ASlotUI, IPointerClickHandler
 {
-    public RarityGUISO rarityCell;
+    public RarityConfigSO rarityCell;
     public Image bg;
     public TextMeshProUGUI quantity;
 
@@ -40,9 +40,9 @@ public class ItemSlotUI : ASlotUI, IPointerClickHandler
         dataOfSlot = data as EnhanceCfgItem;
         view.SetActive(true);
         bg.sprite = rarityCell.rarityDict[dataOfSlot.Rarity];
-        icon.sprite = dataOfSlot.Data.Icon;
+        icon.sprite = ConfigMgr<ItemCfgItem>.GetInstance.GetConfigItem(dataOfSlot.idItem).Icon;
         
-        if (dataOfSlot.Data.Stackable)
+        if (ConfigMgr<ItemCfgItem>.GetInstance.GetConfigItem(dataOfSlot.idItem).Stackable)
         {
             quantity.gameObject.SetActive(true);
             quantity.text = dataOfSlot.Quantity.ToString();
@@ -58,7 +58,7 @@ public class ItemSlotUI : ASlotUI, IPointerClickHandler
     {
         AContainer<EnhanceCfgItem> container = transform.parent.GetComponent<AContainer<EnhanceCfgItem>>();
         // Gọi hàm Instance đã override từ hàm ảo ItemPanel
-        container.OnClick(thisIndex);
+        container.OnClick(dataOfSlot.id);
     }
 
 
