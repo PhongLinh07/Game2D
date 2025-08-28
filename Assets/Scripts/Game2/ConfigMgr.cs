@@ -2,79 +2,149 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
+using System.Threading.Tasks;
 using UnityEngine;
 
 //ItemConfig <=> ConfigMgr
 public class ConfigMgr<T>: SingletonBase<ConfigMgr<T>>, ConfigBase where T : ConfigItem, new()
 {
-    // Dictionary cho truy xuất O(1) theo id
+    private List<T> mDatas = new();
     public IDictionary<int, T> mCfgDict { get; private set; } = new Dictionary<int, T>();
 
-    // Tên file config (nếu hệ thống load của anh có dùng)
+    [System.Serializable]
+    private class Wrapper
+    {
+        public List<T> datas;
+        public Wrapper(List<T> list) { datas = list; }
+    }
+     
     public string fileName { get; set; } = typeof(T).Name + ".json";
 
-    /// <summary>
-    /// Nạp dữ liệu từ bảng (mỗi phần tử trong configs là một "row" = Dictionary<string, object>).
-    /// Ghi chú:
-    /// - Nên gọi hàm này sau khi đã đọc và chuyển file Excel/CSV/JSON vào dạng IList<IDictionary<string, object>>.
-    /// - Hàm sẽ clear dict cũ và build lại hoàn toàn.
-    /// </summary>
+
     public void InitData(IList<IDictionary<string, object>> configs) { }
+   
 
     public void InitData()
     {
+        mDatas.Clear();
         mCfgDict.Clear();
 
-        string path = Path.Combine(Application.persistentDataPath, fileName);
-        if (!File.Exists(path))
+        LoadJsonFromFile();
+
+        if (mDatas == null) return;
+
+        foreach (var row in mDatas)
         {
-            Debug.LogError("JSON file not found: " + path);
-            return;
-        }
+            if (row == null || row.id < 0) continue;
 
-        string json = File.ReadAllText(path);
-
-        // Deserialize thành List<Dictionary<string, object>>
-        var dicts = JsonConvert.DeserializeObject<List<Dictionary<string, object>>>(json);
-
-
-        foreach (var row in dicts)
-        {
-            if (row == null || !row.ContainsKey("id")) continue;
-
-            var item = new T();
-            item.ApplyFromRow(row);
-
-            // Bảo vệ: id < 0 thì bỏ qua để tránh đè key 0 vô nghĩa
-            if (item.id < 0) continue;
-
-            mCfgDict[item.id] = item;
+            mCfgDict[row.id] = row;
         }
 
         Debug.Log($"Loaded {mCfgDict.Count} {typeof(T).Name} from JSON");
     }
 
-    /// <summary>
-    /// Dọn sạch bộ nhớ tạm của config (thường gọi khi đổi scene / reload).
-    /// </summary>
+   
     public void Clear()
     {
+        mDatas.Clear();
         mCfgDict.Clear();
     }
 
-    /// <summary>
-    /// Cho phép foreach(SkillConfig.Instance) ... nếu anh muốn.
-    /// </summary>
+    
     public IEnumerator<KeyValuePair<int, T>> GetEnumerator()
     {
         return mCfgDict.GetEnumerator();
     }
 
-    /// <summary>
-    /// Lấy nhanh 1 skill theo id. Trả null nếu không có.
-    /// </summary>
+    
     public T GetConfigItem(int id)
     {
         return mCfgDict.TryGetValue(id, out var item) ? item : null;
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+    private string ToJson()
+    {
+        if (mDatas == null || mDatas.Count == 0)
+            return "{}";
+
+        return JsonUtility.ToJson(new Wrapper(mDatas), true);
+    }
+
+    // Save JSON -> File
+    public async Task SaveJsonAsync()
+    {
+        string path = Path.Combine(Application.persistentDataPath, fileName);
+        await Task.Run(() => File.WriteAllText(path, ToJson()));
+        Debug.Log($"JSON saved: {path}");
+    }
+
+    private void LoadJsonFromFile()
+    {
+
+        string path = Path.Combine(Application.persistentDataPath, fileName);
+        if (!File.Exists(path)) return;
+        string json = File.ReadAllText(path);
+        Wrapper wrapper = JsonUtility.FromJson<Wrapper>(json);
+        mDatas = wrapper.datas;
+        Debug.Log($"JSON loaded: {path}");
+
+    }
+
+    public void ExportToJson(List<T> datas, string file)
+    {
+        if (datas == null) return;
+
+        string path = Path.Combine(Application.persistentDataPath, file + ".json");
+
+        File.WriteAllText(path, JsonUtility.ToJson(new Wrapper(datas), true));
+
+        Debug.Log($"JSON saved: {path}");
+
+    }
+
 }

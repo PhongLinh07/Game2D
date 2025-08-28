@@ -16,9 +16,11 @@ public class GeneratorJSON : MonoBehaviour
     void Awake()
     {
         spriteConfigSO.SaveJsonToFile(typeof(SpriteCfgItem).Name);
-        skillConfigSO.SaveJsonToFile(typeof(SkillCfgItem).Name);
-        itemConfigSO.SaveJsonToFile(typeof(ItemCfgItem).Name);
-        chacterCfgItemSO.SaveJsonToFile(typeof(ChacterCfgItem).Name);
+
+        ConfigMgr<SkillCfgItem>.GetInstance.ExportToJson(skillConfigSO.datas, typeof(SkillCfgItem).Name);
+        ConfigMgr<ItemCfgItem>.GetInstance.ExportToJson(itemConfigSO.datas, typeof(ItemCfgItem).Name);
+        ConfigMgr<ChacterCfgItem>.GetInstance.ExportToJson(chacterCfgItemSO.datas, typeof(ChacterCfgItem).Name);
+        
 
     }
 

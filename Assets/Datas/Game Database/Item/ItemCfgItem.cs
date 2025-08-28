@@ -25,29 +25,7 @@ public class ItemCfgItem : ConfigItem
     public Sprite Icon;
     public string Description;
 
-    public override void ApplyFromRow(IDictionary<string, object> row)
-    {
-        id = row.ContainsKey("id") ? Convert.ToInt32(row["id"]) : -1;
-        Name = row.ContainsKey("name") ? row["name"]?.ToString() : null;
-        Stackable = row.ContainsKey("stackable") ? (bool)row["stackable"] : false;
-        Icon = SpriteConfig.GetInstance.GetSprite(row["icon"].ToString());
-        Description = row.ContainsKey("desc") ? row["desc"]?.ToString() : null;
-       
-    }
-
-    public Dictionary<string, object> ToDict()
-    {
-        var row = new Dictionary<string, object>
-        {
-            ["id"] = id,
-            ["name"] = Name,
-            ["stackable"] = Stackable,
-            ["icon"] = Icon != null ? Icon.name : null,
-            ["desc"] = Description
-        };
-
-        return row;
-    }
+    public override void ApplyFromRow(IDictionary<string, object> row) { }
 
     internal void CopyFrom(ItemCfgItem other)
     {
@@ -82,33 +60,8 @@ public class EnhanceCfgItem : ConfigItem
         Def = other.Def;
     }
 
-    public override void ApplyFromRow(IDictionary<string, object> row) 
-    {
-        id          = row.ContainsKey("id") ? Convert.ToInt32(row["id"]) : -1;
-        idItem      = row.ContainsKey("idItem") ? Convert.ToInt32(row["idItem"]) : -1;
-        Level       = row.ContainsKey("Level") ? Convert.ToInt32(row["Level"]) : 0;
-        Rarity      = row.ContainsKey("Rarity") ? (ItemRarity)(row["Rarity"]) : 0;
-        Quantity    = row.ContainsKey("Quantity") ? Convert.ToInt32(row["Quantity"]) : 0;
-        Atk         = row.ContainsKey("Atk") ? Convert.ToInt32(row["Atk"]) : 0;
-        Def         = row.ContainsKey("Def") ? Convert.ToInt32(row["Def"]) : 0;
-
-    }
-
-    public Dictionary<string, object> ToDict()
-    {
-        var dict = new Dictionary<string, object>
-        {
-            ["id"] = id,
-            ["idItem"] = idItem,
-            ["Level"] = Level,
-            ["Rarity"] = (int)Rarity,
-            ["Quantity"] = Quantity,
-            ["Atk"] = Atk,
-            ["Def"] = Def,
-        };
-        return dict;
-    }
-
+    public override void ApplyFromRow(IDictionary<string, object> row) { }
+   
     public string GetDescription()
      {
       string des;

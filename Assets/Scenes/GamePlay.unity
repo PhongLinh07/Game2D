@@ -619,6 +619,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: FallingSword
       objectReference: {fileID: 0}
+    - target: {fileID: 3284242961871212050, guid: a9085581cffa3d04eb5555ddd1b8f603, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -974,6 +978,10 @@ PrefabInstance:
       value: Tree
       objectReference: {fileID: 0}
     - target: {fileID: 4294567774463454265, guid: a906fdaccba66304092701cf0f5c8827, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4294567774463454265, guid: a906fdaccba66304092701cf0f5c8827, type: 3}
       propertyPath: m_TagString
       value: Untagged
       objectReference: {fileID: 0}
@@ -1114,6 +1122,10 @@ PrefabInstance:
     - target: {fileID: 4622674721901468324, guid: 5e9503b60bffbed4c8dc40c252e1624a, type: 3}
       propertyPath: m_Name
       value: DashFX_0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4622674721901468324, guid: 5e9503b60bffbed4c8dc40c252e1624a, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5058752284931128743, guid: 5e9503b60bffbed4c8dc40c252e1624a, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1366,7 +1378,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1117297011
 Transform:
   m_ObjectHideFlags: 0
@@ -1616,6 +1628,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: HighlightController
       objectReference: {fileID: 0}
+    - target: {fileID: 4802415681154139239, guid: 9c5a9d2a09552b8438fbdaf66d434f59, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1834,6 +1850,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: MonsterArea
       objectReference: {fileID: 0}
+    - target: {fileID: 8405728360498125045, guid: 25503e975bdc163479426d353883919b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1978,6 +1998,10 @@ PrefabInstance:
     - target: {fileID: 8467449568649580763, guid: e92400f74fe43614fb15afb9260659b2, type: 3}
       propertyPath: m_Name
       value: Boar
+      objectReference: {fileID: 0}
+    - target: {fileID: 8467449568649580763, guid: e92400f74fe43614fb15afb9260659b2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8897395358443581444, guid: e92400f74fe43614fb15afb9260659b2, type: 3}
       propertyPath: transOfPlayer
@@ -2173,6 +2197,10 @@ PrefabInstance:
     - target: {fileID: 7369183662110487078, guid: 0a3b2f98e3a4ac54a96e19a44540f626, type: 3}
       propertyPath: m_Name
       value: GobalLight2D
+      objectReference: {fileID: 0}
+    - target: {fileID: 7369183662110487078, guid: 0a3b2f98e3a4ac54a96e19a44540f626, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8080497872340204087, guid: 0a3b2f98e3a4ac54a96e19a44540f626, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2481,6 +2509,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: EventSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 7700054541100095463, guid: 1583ad10723d12c41884d9b9da0fca85, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2517,6 +2549,10 @@ PrefabInstance:
     - target: {fileID: 6579969605024380662, guid: 6cc088e0cc9a0d94ab353de0f8774bd7, type: 3}
       propertyPath: m_Name
       value: GameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 6579969605024380662, guid: 6cc088e0cc9a0d94ab353de0f8774bd7, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6899306752696049344, guid: 6cc088e0cc9a0d94ab353de0f8774bd7, type: 3}
       propertyPath: ownerTilemap
@@ -2780,6 +2816,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: BattleSkillUI
       objectReference: {fileID: 0}
+    - target: {fileID: 3766622393258597150, guid: 89ca62662a0ac2f49b33d64afed5c937, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5013909272798912397, guid: 89ca62662a0ac2f49b33d64afed5c937, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5215825249456168330, guid: 89ca62662a0ac2f49b33d64afed5c937, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6694387204211110297, guid: 89ca62662a0ac2f49b33d64afed5c937, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -2800,6 +2852,10 @@ PrefabInstance:
     - target: {fileID: 5781951859754242787, guid: 8bdd606617315dc4dafacd082d7852e3, type: 3}
       propertyPath: m_Name
       value: BrownChicken
+      objectReference: {fileID: 0}
+    - target: {fileID: 5781951859754242787, guid: 8bdd606617315dc4dafacd082d7852e3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 6436881193824614977, guid: 8bdd606617315dc4dafacd082d7852e3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -2957,6 +3013,10 @@ PrefabInstance:
     - target: {fileID: 1962926292541671427, guid: a8e40897172e4634ea833d70e59179cf, type: 3}
       propertyPath: m_Name
       value: Character_ControllerCenter
+      objectReference: {fileID: 0}
+    - target: {fileID: 1962926292541671427, guid: a8e40897172e4634ea833d70e59179cf, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 2355300686805799989, guid: a8e40897172e4634ea833d70e59179cf, type: 3}
       propertyPath: m_AnchorMax.y
@@ -3484,6 +3544,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Character
       objectReference: {fileID: 0}
+    - target: {fileID: 7312119166183241765, guid: 4197fee947dc61f4f8b778a8df6b8f42, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 7882892352980976370, guid: 4197fee947dc61f4f8b778a8df6b8f42, type: 3}
       propertyPath: joystick
       value: 
@@ -3504,6 +3568,10 @@ PrefabInstance:
     - target: {fileID: 2214301585031697850, guid: 2b9891fded8ecd44797b40ae7e8c6a2b, type: 3}
       propertyPath: m_Name
       value: Chest
+      objectReference: {fileID: 0}
+    - target: {fileID: 2214301585031697850, guid: 2b9891fded8ecd44797b40ae7e8c6a2b, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 5217602059961056198, guid: 2b9891fded8ecd44797b40ae7e8c6a2b, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3663,6 +3731,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Rock
       objectReference: {fileID: 0}
+    - target: {fileID: 248189714627852889, guid: 4d2ba012b28d2684f8f4d805549cf4b2, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 3616043308902208849, guid: 4d2ba012b28d2684f8f4d805549cf4b2, type: 3}
       propertyPath: m_LocalPosition.x
       value: -7.75
@@ -3759,6 +3831,10 @@ PrefabInstance:
     - target: {fileID: 628495209130510457, guid: 5e515a39f8854764fb1844dad290bd96, type: 3}
       propertyPath: m_Name
       value: Main Camera
+      objectReference: {fileID: 0}
+    - target: {fileID: 628495209130510457, guid: 5e515a39f8854764fb1844dad290bd96, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 833035674074170230, guid: 5e515a39f8854764fb1844dad290bd96, type: 3}
       propertyPath: owner
