@@ -33,7 +33,7 @@ public class CharacterConfig : SingletonBase<CharacterConfig>, ConfigBase
 
         LoadJsonFromFile();
 
-        if (mDatas == null) return null;
+        if (mDatas == null || mDatas.Count < 1) return null;
 
         foreach (var row in mDatas)
         {
@@ -42,7 +42,7 @@ public class CharacterConfig : SingletonBase<CharacterConfig>, ConfigBase
             mCfgDict[row.id] = row;
         }
 
-        Debug.Log($"Loaded {mCfgDict.Count} {typeof(CharacterConfig).Name} from JSON");
+        Debug.Log($"Loaded {mCfgDict.Count()} {typeof(CharacterConfig).Name} from JSON");
         return mCfgDict[0];
     }
 
@@ -122,7 +122,7 @@ public class CharacterConfig : SingletonBase<CharacterConfig>, ConfigBase
 
         File.WriteAllText(path, JsonUtility.ToJson(new Wrapper(datas), true));
 
-        Debug.Log($"JSON saved: {path}");
+        Debug.Log($"ExportToJson: {path}");
 
     }
 

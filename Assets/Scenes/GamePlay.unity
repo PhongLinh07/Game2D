@@ -2415,6 +2415,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 344427035}
     - target: {fileID: 4336601461872827064, guid: 6cc088e0cc9a0d94ab353de0f8774bd7, type: 3}
+      propertyPath: chacterCfgItemSO
+      value: 
+      objectReference: {fileID: 11400000, guid: b65560dcf87e22446b40f20a65238f09, type: 2}
+    - target: {fileID: 4336601461872827064, guid: 6cc088e0cc9a0d94ab353de0f8774bd7, type: 3}
       propertyPath: HighlightController
       value: 
       objectReference: {fileID: 614627143}
@@ -3441,8 +3445,8 @@ SceneRoots:
   m_Roots:
   - {fileID: 8213542927411086781}
   - {fileID: 1490847147}
-  - {fileID: 3594586350088786574}
   - {fileID: 8067043002353451789}
+  - {fileID: 3594586350088786574}
   - {fileID: 1715880744}
   - {fileID: 903821670}
   - {fileID: 8069850531079495601}

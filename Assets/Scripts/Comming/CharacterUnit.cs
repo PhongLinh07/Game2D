@@ -9,11 +9,6 @@ public class CharacterUnit : UnitStats
 
     public ChacterCfgItem data;
 
-    private void Awake()
-    {
-        data = CharacterConfig.GetInstance.GetConfigItem(0);
-    }
-
     public void EquipSkill(int idSkill)
     {
         if (!data.SkillsEquipped.Contains(idSkill))

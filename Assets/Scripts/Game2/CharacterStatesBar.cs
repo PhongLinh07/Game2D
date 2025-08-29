@@ -10,6 +10,8 @@ public class CharacterStatesBar : MonoBehaviour
 
     private void Start()
     {
+        if (mOwner.data == null) return;
+
         hpBar.Init(mOwner.data.general.vitality, mOwner.data.general.vitality);
         mpBar.Init(mOwner.data.general.energy, mOwner.data.general.energy);
         mOwner.mlogic.OnStatsChanged += TakeDamage;

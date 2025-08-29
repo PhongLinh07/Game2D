@@ -10,5 +10,6 @@ using UnityEngine;
 public class CharacterConfigSO : ScriptableObject
 {
     public List<ChacterCfgItem> datas;
+
 }
 

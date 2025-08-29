@@ -15,18 +15,23 @@ public class GameManager : MonoBehaviour
 
     [SerializeField] private SkillConfigSO skillConfigSO;
     [SerializeField] private ItemConfigSO itemConfigSO;
-    public ChacterCfgItem check;
+    [SerializeField] private CharacterConfigSO chacterCfgItemSO;
 
     // Start is called before the first frame update
     void Awake()
     {
+        Debug.Log("GameManaer");
         Instance = this;
 
         skillConfigSO.LoadData();
         itemConfigSO.LoadData();
 
-        CharacterConfig.GetInstance.InitData();
-        check = CharacterConfig.GetInstance.GetConfigItem(0);
+        if(CharacterConfig.GetInstance.InitData() == null)
+        {
+            CharacterConfig.GetInstance.ExportToJson(chacterCfgItemSO.datas, typeof(ChacterCfgItem).Name);
+        }
+       
+        Character.GetComponent<CharacterUnit>().data = CharacterConfig.GetInstance.InitData();
 
     }
 
