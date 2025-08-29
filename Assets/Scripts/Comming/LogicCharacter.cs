@@ -44,7 +44,7 @@ public class LogicCharacter : LogicUnit
             onEnter: ctx => { animatorController.SetState(EAnimParametor.Run); },
             onLogic: ctx =>
             {
-                rb.velocity = playerInputHandler.moveInput * mOwner.combat.agility;
+                rb.velocity = playerInputHandler.moveInput * mOwner.data.combat.agility;
                 if (playerInputHandler.moveInput.magnitude < 0.01f) fsm?.RequestStateChange(EAnimParametor.Idle);
             },
             onExit: ctx => rb.velocity = Vector2.zero
@@ -77,7 +77,7 @@ public class LogicCharacter : LogicUnit
         mOwner.EquipSkill(idSkill);
     }
 
-    public void RemoveEquipSkill(int idSkill)
+    public void UnequipSkill(int idSkill)
     {
         mOwner.UnequipSkill(idSkill);
     }

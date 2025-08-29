@@ -4,19 +4,19 @@ using UnityEngine;
 
 public class CharacterStatesBar : MonoBehaviour
 {
-    [SerializeField] CharacterUnit owner;
+    [SerializeField] private CharacterUnit mOwner;
     public StatusBar hpBar;
     public StatusBar mpBar;
 
     private void Start()
     {
-        hpBar.Init(owner.general.vitality, owner.general.vitality);
-        mpBar.Init(owner.general.energy, owner.general.energy);
-        owner.mlogic.OnStatsChanged += TakeDamage;
+        hpBar.Init(mOwner.data.general.vitality, mOwner.data.general.vitality);
+        mpBar.Init(mOwner.data.general.energy, mOwner.data.general.energy);
+        mOwner.mlogic.OnStatsChanged += TakeDamage;
     }
 
     public void TakeDamage()
     {
-        hpBar.SetValue(owner.general.currVitality);
+        hpBar.SetValue(mOwner.data.general.currVitality);
     }
 }

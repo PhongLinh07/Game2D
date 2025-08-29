@@ -13,13 +13,7 @@ public class RarityCfItem : ConfigItem
     public ItemRarity itemRarity;
     public Sprite sprite;
 
-    public override void ApplyFromRow(IDictionary<string, object> row)
-    {
-        id = row.ContainsKey("id") ? Convert.ToInt32(row["id"]) : -1;
-        itemRarity = row.ContainsKey("rarity") ? (ItemRarity)Convert.ToInt32(row["rarity"]) : 0;
-        sprite = SpriteConfig.GetInstance.GetSprite(row["sprite"].ToString());
-    }
-
+    public override void ApplyFromRow(IDictionary<string, object> row) { }
 
     internal void CopyFrom(RarityCfItem other)
     {

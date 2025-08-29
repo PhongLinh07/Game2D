@@ -17,4 +17,5 @@ public interface ConfigBase
     void InitData(IList<IDictionary<string, object>> configs);
 
     void Clear();
+
 }

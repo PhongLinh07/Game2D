@@ -17,6 +17,8 @@ public class StatusBar : MonoBehaviour, IStatusBars
     {
         maxValue = max;
         currValue = value;
+
+        SetValue(currValue);
     }
 
     public void Zero()

@@ -8,4 +8,8 @@ using UnityEngine;
 public class ItemConfigSO : ScriptableObject
 {
     public List<ItemCfgItem> datas;
+    public void LoadData()
+    {
+        ItemConfig.GetInstance.InitData(datas);
+    }
 }

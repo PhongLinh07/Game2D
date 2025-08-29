@@ -14,7 +14,7 @@ public class Inventory : AContainer<EnhanceCfgItem>
     {
         slotUIs.Clear();
 
-        foreach(var item in ConfigMgr<ChacterCfgItem>.GetInstance.GetConfigItem(0).items)
+        foreach(var item in CharacterConfig.GetInstance.GetConfigItem(0).items)
         {
             EnhanceCfgItem cpy = new EnhanceCfgItem();
             cpy.CopyFrom(item);

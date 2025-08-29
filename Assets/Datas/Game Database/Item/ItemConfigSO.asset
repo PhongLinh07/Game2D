@@ -35,7 +35,7 @@ MonoBehaviour:
     Description: 
   - id: 4
     Name: 4
-    Stackable: 0
+    Stackable: 1
     Icon: {fileID: 1338092406, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
     Description: 
   - id: 5

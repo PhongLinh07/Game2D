@@ -16,7 +16,7 @@ public abstract class AContainer<T> : MonoBehaviour where T : ConfigItem
     private int selectedSlot = 0;
     [SerializeField] private Transform parent;
     [SerializeField] private GameObject slotPrefab;
-    public PlayerData playerData;
+    
 
     //protected List<ASlotUI> slotUIs = new();
     protected Dictionary<int, ASlotUI> slotUIs = new();

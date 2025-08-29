@@ -8,4 +8,9 @@ using System.IO;
 public class SkillConfigSO : ScriptableObject
 {
     public List<SkillCfgItem> datas;
+
+    public void LoadData()
+    {
+        SkillConfig.GetInstance.InitData(datas);
+    }
 }

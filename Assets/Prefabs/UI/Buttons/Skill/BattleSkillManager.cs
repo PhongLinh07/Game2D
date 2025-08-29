@@ -35,9 +35,9 @@ public class BattleSkillManager : MonoBehaviour
     }
     void Start()
     {
-        for (int i = 0; i < ConfigMgr<ChacterCfgItem>.GetInstance.GetConfigItem(0).SkillsEquipped.Count; i++)
+        for (int i = 0; i < CharacterConfig.GetInstance.GetConfigItem(0).SkillsEquipped.Count; i++)
         {
-            SkillCfgItem skill = ConfigMgr<SkillCfgItem>.GetInstance.GetConfigItem(ConfigMgr<ChacterCfgItem>.GetInstance.GetConfigItem(0).SkillsEquipped[i]);
+            SkillCfgItem skill = SkillConfig.GetInstance.GetConfigItem(CharacterConfig.GetInstance.GetConfigItem(0).SkillsEquipped[i]);
             if (skill == null)
             {
                 Debug.Log("skill Null");
@@ -54,9 +54,9 @@ public class BattleSkillManager : MonoBehaviour
 
     public bool EquipSKill(SkillCfgItem skill)
     {
-        if (ConfigMgr<ChacterCfgItem>.GetInstance.GetConfigItem(0).SkillsEquipped.Contains(skill.id)) // nếu đã tồn tại thì remove
+        if (logicCharacter.mOwner.data.SkillsEquipped.Contains(skill.id)) // nếu đã tồn tại thì remove
         {
-            ConfigMgr<ChacterCfgItem>.GetInstance.GetConfigItem(0).UnequipSkill(skill.id); 
+            logicCharacter.UnequipSkill(skill.id); 
             if (skillButtons.ContainsKey(skill.id))
             {
                 Destroy(skillButtons[skill.id].gameObject);
@@ -66,9 +66,9 @@ public class BattleSkillManager : MonoBehaviour
         }
         else
         {
-            if (ConfigMgr<ChacterCfgItem>.GetInstance.GetConfigItem(0).SkillsEquipped.Count >= 7) return false;
+            if (CharacterConfig.GetInstance.GetConfigItem(0).SkillsEquipped.Count >= 7) return false;
 
-            ConfigMgr<ChacterCfgItem>.GetInstance.GetConfigItem(0).EquipSkill(skill.id); // gán skill vào list
+            logicCharacter.EquipSkill(skill.id); // gán skill vào list
             skillButtons[skill.id] = GetSkillButton((SkillInputType)skill.InputType);
             skillButtons[skill.id].gameObject.SetActive(true);
             skillButtons[skill.id].SetData(logicCharacter, skill);

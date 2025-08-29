@@ -26,10 +26,10 @@ public class DisplayCardAtrribute : MonoBehaviour
 
     void RefreshUI()
     {
-        textInformation.text = mOwner.infomation.ToString();
-        cardGeneral.SetContent(mOwner.general.ToString());
-        cardCombat.SetContent(mOwner.combat.ToString());
-        cardMartialArts.SetContent(mOwner.martialArts.ToString());
-        cardSpiritualRoot.SetContent(mOwner.spiritualRoot.ToString());
+        textInformation.text = mOwner.data.infomation.ToString();
+        cardGeneral.SetContent(mOwner.data.general.ToString());
+        cardCombat.SetContent(mOwner.data.combat.ToString());
+        cardMartialArts.SetContent(mOwner.data.martialArts.ToString());
+        cardSpiritualRoot.SetContent(mOwner.data.spiritualRoot.ToString());
     }
 }

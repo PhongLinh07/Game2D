@@ -13,21 +13,20 @@ public class GameManager : MonoBehaviour
     public GameObject Character;
     public GameObject HighlightController;
 
+    [SerializeField] private SkillConfigSO skillConfigSO;
+    [SerializeField] private ItemConfigSO itemConfigSO;
     public ChacterCfgItem check;
 
     // Start is called before the first frame update
     void Awake()
     {
-        
         Instance = this;
 
-        ConfigMgr<ChacterCfgItem>.GetInstance.InitData();
-        check = ConfigMgr<ChacterCfgItem>.GetInstance.GetConfigItem(0);
+        skillConfigSO.LoadData();
+        itemConfigSO.LoadData();
 
-
-        SpriteConfig.GetInstance.InitData();
-        ConfigMgr<SkillCfgItem>.GetInstance.InitData();
-        ConfigMgr<ItemCfgItem>.GetInstance.InitData();
+        CharacterConfig.GetInstance.InitData();
+        check = CharacterConfig.GetInstance.GetConfigItem(0);
 
     }
 
@@ -61,7 +60,7 @@ public class GameManager : MonoBehaviour
 
     private async void SaveAsync()
     {
-        if (ConfigMgr<ChacterCfgItem>.GetInstance)
-        await ConfigMgr<ChacterCfgItem>.GetInstance.SaveJsonAsync();
+        if (CharacterConfig.GetInstance)
+        await CharacterConfig.GetInstance.SaveJsonAsync();
     }
 }

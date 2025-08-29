@@ -55,7 +55,7 @@ public class EnhanceCfgItem : ConfigItem
         id = other.id;
         Rarity = other.Rarity;
         Level = other.Level;
-        Quantity = ConfigMgr<ItemCfgItem>.GetInstance.GetConfigItem(idItem).Stackable ? other.Quantity : 1;
+        Quantity = ItemConfig.GetInstance.GetConfigItem(idItem).Stackable ? other.Quantity : 1;
         Atk = other.Atk;
         Def = other.Def;
     }
@@ -65,7 +65,7 @@ public class EnhanceCfgItem : ConfigItem
     public string GetDescription()
      {
       string des;
-      ItemCfgItem item = ConfigMgr < ItemCfgItem >.GetInstance.GetConfigItem(idItem);
+      ItemCfgItem item = ItemConfig.GetInstance.GetConfigItem(idItem);
 
       if (item.Stackable)
       {

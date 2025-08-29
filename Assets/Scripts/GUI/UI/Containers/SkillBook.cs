@@ -14,10 +14,10 @@ public class SkillBook : AContainer<SkillCfgItem>
     {
         slotUIs.Clear();
 
-        foreach(int id in ConfigMgr<ChacterCfgItem>.GetInstance.GetConfigItem(0).SkillsLearned)
+        foreach(int id in CharacterConfig.GetInstance.GetConfigItem(0).SkillsLearned)
         {
             SkillCfgItem cpy = new SkillCfgItem();
-            cpy.CopyFrom(ConfigMgr<SkillCfgItem>.GetInstance.GetConfigItem(ConfigMgr<ChacterCfgItem>.GetInstance.GetConfigItem(0).SkillsLearned[id]));
+            cpy.CopyFrom(SkillConfig.GetInstance.GetConfigItem(CharacterConfig.GetInstance.GetConfigItem(0).SkillsLearned[id]));
             datas.Add(cpy);
       
         }
@@ -30,9 +30,9 @@ public class SkillBook : AContainer<SkillCfgItem>
         base.UpdateContainer();
 
         // Cập nhật vào UI
-        foreach(int id in ConfigMgr<ChacterCfgItem>.GetInstance.GetConfigItem(0).SkillsLearned)
+        foreach(int id in CharacterConfig.GetInstance.GetConfigItem(0).SkillsLearned)
         {
-            ((SkillSlotUI)slotUIs[id]).Equip(ConfigMgr<ChacterCfgItem>.GetInstance.GetConfigItem(0).SkillsEquipped.Contains(id));
+            ((SkillSlotUI)slotUIs[id]).Equip(CharacterConfig.GetInstance.GetConfigItem(0).SkillsEquipped.Contains(id));
         }
     }
     public override void OnClick(int id) 

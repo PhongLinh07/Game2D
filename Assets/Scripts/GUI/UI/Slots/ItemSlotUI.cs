@@ -37,12 +37,15 @@ public class ItemSlotUI : ASlotUI, IPointerClickHandler
             Reset();
             return;
         }
+
         dataOfSlot = data as EnhanceCfgItem;
+
+        ItemCfgItem item = ItemConfig.GetInstance.GetConfigItem(dataOfSlot.idItem);
         view.SetActive(true);
         bg.sprite = rarityCell.rarityDict[dataOfSlot.Rarity];
-        icon.sprite = ConfigMgr<ItemCfgItem>.GetInstance.GetConfigItem(dataOfSlot.idItem).Icon;
+        icon.sprite = item.Icon;
         
-        if (ConfigMgr<ItemCfgItem>.GetInstance.GetConfigItem(dataOfSlot.idItem).Stackable)
+        if (item.Stackable)
         {
             quantity.gameObject.SetActive(true);
             quantity.text = dataOfSlot.Quantity.ToString();

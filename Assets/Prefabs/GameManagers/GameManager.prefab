@@ -48,26 +48,43 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bd419fb204cee484780812c3a524a6a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  saveInterval: 30
   Character: {fileID: 0}
   HighlightController: {fileID: 0}
-  R_PlayerData:
+  skillConfigSO: {fileID: 11400000, guid: 4ce11cd8d41e78e49a406cf7be1a0210, type: 2}
+  itemConfigSO: {fileID: 11400000, guid: 76f67792a720ea44b9222d8c01336c03, type: 2}
+  check:
     id: 0
-    name: Vuong That Phong
-    skillsLearned: 0000000001000000020000000300000004000000050000000600000007000000
-    skillsEquipped: 
-    items:
-    - id: 0
-      Data:
-        id: 0
-        Name: 
-        Stackable: 0
-        Icon: {fileID: 0}
-        Description: 
-      Level: 0
-      Rarity: 0
-      Quantity: 0
-      Atk: 10
-      Def: 0
+    infomation:
+      surName: 
+      name: 
+      sect: 
+      race: 
+      sex: 
+    general:
+      lifespan: 0
+      currLifespan: 0
+      vitality: 0
+      currVitality: 0
+      energy: 0
+      currEnergy: 0
+    combat:
+      atk: 0
+      def: 0
+      agility: 0
+    martialArts:
+      sword: 0
+      spear: 0
+    spiritualRoot:
+      wind: 0
+      fire: 0
+      water: 0
+      lightning: 0
+      earth: 0
+      wood: 0
+    SkillsLearned: 
+    SkillsEquipped: 
+    items: []
 --- !u!114 &6095250779407338622
 MonoBehaviour:
   m_ObjectHideFlags: 0
