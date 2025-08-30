@@ -6,24 +6,31 @@ using UnityHFSM;
 
 public class LogicCharacter : LogicUnit
 {
-    public CharacterUnit mOwner;
+    public static LogicCharacter Instance;
+
+    [SerializeField] private CharacterUnit mOwner;
     private StateMachine<EAnimParametor, EFsmAction> fsm;
     private Rigidbody2D rb;
     private AnimatorController animatorController;
     private PlayerInputHandler playerInputHandler;
 
-    public Transform bottomTrans;
-    public Transform centerTrans;
-   
-    public Action OnStatsChanged; // only ui stats
+    public Transform transBottom;
+    public Transform transCenter;
 
+    public Action OnStatsChanged; // only ui stats
+    
+
+    private void Awake()
+    {
+        Instance = this;
+    }
     private void Start()
     {
         rb = GetComponent<Rigidbody2D>();
-        mOwner = GetComponent<CharacterUnit>(); mOwner.mlogic = this;
+        mOwner = GetComponent<CharacterUnit>();
         animatorController = GetComponent<AnimatorController>();
         playerInputHandler = GetComponent<PlayerInputHandler>();
-        
+        if (!mOwner) Debug.Log("null");
         InitData();
     }
     public override void InitData()
@@ -44,7 +51,7 @@ public class LogicCharacter : LogicUnit
             onEnter: ctx => { animatorController.SetState(EAnimParametor.Run); },
             onLogic: ctx =>
             {
-                rb.velocity = playerInputHandler.moveInput * mOwner.data.combat.agility;
+                rb.velocity = playerInputHandler.moveInput * mOwner.Data.combat.agility;
                 if (playerInputHandler.moveInput.magnitude < 0.01f) fsm?.RequestStateChange(EAnimParametor.Idle);
             },
             onExit: ctx => rb.velocity = Vector2.zero
@@ -56,10 +63,30 @@ public class LogicCharacter : LogicUnit
 
     }
 
+
     void Update()
     {
         fsm.OnLogic();
+
+        mOwner.SetPosition(transform.position);
     }
+
+    public CharacterCfgItem Data
+    {
+        get { return mOwner.Data; }
+    }
+
+
+    public Vector2 GetPosition()
+    {
+        return transform.position;
+    }
+
+    public override void Teleport(Vector2 position)
+    {
+        transform.position = position;
+    }
+
     public override void TakeDamage(int damage)
     {
         mOwner.TakeDamage(damage);

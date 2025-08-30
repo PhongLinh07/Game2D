@@ -4,45 +4,66 @@ using Unity.VisualScripting;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
 using UnityHFSM;
+using static UnityEngine.UI.CanvasScaler;
 
 public class LogicMonster : LogicUnit
 {
     public MonsterUnit mOwner;
     public StateMachine<EAnimParametor, EFsmAction> fsm;
-    private Rigidbody2D rb;
+    public Rigidbody2D rb;
     private SpriteRenderer spriteRenderer;
-    private EnemyAnimatorController animatorController;
-    private EnemyAIController enemyAIController;
+    public EnemyAnimatorController animatorController;
+
+
+    private EnemyCombatBase combatSystem;
+    [SerializeField] private GameObject imageDie;
 
     public Vector2 directionToTarget = Vector2.zero;
     private float distanceToTarget = 100.0f;
 
 
-    public Transform transOfPlayer;
+    public Transform currentTarget; //vị trí đứng
+    public Transform centerTarget; //vị trí tim 
+    public Vector2 lockTarget; // hướng tấn công cuối
+
     public float chaseRadius;
     public float attackRadius;
 
     public StatusBar hp;
 
-    private void Start()
+    
+
+    private void Awake()
     {
         rb = GetComponent<Rigidbody2D>();
         spriteRenderer = GetComponent<SpriteRenderer>();
         mOwner = GetComponent<MonsterUnit>();
         animatorController = GetComponent<EnemyAnimatorController>();
-        enemyAIController = GetComponent<EnemyAIController>();
 
         hp.Init(mOwner.general.vitality, mOwner.general.vitality);
         hp.gameObject.SetActive(false);
 
+        Bootstrapper.Instance.eventWhenCloneCharacter += Init;
+    }
+  
+    private void Init(LogicCharacter logicCharacter)
+    {
+        Bootstrapper.Instance.eventWhenCloneCharacter -= Init;
+        currentTarget = logicCharacter.transBottom;
+        centerTarget = logicCharacter.transCenter;
+
         InitData();
+
+        combatSystem = GetComponent<EnemyCombatBase>();
+        combatSystem.Init(this);
+        
+        Inited = true;
+        fsm.SetStartState(EAnimParametor.Idle);
+        fsm.Init();
     }
     public override void InitData()
-    {
+    {        
         fsm = new StateMachine<EAnimParametor, EFsmAction>();
-
-
-        fsm.AddState(EAnimParametor.None);
 
         // IDLE
         fsm.AddState(EAnimParametor.Idle,
@@ -53,15 +74,16 @@ public class LogicMonster : LogicUnit
             },
             onLogic: ctx =>
             {
-                if (isAttacking) return;
-
                 if (distanceToTarget <= attackRadius)
                 {
+                    if (!combatSystem.Recovered()) return;
+  
                     direction = directionToTarget;
-                    enemyAIController?.HandleAttackRequest();
-                    Pause();
+
+                    fsm?.RequestStateChange(EAnimParametor.Attack);
+  
                 }
-                else if (distanceToTarget <= chaseRadius)
+                else if (distanceToTarget <= chaseRadius )
                 {
                     fsm?.RequestStateChange(EAnimParametor.Run);
                 }
@@ -74,8 +96,6 @@ public class LogicMonster : LogicUnit
             onEnter: ctx => { animatorController.SetState(EAnimParametor.Run); },
             onLogic: ctx =>
             {
-                if (isAttacking) return; // ✅ Không di chuyển khi tấn công
-
                 rb.velocity = directionToTarget * mOwner.combat.agility;
 
                 if (distanceToTarget <= attackRadius || distanceToTarget > chaseRadius)
@@ -87,32 +107,47 @@ public class LogicMonster : LogicUnit
         );
 
 
-
         fsm.SetStartState(EAnimParametor.Idle);
         fsm.Init();
 
+
     }
 
-    private void Pause() => fsm?.RequestStateChange(EAnimParametor.None);
-    public void Resume() => fsm?.RequestStateChange(EAnimParametor.Idle);
-
-    public void UpdateMovement()
+   
+    private void Update()
     {
-        directionToTarget = transOfPlayer.position - transform.position;
-        distanceToTarget = directionToTarget.magnitude;
-        directionToTarget = directionToTarget.normalized;
+        if(!Inited) return;
 
-        if (directionToTarget.x != 0.0f)
+
+        if(!isAttacking && combatSystem.Recovered())
         {
-            spriteRenderer.flipX = directionToTarget.x < -0.01f;
+            directionToTarget = currentTarget.position - transform.position;
+            distanceToTarget = directionToTarget.magnitude;
+            directionToTarget = directionToTarget.normalized;
+
+
+            if (directionToTarget.x != 0.0f)
+            {
+                spriteRenderer.flipX = directionToTarget.x < -0.01f;
+            }
         }
+        
         fsm.OnLogic();
+       
     }
+
 
     public override void TakeDamage(int damage)
     {
         mOwner.TakeDamage(damage);
         UpdateUI();
+        if (hp.currValue <= 0)
+        {
+            GameObject go = Instantiate(imageDie, transform.position, Quaternion.identity);
+            go.GetComponent<SpriteRenderer>().flipX = spriteRenderer.flipX;
+            Destroy(gameObject);
+            return;
+        }
     }
 
     public void Heal(int amount)

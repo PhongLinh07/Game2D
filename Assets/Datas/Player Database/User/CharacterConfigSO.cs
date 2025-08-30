@@ -9,7 +9,7 @@ using UnityEngine;
 [CreateAssetMenu(menuName = "DataBase/Character")]
 public class CharacterConfigSO : ScriptableObject
 {
-    public List<ChacterCfgItem> datas;
+    public List<CharacterCfgItem> datas;
 
 }
 

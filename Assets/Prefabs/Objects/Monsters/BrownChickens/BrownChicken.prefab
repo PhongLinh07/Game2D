@@ -168,11 +168,10 @@ GameObject:
   - component: {fileID: 5165317261729861238}
   - component: {fileID: 5163677868624102427}
   - component: {fileID: 4602105549745643959}
-  - component: {fileID: 4896158605407554399}
   - component: {fileID: 8728386278142393459}
   - component: {fileID: 6422522355986854107}
-  - component: {fileID: 8565506785326772856}
   - component: {fileID: 3174662621496664931}
+  - component: {fileID: 8565506785326772856}
   m_Layer: 8
   m_Name: BrownChicken
   m_TagString: Enemy
@@ -398,23 +397,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 6074993429343818348}
---- !u!114 &4896158605407554399
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5781951859754242787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 180d8fd7dcccfe54bb97ab7843949244, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 1
-  currentTarget: {fileID: 0}
-  mOwner: {fileID: 0}
-  logicMonster: {fileID: 8565506785326772856}
-  imageDie: {fileID: 2430523890293892865, guid: 7081f2af393bc0444bfa391d20ea1cfe, type: 3}
 --- !u!114 &8728386278142393459
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -445,29 +427,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bulletPrefab: {fileID: 636068008695820487, guid: 6d0378802791cea41801b29a1efe5687, type: 3}
   poolSize: 5
---- !u!114 &8565506785326772856
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5781951859754242787}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e0afa493d214e1458242141891b17cd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  position: {x: 0, y: 0}
-  direction: {x: 0, y: 0}
-  isAttacking: 0
-  state: 8
-  fsmAction: 0
-  mOwner: {fileID: 3174662621496664931}
-  directionToTarget: {x: 0, y: 0}
-  transOfPlayer: {fileID: 0}
-  chaseRadius: 20
-  attackRadius: 10
-  hp: {fileID: 3654808525173275245}
 --- !u!114 &3174662621496664931
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,6 +457,32 @@ MonoBehaviour:
     def: 0
     agility: 0
   mlogic: {fileID: 8565506785326772856}
+--- !u!114 &8565506785326772856
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5781951859754242787}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e0afa493d214e1458242141891b17cd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  position: {x: 0, y: 0}
+  direction: {x: 0, y: 0}
+  isAttacking: 0
+  state: 8
+  fsmAction: 0
+  mOwner: {fileID: 3174662621496664931}
+  rb: {fileID: 0}
+  animatorController: {fileID: 0}
+  imageDie: {fileID: 2430523890293892865, guid: 7081f2af393bc0444bfa391d20ea1cfe, type: 3}
+  directionToTarget: {x: 0, y: 0}
+  currentTarget: {fileID: 0}
+  chaseRadius: 20
+  attackRadius: 10
+  hp: {fileID: 3654808525173275245}
 --- !u!1 &6466012509607969988
 GameObject:
   m_ObjectHideFlags: 0

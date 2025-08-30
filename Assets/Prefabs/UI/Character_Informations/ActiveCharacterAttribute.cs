@@ -6,24 +6,28 @@ using UnityEngine.UI;
 
 public class ActiveCharacterAttribute : MonoBehaviour
 {
-    public Button openButton;
+    public static ActiveCharacterAttribute Instance;
     public Button closeButton;
-    public GameObject charAttribute;
-    
+    public GameObject panel;
+
+    private void Awake()
+    {
+        Instance = this;
+    }
 
     void Start()
     {
-        openButton.onClick.AddListener(OpenThis);
         closeButton.onClick.AddListener(CloseThis);
+        HUDController.Instance.avatar.onClick.AddListener(OpenThis);
     }
 
     public void OpenThis()
     {
-        charAttribute.SetActive(true);
+        panel.SetActive(true);
     }
     public void CloseThis()
     {
-        charAttribute.SetActive(false);
+        panel.SetActive(false);
     }
 
 }

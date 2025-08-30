@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class DisplayCardAtrribute : MonoBehaviour
 {
-    [SerializeField] private CharacterUnit mOwner;
+    [SerializeField] private CharacterCfgItem mOwner;
 
     public TextMeshProUGUI textInformation;
     public UICard cardGeneral;
@@ -15,21 +15,22 @@ public class DisplayCardAtrribute : MonoBehaviour
 
     void OnEnable()
     {
-        mOwner.mlogic.OnStatsChanged += RefreshUI;
+        mOwner = LogicCharacter.Instance.Data;
+        LogicCharacter.Instance.OnStatsChanged += RefreshUI;
         RefreshUI();
     }
 
     void OnDisable()
     {
-        mOwner.mlogic.OnStatsChanged -= RefreshUI;
+        LogicCharacter.Instance.OnStatsChanged -= RefreshUI;
     }
 
     void RefreshUI()
     {
-        textInformation.text = mOwner.data.infomation.ToString();
-        cardGeneral.SetContent(mOwner.data.general.ToString());
-        cardCombat.SetContent(mOwner.data.combat.ToString());
-        cardMartialArts.SetContent(mOwner.data.martialArts.ToString());
-        cardSpiritualRoot.SetContent(mOwner.data.spiritualRoot.ToString());
+        textInformation.text = mOwner.infomation.ToString();
+        cardGeneral.SetContent(mOwner.general.ToString());
+        cardCombat.SetContent(mOwner.combat.ToString());
+        cardMartialArts.SetContent(mOwner.martialArts.ToString());
+        cardSpiritualRoot.SetContent(mOwner.spiritualRoot.ToString());
     }
 }

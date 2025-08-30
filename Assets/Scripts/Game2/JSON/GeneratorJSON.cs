@@ -11,7 +11,7 @@ public class GeneratorJSON : MonoBehaviour
     // Start is called before the first frame update
     void Awake()
     {
-        CharacterConfig.GetInstance.ExportToJson(chacterCfgItemSO.datas, typeof(ChacterCfgItem).Name);
+        CharacterConfig.GetInstance.ExportToJson(chacterCfgItemSO.datas, typeof(CharacterCfgItem).Name);
     }
 
 }

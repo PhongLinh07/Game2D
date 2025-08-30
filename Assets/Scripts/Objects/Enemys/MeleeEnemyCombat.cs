@@ -15,51 +15,37 @@ public class MeleeEnemyCombat : EnemyCombatBase
     {
         box2D = GetComponent<BoxCollider2D>();
     }
+
+
     protected override void SetupFSM()
     {
-        fsm = new StateMachine<EAnimParametor, EFsmAction>();
-
-        // IDLE
-        fsm.AddState(EAnimParametor.None);
-
-        fsm.AddState(EAnimParametor.Attack,
+        _logicMonster.fsm.AddState(EAnimParametor.Attack,
             onEnter: ctx =>
             {
-                animatorController.SetState(EAnimParametor.Attack);
+                _logicMonster.animatorController.SetState(EAnimParametor.Attack);
 
-                rb.velocity = Vector2.zero;
+                _logicMonster.rb.velocity = Vector2.zero;
+
+                _logicMonster.isAttacking = true;
             },
             onLogic: ctx =>
             {
-                rb.velocity = isAttackPhase * logicMonster.direction * ai.mOwner.combat.agility * 10.0f;
+                _logicMonster.rb.velocity = isAttackPhase * _logicMonster.direction * _logicMonster.mOwner.combat.agility * 10.0f;
                 PivotNormalized();
             },
             onExit: ctx =>
-            {
-                rb.velocity = Vector2.zero; // đảm bảo đứng yên
-
-                isAttackPhase = 0; 
-                ai.HandleAttackFinished();
+            {      
+                isAttackPhase = 0;
+                _logicMonster.isAttacking = false;
             }
         );
 
-        
-        fsm.SetStartState(EAnimParametor.None);
-        fsm.Init();
-
-        //ký sinh tạm thời 
-        SetRecoveryTime(recoveryTime);
+        SetRecoveryTime(recoveryTime);//try
     }
 
     public override EnemyAttackType GetAttackType() => EnemyAttackType.Melee;
 
-    public void DoAttackIfReady()
-    {
-        if (!Recovered()) return;
-
-        fsm?.RequestStateChange(EAnimParametor.Attack);
-    }
-
+    
     private void DealDamage()
     {
         isAttackPhase = 1;
@@ -68,7 +54,7 @@ public class MeleeEnemyCombat : EnemyCombatBase
 
         if (hit)
         {
-            hit.gameObject.GetComponent<LogicUnit>().TakeDamage(ai.mOwner.combat.atk);
+            hit.gameObject.GetComponent<LogicUnit>().TakeDamage(_logicMonster.mOwner.combat.atk);
         }
 
     }

@@ -8,5 +8,18 @@ using UnityEngine.UI;
 
 public class MonsterUnit : UnitStats
 {
-    public LogicMonster mlogic;
+    public Information infomation;
+    public General general;
+    public Combat combat;
+
+    public override void SetPosition(Vector2 position) { }
+    public override int TakeDamage(int damage)
+    {
+        return general.currVitality = Mathf.Clamp(general.currVitality - damage, 0, general.vitality);
+    }
+
+    public override int Heal(int amount)
+    {
+        return general.currVitality = Mathf.Clamp(general.currVitality + amount, 0, general.vitality);
+    }
 }

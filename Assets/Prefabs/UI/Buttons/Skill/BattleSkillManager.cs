@@ -33,11 +33,13 @@ public class BattleSkillManager : MonoBehaviour
     {
         Instance = this;
     }
+
     void Start()
     {
-        for (int i = 0; i < CharacterConfig.GetInstance.GetConfigItem(0).SkillsEquipped.Count; i++)
+        logicCharacter = LogicCharacter.Instance;
+        for (int i = 0; i < logicCharacter.Data.SkillsEquipped.Count; i++)
         {
-            SkillCfgItem skill = SkillConfig.GetInstance.GetConfigItem(CharacterConfig.GetInstance.GetConfigItem(0).SkillsEquipped[i]);
+            SkillCfgItem skill = SkillConfig.GetInstance.GetConfigItem(logicCharacter.Data.SkillsEquipped[i]);
             if (skill == null)
             {
                 Debug.Log("skill Null");
@@ -54,7 +56,7 @@ public class BattleSkillManager : MonoBehaviour
 
     public bool EquipSKill(SkillCfgItem skill)
     {
-        if (logicCharacter.mOwner.data.SkillsEquipped.Contains(skill.id)) // nếu đã tồn tại thì remove
+        if (logicCharacter.Data.SkillsEquipped.Contains(skill.id)) // nếu đã tồn tại thì remove
         {
             logicCharacter.UnequipSkill(skill.id); 
             if (skillButtons.ContainsKey(skill.id))
@@ -66,7 +68,7 @@ public class BattleSkillManager : MonoBehaviour
         }
         else
         {
-            if (CharacterConfig.GetInstance.GetConfigItem(0).SkillsEquipped.Count >= 7) return false;
+            if (logicCharacter.Data.SkillsEquipped.Count >= 7) return false;
 
             logicCharacter.EquipSkill(skill.id); // gán skill vào list
             skillButtons[skill.id] = GetSkillButton((SkillInputType)skill.InputType);

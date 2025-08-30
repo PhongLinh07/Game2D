@@ -3,21 +3,14 @@ using UnityHFSM;
 
 public abstract class EnemyCombatBase : MonoBehaviour, IEnemyCombat
 {
-    protected EnemyAIController ai;
-    protected Rigidbody2D rb;
-    protected StateMachine<EAnimParametor, EFsmAction> fsm;
+
     private float _lastAttackTime;
     protected float _recoveryTime;
-    protected EnemyAnimatorController animatorController;
-    protected LogicMonster logicMonster;
+    protected LogicMonster _logicMonster;
 
-    public virtual void Init(EnemyAIController aiController)
+    public void Init(LogicMonster logicMonster)
     {
-        ai = aiController;
-        rb = GetComponent<Rigidbody2D>();
-        animatorController = GetComponent<EnemyAnimatorController>();
-        logicMonster = GetComponent<LogicMonster>();
-
+        _logicMonster = logicMonster;
         _lastAttackTime = 0.0f;
         _recoveryTime = 0.0f;
         SetupFSM();
@@ -28,14 +21,10 @@ public abstract class EnemyCombatBase : MonoBehaviour, IEnemyCombat
         _recoveryTime = time;
     }
 
-    public virtual void UpdateCombat()
-    {
-        fsm?.OnLogic();
-    }
 
     public virtual void ResetCombat()
     {
-        fsm?.RequestStateChange(EAnimParametor.None);
+        _logicMonster.fsm?.RequestStateChange(EAnimParametor.Idle);
         _lastAttackTime = Time.time;
     }
 

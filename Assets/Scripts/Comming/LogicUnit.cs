@@ -10,14 +10,14 @@ public class LogicUnit : MonoBehaviour
     public EAnimParametor state = EAnimParametor.Idle;
     public EFsmAction fsmAction = 0;
 
-
+    protected bool Inited = false;
     public virtual void InitData() { }
 
     public virtual void HandleFsmAction(EFsmAction action) { }
 
     public virtual void StopMove() { }
 
-    public virtual void Move(float mult) { }
+    public virtual void Teleport(Vector2 position) { }
 
     public virtual void UpdateUI() { }
 

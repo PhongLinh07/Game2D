@@ -24,6 +24,6 @@ public class SkillTeleport : ASkillLogic
 
     void Teleport()
     {
-        GameManager.Instance.Character.transform.position = posCast;
+        LogicCharacter.Instance.Teleport(posCast);
     }
 }

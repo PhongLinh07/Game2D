@@ -7,8 +7,6 @@ public enum EnemyAttackType { Melee, Ranged }
 
 public interface IEnemyCombat
 {
-    void Init(EnemyAIController aiController);
-    void UpdateCombat();
     EnemyAttackType GetAttackType();
     void ResetCombat();
 }

@@ -5,6 +5,19 @@ public class CameraFollow : MonoBehaviour
     public Transform owner;        // Player hoặc đối tượng muốn theo
     private float smoothSpeed = 3.5f;
     public Vector3 offset = new Vector3(0.0f, 0.0f, -10);
+
+    private void Awake()
+    {
+        Bootstrapper.Instance.eventWhenCloneCharacter += Init;
+    }
+
+    private void Init(LogicCharacter logicCharacter)
+    {
+        Bootstrapper.Instance.eventWhenCloneCharacter -= Init;
+        owner = logicCharacter.transCenter;
+
+        transform.position = owner.position + offset;
+    }
     void FixedUpdate()
     {
         if (owner == null) return;

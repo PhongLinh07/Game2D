@@ -286,7 +286,6 @@ GameObject:
   - component: {fileID: 7717049506798836073}
   - component: {fileID: 9157689028259663389}
   - component: {fileID: 2524696757047403000}
-  - component: {fileID: 8447732144671145103}
   - component: {fileID: 6762745035437304704}
   - component: {fileID: 8897395358443581444}
   m_Layer: 8
@@ -538,23 +537,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   animator: {fileID: 8820558193993926142}
---- !u!114 &8447732144671145103
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8467449568649580763}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 180d8fd7dcccfe54bb97ab7843949244, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  currentTarget: {fileID: 0}
-  mOwner: {fileID: 0}
-  logicMonster: {fileID: 8897395358443581444}
-  imageDie: {fileID: 5866718738098012018, guid: a6b85058152e9da45aab059ac1e64519, type: 3}
 --- !u!114 &6762745035437304704
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -567,23 +549,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4cc22332b5b01c5438649bc20c0035ef, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  infomation:
-    surName: 
-    name: 
-    sect: 
-    race: 
-    sex: 
-  general:
-    lifespan: 0
-    currLifespan: 0
-    vitality: 200
-    currVitality: 200
-    energy: 0
-    currEnergy: 0
-  combat:
-    atk: 0
-    def: 0
-    agility: 10
 --- !u!114 &8897395358443581444
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -602,8 +567,11 @@ MonoBehaviour:
   state: 8
   fsmAction: 0
   mOwner: {fileID: 9184128418710548452}
+  rb: {fileID: 0}
+  animatorController: {fileID: 0}
+  imageDie: {fileID: 5866718738098012018, guid: a6b85058152e9da45aab059ac1e64519, type: 3}
   directionToTarget: {x: 0, y: 0}
-  transOfPlayer: {fileID: 0}
+  currentTarget: {fileID: 0}
   chaseRadius: 15
   attackRadius: 10
   hp: {fileID: 4947739695708789790}

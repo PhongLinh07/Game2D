@@ -113,20 +113,9 @@ public class SpiritualRoot
     }
 }
 
-[System.Serializable]
 public class UnitStats : MonoBehaviour
 {
-    public Information infomation;
-    public General general;
-    public Combat combat;
-
-    public virtual int TakeDamage(int damage)
-    {
-        return general.currVitality = Mathf.Clamp(general.currVitality - damage, 0, general.vitality);
-    }
-
-    public virtual int Heal(int amount)
-    {
-        return general.currVitality = Mathf.Clamp(general.currVitality + amount, 0, general.vitality);
-    }
+    public virtual void SetPosition(Vector2 position) { }
+    public virtual int TakeDamage(int damage) { return 0; }
+    public virtual int Heal(int amount) { return 0; }
 }

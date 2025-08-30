@@ -19,7 +19,7 @@ public class PickUpItem : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        mTransOfChar = GameManager.Instance.Character.transform;
+       // mTransOfChar = GameManager.Instance.Character.transform;
     }
 
 

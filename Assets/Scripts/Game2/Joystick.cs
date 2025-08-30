@@ -3,10 +3,19 @@ using UnityEngine.EventSystems;
 
 public class Joystick : MonoBehaviour, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
+    public static Joystick Instance { get; private set; }
+
     public RectTransform background;  // Nền joystick
     public RectTransform handle;      // Cần joystick
     public Vector2 input;             // Giá trị di chuyển -1..1
 
+    private void Awake()
+    {
+        if (Instance == null)
+        {
+            Instance = this;
+        }
+    }
     public void OnPointerDown(PointerEventData eventData)
     {
         OnDrag(eventData);

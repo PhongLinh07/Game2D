@@ -1,13 +1,23 @@
 ﻿using System.Collections.Generic;
 using Unity.VisualScripting;
+using UnityEngine;
 using UnityEngine.Rendering;
 
 [System.Serializable]
 public class CharacterUnit : UnitStats
 {
-    public LogicCharacter mlogic;
+    [SerializeField] private CharacterCfgItem data;
 
-    public ChacterCfgItem data;
+    private void Awake()
+    {
+        data = CharacterConfig.GetInstance.GetConfigItem(0);
+    }
+
+    public CharacterCfgItem Data
+    {
+        get { return data; }       // bên ngoài chỉ đọc
+        private set { data = value; } // chỉ class này mới gán
+    }
 
     public void EquipSkill(int idSkill)
     {
@@ -23,6 +33,20 @@ public class CharacterUnit : UnitStats
         {
             data.SkillsEquipped.Remove(idSkill);
         }
+    }
+
+    public override void SetPosition(Vector2 position)
+    {
+        data.position = position;
+    }
+    public override int TakeDamage(int damage)
+    {
+        return data.general.currVitality = Mathf.Clamp(data.general.currVitality - damage, 0, data.general.vitality);
+    }
+
+    public override int Heal(int amount)
+    {
+        return data.general.currVitality = Mathf.Clamp(data.general.currVitality + amount, 0, data.general.vitality);
     }
 
 }

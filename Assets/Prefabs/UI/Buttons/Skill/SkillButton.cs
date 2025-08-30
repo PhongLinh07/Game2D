@@ -51,7 +51,7 @@ public abstract class ISkillButton : MonoBehaviour
     protected override void CastSkill(params object[] args)
     {
         if (data.Logic == null) return;
-        StartCoroutine(data.Logic.Cast((Vector2)(logicCharacter.bottomTrans.position)));
+        StartCoroutine(data.Logic.Cast((Vector2)(logicCharacter.GetPosition())));
     }
 
     // Hiển thị cooldown
