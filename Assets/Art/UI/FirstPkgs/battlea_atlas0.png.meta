@@ -361,6 +361,27 @@ TextureImporter:
       indices: 
       edges: []
       weights: []
+    - serializedVersion: 2
+      name: battlea_atlas0_12
+      rect:
+        serializedVersion: 2
+        x: 729
+        y: 1118
+        width: 67
+        height: 98
+      alignment: 9
+      pivot: {x: 1, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 44bdb31a84db4eb4ca343fdbb90347f7
+      internalID: 1826050491
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
     outline: []
     physicsShape: []
     bones: []
@@ -376,6 +397,7 @@ TextureImporter:
       battlea_atlas0_1: 1875456135
       battlea_atlas0_10: -28598455
       battlea_atlas0_11: 1056329070
+      battlea_atlas0_12: 1826050491
       battlea_atlas0_2: 1611241325
       battlea_atlas0_3: -1614564998
       battlea_atlas0_4: -379030843

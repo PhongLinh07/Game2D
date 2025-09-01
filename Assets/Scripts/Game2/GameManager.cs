@@ -37,14 +37,13 @@ public class GameManager : MonoBehaviour
             SaveAsync();
     }
 
-    private void OnApplicationQuit()
+    private void OnApplicationQuit() 
     {
         SaveAsync();
     }
 
     private async void SaveAsync()
     {
-        if (CharacterConfig.GetInstance)
-        await CharacterConfig.GetInstance.SaveJsonAsync();
+        if (CharacterConfig.GetInstance) await CharacterConfig.GetInstance.SaveJsonAsync();
     }
 }

@@ -114,3 +114,17 @@ MonoBehaviour:
       Quantity: 0
       Atk: 0
       Def: 0
+    attributes:
+    - attribute: 0
+      value: 200
+    - attribute: 1
+      value: 7
+    - attribute: 5
+      value: 7
+    - attribute: 0
+      value: 0
+    - attribute: 14
+      value: 0
+    positionX: 0
+    positionY: 0
+    idPrefab: 1

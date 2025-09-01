@@ -1,6 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics.Contracts;
 using UnityEngine;
+using UnityEngine.AddressableAssets;
+using UnityEngine.ResourceManagement.AsyncOperations;
 using UnityEngine.SceneManagement;
 
 public class Bootstrapper : MonoBehaviour
@@ -12,10 +15,9 @@ public class Bootstrapper : MonoBehaviour
     [SerializeField] private CharacterConfigSO charConfigSO;
 
 
-    [SerializeField] private GameObject characterPrefab;
-
     public Action<LogicCharacter> eventWhenCloneCharacter;
 
+    private AssetManager assetManager = new();
 
     void Awake()
     {
@@ -26,20 +28,13 @@ public class Bootstrapper : MonoBehaviour
         SceneManager.sceneLoaded += OnSceneLoaded;
 
         InitData();
-    } 
-    
-    public void Start()
-    {
-        Application.targetFrameRate = 60;
-        QualitySettings.vSyncCount = 0; // Tắt VSync để FPS thực sự giới hạn bởi targetFrameRate
-
-        SceneManager.LoadScene("GamePlay");
     }
 
     public void InitData()
     {
-        skillConfigSO.LoadData();
-        itemConfigSO.LoadData();
+        assetManager.LoadAsset<SkillConfigSO>(EAsset.SkillConfigSO, (data) => { data.LoadData(); assetManager.ReleaseAsset(EAsset.SkillConfigSO); });
+        assetManager.LoadAsset<ItemConfigSO>(EAsset.ItemConfigSO, (data) => { data.LoadData(); assetManager.ReleaseAsset(EAsset.ItemConfigSO); });
+        
 
         if (CharacterConfig.GetInstance.InitData() == null)
         {
@@ -50,33 +45,43 @@ public class Bootstrapper : MonoBehaviour
         else
         {
             Debug.Log("Loaded ChacterCfgItem!");
-            
+
         }
 
     }
 
+    public void Start()
+    {
+        Application.targetFrameRate = 60;
+        QualitySettings.vSyncCount = 0; // Tắt VSync để FPS thực sự giới hạn bởi targetFrameRate
+
+        SceneManager.LoadScene("GamePlay");
+        
+    }
 
     private void OnSceneLoaded(Scene scene, LoadSceneMode mode)
     {
         if (scene.name == "GamePlay")
         {
-            SpawnPlayer();
-        }
+            assetManager.LoadAsset<GameObject>(CharacterConfig.GetInstance.GetConfigItem(0).idPrefab, SpawnPlayer);
+        }  
     }
 
-    private void SpawnPlayer()
+    private void SpawnPlayer(GameObject prefab)
     {
+
         if (GameObject.FindWithTag("Player") == null)
         {
-            var player = Instantiate(characterPrefab, CharacterConfig.GetInstance.GetConfigItem(0).position, Quaternion.identity);
+            var player = Instantiate(prefab, CharacterConfig.GetInstance.GetConfigItem(0).position, Quaternion.identity);
 
             eventWhenCloneCharacter?.Invoke(player.GetComponent<LogicCharacter>());
-          
+
+            Debug.Log("Create character Succeeded!");
+
+            assetManager.ReleaseAsset(CharacterConfig.GetInstance.GetConfigItem(0).idPrefab);
+
         }
     }
-
-
-
 }
 
 

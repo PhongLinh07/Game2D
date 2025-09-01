@@ -237,7 +237,7 @@ MonoBehaviour:
   skillConfigSO: {fileID: 11400000, guid: 4ce11cd8d41e78e49a406cf7be1a0210, type: 2}
   itemConfigSO: {fileID: 11400000, guid: 76f67792a720ea44b9222d8c01336c03, type: 2}
   charConfigSO: {fileID: 11400000, guid: b65560dcf87e22446b40f20a65238f09, type: 2}
-  characterPrefab: {fileID: 7312119166183241765, guid: 4197fee947dc61f4f8b778a8df6b8f42, type: 3}
+  prefabConfigSO: {fileID: 11400000, guid: 19203847de1371d41805843037eb1ba6, type: 2}
 --- !u!1 &712461113
 GameObject:
   m_ObjectHideFlags: 0

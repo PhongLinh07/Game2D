@@ -16,6 +16,7 @@ public class LogicUnit : MonoBehaviour
     public virtual void HandleFsmAction(EFsmAction action) { }
 
     public virtual void StopMove() { }
+    public virtual void Move() { }
 
     public virtual void Teleport(Vector2 position) { }
 

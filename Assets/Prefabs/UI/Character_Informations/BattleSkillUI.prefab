@@ -156,7 +156,7 @@ MonoBehaviour:
   skillButtonPrefab: {fileID: 4174830059804905361, guid: b3932fb2a4571814f96a50feae20bfcc, type: 3}
   dragSkillButtonPrefab: {fileID: 8461309776412949641, guid: 805d419c915958a49b4c18d13b365d5f, type: 3}
   rotateSkillButtonPrefab: {fileID: 1072840170447304877, guid: 9e5d85ee1ffdb224d976b1ed01cd291a, type: 3}
-  logicCharacter: {fileID: 0}
+  _logicCharacter: {fileID: 0}
 --- !u!1 &6694387204211110297
 GameObject:
   m_ObjectHideFlags: 0

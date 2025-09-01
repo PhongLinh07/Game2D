@@ -24,7 +24,7 @@ public class BattleSkillManager : MonoBehaviour
     public GameObject rotateSkillButtonPrefab;
 
     [SerializeField]
-    private LogicCharacter logicCharacter;
+    private LogicCharacter _logicCharacter;
 
     public static BattleSkillManager Instance;
 
@@ -32,14 +32,20 @@ public class BattleSkillManager : MonoBehaviour
     void Awake()
     {
         Instance = this;
+        Bootstrapper.Instance.eventWhenCloneCharacter += Init;
+
     }
 
-    void Start()
+
+
+    private void Init(LogicCharacter logicCharacter)
     {
-        logicCharacter = LogicCharacter.Instance;
-        for (int i = 0; i < logicCharacter.Data.SkillsEquipped.Count; i++)
+        Bootstrapper.Instance.eventWhenCloneCharacter -= Init;
+        _logicCharacter = logicCharacter;
+
+        for (int i = 0; i < _logicCharacter.Data.SkillsEquipped.Count; i++)
         {
-            SkillCfgItem skill = SkillConfig.GetInstance.GetConfigItem(logicCharacter.Data.SkillsEquipped[i]);
+            SkillCfgItem skill = SkillConfig.GetInstance.GetConfigItem(_logicCharacter.Data.SkillsEquipped[i]);
             if (skill == null)
             {
                 Debug.Log("skill Null");
@@ -49,16 +55,16 @@ public class BattleSkillManager : MonoBehaviour
             ISkillButton newSkillButton = GetSkillButton((SkillInputType)skill.InputType);
 
             newSkillButton.gameObject.SetActive(true);
-            newSkillButton.SetData(logicCharacter, skill);
+            newSkillButton.SetData(_logicCharacter, skill);
             skillButtons.Add(skill.id, newSkillButton);
         }
     }
 
     public bool EquipSKill(SkillCfgItem skill)
     {
-        if (logicCharacter.Data.SkillsEquipped.Contains(skill.id)) // nếu đã tồn tại thì remove
+        if (_logicCharacter.Data.SkillsEquipped.Contains(skill.id)) // nếu đã tồn tại thì remove
         {
-            logicCharacter.UnequipSkill(skill.id); 
+            _logicCharacter.UnequipSkill(skill.id); 
             if (skillButtons.ContainsKey(skill.id))
             {
                 Destroy(skillButtons[skill.id].gameObject);
@@ -68,12 +74,12 @@ public class BattleSkillManager : MonoBehaviour
         }
         else
         {
-            if (logicCharacter.Data.SkillsEquipped.Count >= 7) return false;
+            if (_logicCharacter.Data.SkillsEquipped.Count >= 7) return false;
 
-            logicCharacter.EquipSkill(skill.id); // gán skill vào list
+            _logicCharacter.EquipSkill(skill.id); // gán skill vào list
             skillButtons[skill.id] = GetSkillButton((SkillInputType)skill.InputType);
             skillButtons[skill.id].gameObject.SetActive(true);
-            skillButtons[skill.id].SetData(logicCharacter, skill);
+            skillButtons[skill.id].SetData(_logicCharacter, skill);
             return true;
         }
 

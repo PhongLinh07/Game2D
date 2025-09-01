@@ -29,6 +29,7 @@ public class CharacterConfig : SingletonBase<CharacterConfig>
         foreach (var row in mDatas)
         {
             if (row == null || row.id < 0) continue;
+            row.Init();
             mCfgDict[row.id] = row;
         }
 

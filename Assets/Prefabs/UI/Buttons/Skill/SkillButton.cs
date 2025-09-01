@@ -39,7 +39,7 @@ public abstract class ISkillButton : MonoBehaviour
         logicCharacter = logic;
         data = skill;
 
-        if (skillIcon != null && data != null) skillIcon.sprite = data.Icon;
+        if (skillIcon && data != null) skillIcon.sprite = data.Icon;
 
         ASkillLogic.GetLogic(data);
     }
