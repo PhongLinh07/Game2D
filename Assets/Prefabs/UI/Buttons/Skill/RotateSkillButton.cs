@@ -21,7 +21,7 @@ public class RotateSkillButton : ISkillButton, IPointerDownHandler, IPointerUpHa
         cooldownOverlay.gameObject.SetActive(true);
         isOnCooldown = true;
 
-        float timer = data.cooldown;
+        float timer = data.attrDict[EAttribute.Cd];
         while (timer > 0.0f)
         {
             timer -= Time.deltaTime;
@@ -57,6 +57,8 @@ public class RotateSkillButton : ISkillButton, IPointerDownHandler, IPointerUpHa
         if (!isDragging) return;
         isDragging = false;
         dragWorld.gameObject.SetActive(false);
+
+        if (!logicCharacter.CantUseSkill(data.id)) return;
 
         CastSkill(eventData.position -  RectTransformUtility.WorldToScreenPoint(null, rectTransform.position));
         StartCoroutine(StartCooldown());

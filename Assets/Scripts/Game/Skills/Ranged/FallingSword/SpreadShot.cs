@@ -29,6 +29,8 @@ public class SpreadShot : ASkillLogic
 
     public void ShootFan(Vector3 direction, int bulletCount, float maxAngle)
     {
+        LogicCharacter.Instance.UseSkill(data.id);//try
+
         // Chuẩn hóa hướng bắn
         direction.Normalize();
 
@@ -48,7 +50,7 @@ public class SpreadShot : ASkillLogic
 
             // Tạo đạn
             GameObject go = ObjectPoolManager.Instance.Spawn(EObjectPool.FlyingSword);
-            go.GetComponent<Bullet>().Init(posCast, currentAngle + 90.0f, shootDir, data.atk);
+            go.GetComponent<Bullet>().Init(posCast, currentAngle + 90.0f, shootDir, (int)data.attrDict[EAttribute.Attack]);
         }
     }
 

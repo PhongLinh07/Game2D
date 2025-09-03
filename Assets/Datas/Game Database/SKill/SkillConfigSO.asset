@@ -18,68 +18,91 @@ MonoBehaviour:
     Icon: {fileID: 575841103, guid: f487a2ce6521a2f41b7e8b78cad82865, type: 3}
     Description: "Chi\xEAu th\u1EE9c c\u01A1 b\u1EA3n ph\xF3ng ra phi ki\u1EBFm.
       (Ph\xE1p kh\xED c\u1EA7n: Ki\u1EBFm)"
-    atk: 10
-    cooldown: 0
+    attributes:
+    - attribute: 29
+      value: 0
+    - attribute: 1
+      value: 7
+    - attribute: 8
+      value: 0
     ESkillLg: 0
     InputType: 3
-    weaponType: 0
+    weaponType: 1
   - id: 1
     Name: "Thanh Phong Ki\u1EBFm Quy\u1EBFt"
     Icon: {fileID: 1785415595, guid: f487a2ce6521a2f41b7e8b78cad82865, type: 3}
     Description: "Ph\xF3ng ra phi ki\u1EBFm theo h\u01B0\u1EDBng ch\u1EC9 \u0111\u1ECBnh.
       (Ph\xE1p kh\xED c\u1EA7n: Ki\u1EBFm)"
-    atk: 10
-    cooldown: 0
+    attributes:
+    - attribute: 29
+      value: 10
+    - attribute: 1
+      value: 10
+    - attribute: 8
+      value: 0
     ESkillLg: 1
     InputType: 3
-    weaponType: 0
+    weaponType: 1
   - id: 2
     Name: "Thi\xEAn V\u0169 Ki\u1EBFm tr\u1EADn"
     Icon: {fileID: -744710721, guid: f487a2ce6521a2f41b7e8b78cad82865, type: 3}
     Description: "Tri\u1EC7u h\u1ED3i ki\u1EBFm tr\u1EADn t\u1EA1i v\u1ECB tr\xED
       ch\u1EC9 \u0111\u1ECBnh . (Ph\xE1p kh\xED c\u1EA7n: Ki\u1EBFm)"
-    atk: 10
-    cooldown: 0
+    attributes:
+    - attribute: 29
+      value: 5
+    - attribute: 1
+      value: 7
+    - attribute: 8
+      value: 0
     ESkillLg: 2
     InputType: 1
-    weaponType: 0
+    weaponType: 1
   - id: 3
     Name: Teleport
     Icon: {fileID: 955636913, guid: 2e934cc648b24724e8aec3f736c9e112, type: 3}
     Description: "D\u1ECBch chuy\u1EC3n t\u1EE9c th\u1EDDi t\u1EDBi v\u1ECB tr\xED
       ch\u1EC9 \u0111\u1ECBnh"
-    atk: 0
-    cooldown: 0
+    attributes:
+    - attribute: 29
+      value: 5
+    - attribute: 1
+      value: 0
+    - attribute: 8
+      value: 0
     ESkillLg: 3
     InputType: 1
-    weaponType: 1
+    weaponType: 0
   - id: 4
     Name: Teleport
     Icon: {fileID: -204967760, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
     Description: "D\u1ECBch chuy\u1EC3n t\u1EE9c th\u1EDDi t\u1EDBi v\u1ECB tr\xED
       ch\u1EC9 \u0111\u1ECBnh"
-    atk: 0
-    cooldown: 0
+    attributes:
+    - attribute: 0
+      value: 0
+    - attribute: 0
+      value: 0
+    - attribute: 8
+      value: 0
     ESkillLg: 3
     InputType: 3
-    weaponType: 1
+    weaponType: 0
   - id: 5
     Name: Teleport
     Icon: {fileID: -504163039, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
     Description: "D\u1ECBch chuy\u1EC3n t\u1EE9c th\u1EDDi t\u1EDBi v\u1ECB tr\xED
       ch\u1EC9 \u0111\u1ECBnh"
-    atk: 0
-    cooldown: 0
+    attributes: []
     ESkillLg: 3
     InputType: 3
-    weaponType: 1
+    weaponType: 0
   - id: 6
     Name: Teleport
     Icon: {fileID: -1570997516, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
     Description: "D\u1ECBch chuy\u1EC3n t\u1EE9c th\u1EDDi t\u1EDBi v\u1ECB tr\xED
       ch\u1EC9 \u0111\u1ECBnh"
-    atk: 0
-    cooldown: 0
+    attributes: []
     ESkillLg: 3
     InputType: 3
     weaponType: 1
@@ -88,8 +111,7 @@ MonoBehaviour:
     Icon: {fileID: -951927395, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
     Description: "D\u1ECBch chuy\u1EC3n t\u1EE9c th\u1EDDi t\u1EDBi v\u1ECB tr\xED
       ch\u1EC9 \u0111\u1ECBnh"
-    atk: 0
-    cooldown: 0
+    attributes: []
     ESkillLg: 3
     InputType: 1
     weaponType: 1

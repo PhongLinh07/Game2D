@@ -43,8 +43,10 @@ public abstract class ISkillButton : MonoBehaviour
 
         ASkillLogic.GetLogic(data);
     }
+
     protected abstract void CastSkill(params object[] args);
 }
+
  class SkillButton : ISkillButton, IPointerUpHandler
 {
     
@@ -60,7 +62,7 @@ public abstract class ISkillButton : MonoBehaviour
         cooldownOverlay.gameObject.SetActive(true);
         isOnCooldown = true;
 
-        float timer = data.cooldown;
+        float timer = data.attrDict[EAttribute.Cd];
 
         while (timer >= 0.0f)
         {
@@ -76,6 +78,7 @@ public abstract class ISkillButton : MonoBehaviour
     
     public void OnPointerUp(PointerEventData eventData)
     {
+        if(!logicCharacter.CantUseSkill(data.id)) return;
         CastSkill();
         StartCoroutine(StartCooldown());
     }

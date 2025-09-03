@@ -118,4 +118,5 @@ public class UnitStats : MonoBehaviour
     public virtual void SetPosition(Vector2 position) { }
     public virtual int TakeDamage(int damage) { return 0; }
     public virtual int Heal(int amount) { return 0; }
+    public virtual int UseSkill(int idSkill) { return 0; }
 }

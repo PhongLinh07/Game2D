@@ -3,6 +3,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -52,6 +53,12 @@ public class ItemCfgItem : ConfigItem
     }
 }
 
+[System.Serializable]
+public class Attribute
+{
+    public EAttribute attribute;
+    public float value;
+}
 
 [System.Serializable]
 public class ItemUseCfgItem : ConfigItem
@@ -60,9 +67,10 @@ public class ItemUseCfgItem : ConfigItem
     public int Level;
     public ItemRarity Rarity;
     public int Quantity;
-    public int Atk;
-    public int Def;
 
+    [SerializeField] public List<Attribute> attributes = new();
+    [JsonIgnore] public Dictionary<EAttribute, float> attrDict = new Dictionary<EAttribute, float>();
+    
 
     internal void CopyFrom(ItemUseCfgItem other)
     {
@@ -71,29 +79,33 @@ public class ItemUseCfgItem : ConfigItem
         Rarity = other.Rarity;
         Level = other.Level;
         Quantity = ItemConfig.GetInstance.GetConfigItem(idItem).Stackable ? other.Quantity : 1;
-        Atk = other.Atk;
-        Def = other.Def;
+        attributes = other.attributes.ToList();
+        attrDict = other.attrDict;
+
+        Init();
     }
 
+    public void Init()
+    {
+        foreach (var attr in attributes)
+        {
+            attrDict[attr.attribute] = attr.value;
+        }
+    }
     public override void ApplyFromRow(IDictionary<string, object> row) { }
    
     public string GetDescription()
-     {
+    {
       string des;
       ItemCfgItem item = ItemConfig.GetInstance.GetConfigItem(idItem);
 
-      if (item.Stackable)
+      des = $"{item.Description}\n";
+
+      foreach (var row in attrDict)
       {
-          des = $"{item.Description}\n";
+          des += $"{row.Key.ToString()}: {row.Value}\n";
       }
-      else
-      {
-          des =
-              $"Level: {Level}\n" +
-              $"{item.Description}\n" +
-              $"Atk: {Atk}\n" +
-              $"Def: {Def}\n";
-      }  
+
       return des;
      }
 }

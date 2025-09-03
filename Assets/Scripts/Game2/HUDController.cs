@@ -32,9 +32,15 @@ public class HUDController : MonoBehaviour
         hpBar.Init(_logicCharacter.Data.general.vitality, _logicCharacter.Data.general.currVitality);
         mpBar.Init(_logicCharacter.Data.general.energy, _logicCharacter.Data.general.currEnergy);
         logicCharacter.OnStatsChanged += TakeDamage;
+        logicCharacter.OnStatsChanged += UseSKill;
     }
-    public void TakeDamage()
+    private void TakeDamage()
     {
         hpBar.SetValue(_logicCharacter.Data.general.currVitality);
+    }
+
+    private void UseSKill()
+    {
+        mpBar.SetValue(_logicCharacter.Data.general.currEnergy);
     }
 }

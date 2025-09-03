@@ -61,4 +61,10 @@ public class CharacterUnit : UnitStats
         return data.general.currVitality = Mathf.Clamp(data.general.currVitality + amount, 0, data.general.vitality);
     }
 
+    public override int UseSkill(int idSkill)
+    {
+        float qiConsumption = SkillConfig.GetInstance.GetConfigItem(idSkill).attrDict[EAttribute.QiConsumption];
+        return data.general.currEnergy = Mathf.Clamp((int)(data.general.currEnergy - qiConsumption), 0, data.general.energy);
+    }
+
 }

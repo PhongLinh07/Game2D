@@ -32,7 +32,7 @@ public class BaseAttack : ASkillLogic
         float angle = Mathf.Atan2(dirCast.y, dirCast.x) * Mathf.Rad2Deg;
 
         GameObject go = ObjectPoolManager.Instance.Spawn(EObjectPool.FlyingSword);
-        go.GetComponent<Bullet>().Init(posCast, angle + 90.0f, dirCast, data.atk, 30);
+        go.GetComponent<Bullet>().Init(posCast, angle + 90.0f, dirCast, (int)data.attrDict[EAttribute.Attack], 30);
     }
 
 }

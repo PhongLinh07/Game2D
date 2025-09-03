@@ -22,7 +22,7 @@ public class DragSkillButton : ISkillButton, IPointerDownHandler, IPointerUpHand
         cooldownOverlay.gameObject.SetActive(true);
         isOnCooldown = true;
 
-        float timer = data.cooldown;
+        float timer = data.attrDict[EAttribute.Cd];
 
         while (timer > 0f)
         {
@@ -58,6 +58,8 @@ public class DragSkillButton : ISkillButton, IPointerDownHandler, IPointerUpHand
         if (!isDragging ) return;
         isDragging = false;
         if (dragWorld != null) dragWorld.gameObject.SetActive(false);
+
+        if (!logicCharacter.CantUseSkill(data.id)) return;
 
         Vector2 drag = eventData.position - RectTransformUtility.WorldToScreenPoint(null, rectTransform.position);
         float distance = drag.magnitude;

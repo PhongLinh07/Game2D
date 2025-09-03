@@ -37,7 +37,9 @@ public enum EAttribute // number
     FreeReroll = 25,    // Số lượt quay miễn phí / refresh miễn phí
     MaxLv = 26,         // Level tối đa nhân vật có thể đạt
     CritResist = 27,    // Kháng sát thương chí mạng (%)
-    ExtraHerbProb = 28  // Tỷ lệ nhận thảo dược phụ trợ
+    ExtraHerbProb = 28, // Tỷ lệ nhận thảo dược phụ trợ
+    QiConsumption = 29  // Năng lượng tiêu hao
+
 }
 
 public enum EEquipType
@@ -51,13 +53,6 @@ public enum EEquipType
     Weapon = 6     // Vũ khí (kiếm, cung, quyền trượng, búa...)
 }
 
-
-[System.Serializable]
-public class Attribute
-{
-    public EAttribute attribute;
-    public int value;
-}
 
 
 [System.Serializable]
@@ -80,16 +75,17 @@ public class CharacterCfgItem : ConfigItem
     public List<int> SkillsLearned = new();
     public List<int> SkillsEquipped = new();   // danh sách buff
 
-    [SerializeField] private List<ItemUseCfgItem> items = new();
-    [JsonProperty] public Dictionary<int, ItemUseCfgItem> itemDict = new Dictionary<int, ItemUseCfgItem>();
+    [SerializeField] public List<ItemUseCfgItem> items = new();
+    public Dictionary<int, ItemUseCfgItem> itemDict = new Dictionary<int, ItemUseCfgItem>();
 
 
-    [SerializeField] private List<EquipType> equipTypes = new();
-    [JsonProperty] public Dictionary<EEquipType, int> quipDict = new Dictionary<EEquipType, int>();
+    [SerializeField] public List<EquipType> equipTypes = new();
+    [JsonIgnore] public Dictionary<EEquipType, int> quipDict = new Dictionary<EEquipType, int>();
+    //[JsonProperty] public Dictionary<EEquipType, int> quipDict = new Dictionary<EEquipType, int>();
 
 
     public List<Attribute> attributes = new();
-    [JsonIgnore] public Dictionary<EAttribute, int> attrDict = new Dictionary<EAttribute, int>();
+    [JsonIgnore] public Dictionary<EAttribute, float> attrDict = new Dictionary<EAttribute, float>();
 
 
     public float positionX = 0.0f;
@@ -116,10 +112,9 @@ public class CharacterCfgItem : ConfigItem
 
         foreach (var item in items)
         {
+            item.Init();
             itemDict[item.id] = item;
         }
-
-
 
         foreach (var att in attributes)
         {

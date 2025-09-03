@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Newtonsoft.Json;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -22,8 +23,10 @@ public class SkillCfgItem : ConfigItem
     public string Name;
     public Sprite Icon;
     public string Description;
-    public int atk;
-    public float cooldown;
+
+    [SerializeField] public List<Attribute> attributes = new();
+    [JsonIgnore] public Dictionary<EAttribute, float> attrDict = new Dictionary<EAttribute, float>();
+
     public EHeroSkillType ESkillLg;
     public ASkillLogic Logic;
     public SkillInputType InputType;
@@ -37,16 +40,35 @@ public class SkillCfgItem : ConfigItem
         Name = other.Name;
         Icon = other.Icon;
         Description = other.Description;
-        atk = other.atk;
-        cooldown = other.cooldown;
+        attributes = other.attributes;
         ESkillLg = other.ESkillLg;
         Logic = other.Logic;
         InputType = other.InputType;
         weaponType = other.weaponType;
+
+        Init();
+    }
+
+    public void Init()
+    {
+        foreach (var attr in attributes)
+        {
+            attrDict[attr.attribute] = attr.value;
+        }
     }
     public override string ToString()
     {
-        return "";
+        string des;
+ 
+
+        des = $"{Description}\n";
+
+        foreach (var row in attrDict)
+        {
+            des += $"{row.Key.ToString()}: {row.Value}\n";
+        }
+
+        return des;
     }
 
 

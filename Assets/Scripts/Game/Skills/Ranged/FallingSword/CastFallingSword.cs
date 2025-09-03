@@ -22,6 +22,7 @@ public class CastFallingSword : ASkillLogic
 
         for (int i = 0; i < 20; i++)
         {
+            if(!LogicCharacter.Instance.CantUseSkill(data.id)) break;
             SpawnOneSword();
             yield return new WaitForSeconds(0.1f);
         }
@@ -30,10 +31,11 @@ public class CastFallingSword : ASkillLogic
 
     void SpawnOneSword()
     {
+        LogicCharacter.Instance.UseSkill(data.id);//try
         int x = UnityEngine.Random.Range((int)(posCast.x - 3.0f), (int)(posCast.x + 3.0f));
         int y = UnityEngine.Random.Range((int)(posCast.y - 2.0f), (int)(posCast.y + 2.0f));
 
         GameObject go = ObjectPoolManager.Instance.Spawn(EObjectPool.FallingSword);
-        go.GetComponent<FallingSword>().Init(new Vector2(x, y), data.atk);
+        go.GetComponent<FallingSword>().Init(new Vector2(x, y), (int)data.attrDict[EAttribute.Attack]);
     }
 }

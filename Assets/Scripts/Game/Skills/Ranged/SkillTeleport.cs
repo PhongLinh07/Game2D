@@ -24,6 +24,7 @@ public class SkillTeleport : ASkillLogic
 
     void Teleport()
     {
+        LogicCharacter.Instance.UseSkill(data.id);//try
         LogicCharacter.Instance.Teleport(posCast);
     }
 }

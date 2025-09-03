@@ -117,7 +117,20 @@ public class LogicCharacter : LogicUnit
         mOwner.UnequipSkill(idSkill);
     }
 
-    
+    public bool CantUseSkill(int idSkill)
+    {
+        float qiCons = SkillConfig.GetInstance.GetConfigItem(idSkill).attrDict[EAttribute.QiConsumption];
+
+        if(mOwner.Data.general.currEnergy < qiCons) return false;
+        return true;
+    }
+
+    public void UseSkill(int idSkill)
+    {
+        mOwner.UseSkill(idSkill);
+        UpdateUI();
+    }
+
     public override void UpdateUI()
     {
         OnStatsChanged?.Invoke();
