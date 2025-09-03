@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 public class BattleSkillManager : MonoBehaviour
 {
@@ -62,6 +63,24 @@ public class BattleSkillManager : MonoBehaviour
 
     public bool EquipSKill(SkillCfgItem skill)
     {
+        if (skill.weaponType != EWeaponType.None && !_logicCharacter.Data.quipDict.ContainsKey(EEquipType.Weapon))
+        {
+            Debug.LogWarning($"This skill need weapon: {skill.weaponType.ToString()}");
+            return false;
+        }
+        else if(skill.weaponType != EWeaponType.None)
+        {
+            int idItem = _logicCharacter.Data.quipDict[EEquipType.Weapon];
+
+            var item = _logicCharacter.Data.itemDict[idItem];
+            if (ItemConfig.GetInstance.GetConfigItem(item.idItem).weaponType != skill.weaponType)
+            {
+                Debug.LogWarning($"This skill need weapon: {skill.weaponType.ToString()}");
+                return false;
+            }
+        }
+            
+
         if (_logicCharacter.Data.SkillsEquipped.Contains(skill.id)) // nếu đã tồn tại thì remove
         {
             _logicCharacter.UnequipSkill(skill.id); 

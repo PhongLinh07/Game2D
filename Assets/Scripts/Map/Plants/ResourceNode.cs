@@ -7,7 +7,7 @@ using UnityEngine;
 [RequireComponent(typeof(BoxCollider2D))]
 public class ResourceNode : MonoBehaviour, IDamageable
 {
-    public EnhanceCfgItem thisPlayerItem;
+    public ItemUseCfgItem thisPlayerItem;
     public int quantityPlayerItem = 4;
     public SpriteRenderer mSr;
     public ResourceNodeType resourceNodeType;
@@ -43,7 +43,7 @@ public class ResourceNode : MonoBehaviour, IDamageable
                 pos.x += OFFSET * UnityEngine.Random.value; //UnityEngine.Random.value: [0, 1)
                 pos.y += OFFSET * UnityEngine.Random.value;
 
-                ItemSpawnManager.Instance.SpawnItem(pos, thisPlayerItem);
+             //   ItemSpawnManager.Instance.SpawnItem(pos, thisPlayerItem);
             }
             Destroy(gameObject);
         }

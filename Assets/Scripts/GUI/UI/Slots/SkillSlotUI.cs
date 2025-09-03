@@ -8,7 +8,7 @@ using UnityEngine.UI;
 /// </summary>
 public class SkillSlotUI : ASlotUI, IPointerClickHandler
 {
-    public Image equipped;
+    
     public SkillCfgItem dataOfSlot;
 
     private BattleSkillManager battleSkillManager;      // ScriptableObject chứa info skill
@@ -19,11 +19,13 @@ public class SkillSlotUI : ASlotUI, IPointerClickHandler
     private void Awake()
     {
         battleSkillManager = BattleSkillManager.Instance;      // ScriptableObject chứa info skill
+        base.Init();
     }
+
 
     public void Equip(bool state)
     {
-        equipped.gameObject.SetActive(state);
+        tick.gameObject.SetActive(state);
     }
 
     public override void SetData<T>(T data)
@@ -34,11 +36,11 @@ public class SkillSlotUI : ASlotUI, IPointerClickHandler
             return;
         }
         dataOfSlot = data as SkillCfgItem;
-        view.SetActive(true);
+        gameObject.SetActive(true);
         icon.sprite = dataOfSlot.Icon;
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public override void OnPointerClick(PointerEventData eventData)
     {
         // Gọi container click bình thường
         AContainer<SkillCfgItem> container = transform.parent.GetComponent<AContainer<SkillCfgItem>>();
@@ -53,8 +55,8 @@ public class SkillSlotUI : ASlotUI, IPointerClickHandler
     private void TryEquipSkill()
     {
         if (battleSkillManager.EquipSKill(dataOfSlot))
-            equipped.gameObject.SetActive(true);
+            tick.gameObject.SetActive(true);
         else
-            equipped.gameObject.SetActive(false);
+            tick.gameObject.SetActive(false);
     }
 }

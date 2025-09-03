@@ -18,33 +18,47 @@ MonoBehaviour:
     Stackable: 0
     Icon: {fileID: 2022150672, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
     Description: 
+    equipType: 0
+    weaponType: 0
   - id: 1
     Name: 1
     Stackable: 0
     Icon: {fileID: 1248516281, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
     Description: 
+    equipType: 0
+    weaponType: 0
   - id: 2
     Name: 2
     Stackable: 0
     Icon: {fileID: -145948571, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
     Description: 
+    equipType: 6
+    weaponType: 0
   - id: 3
     Name: 3
     Stackable: 0
     Icon: {fileID: 1838109575, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
     Description: 
+    equipType: 0
+    weaponType: 0
   - id: 4
     Name: 4
     Stackable: 1
     Icon: {fileID: 1338092406, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
     Description: 
+    equipType: 0
+    weaponType: 0
   - id: 5
     Name: 5
     Stackable: 0
     Icon: {fileID: 1030419306, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
     Description: 
+    equipType: 2
+    weaponType: 0
   - id: 6
     Name: 6
     Stackable: 0
     Icon: {fileID: 636506770, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
     Description: 
+    equipType: 6
+    weaponType: 1

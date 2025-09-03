@@ -24,6 +24,8 @@ public class ItemCfgItem : ConfigItem
     public bool Stackable;
     public Sprite Icon;
     public string Description;
+    public EEquipType equipType;
+    public EWeaponType weaponType;
 
     public override void ApplyFromRow(IDictionary<string, object> row) { }
 
@@ -34,12 +36,14 @@ public class ItemCfgItem : ConfigItem
         Stackable = other.Stackable;
         Icon = other.Icon;
         Description = other.Description;
+        equipType = other.equipType;
+        weaponType = other.weaponType;
     }
 }
 
 
 [System.Serializable]
-public class EnhanceCfgItem : ConfigItem
+public class ItemUseCfgItem : ConfigItem
 {
     public int idItem;
     public int Level;
@@ -49,7 +53,7 @@ public class EnhanceCfgItem : ConfigItem
     public int Def;
 
 
-    internal void CopyFrom(EnhanceCfgItem other)
+    internal void CopyFrom(ItemUseCfgItem other)
     {
         idItem = other.idItem;
         id = other.id;

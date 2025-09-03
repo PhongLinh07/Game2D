@@ -32,8 +32,8 @@ public class Bootstrapper : MonoBehaviour
 
     public void InitData()
     {
-        assetManager.LoadAsset<SkillConfigSO>(EAsset.SkillConfigSO, (data) => { data.LoadData(); assetManager.ReleaseAsset(EAsset.SkillConfigSO); });
-        assetManager.LoadAsset<ItemConfigSO>(EAsset.ItemConfigSO, (data) => { data.LoadData(); assetManager.ReleaseAsset(EAsset.ItemConfigSO); });
+        assetManager.LoadAsset<SkillConfigSO>(EAsset.SkillConfigSO, (data) => { data.LoadData(); });
+        assetManager.LoadAsset<ItemConfigSO>(EAsset.ItemConfigSO, (data) => { data.LoadData();});
         
 
         if (CharacterConfig.GetInstance.InitData() == null)

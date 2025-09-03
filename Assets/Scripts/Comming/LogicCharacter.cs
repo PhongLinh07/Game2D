@@ -76,6 +76,14 @@ public class LogicCharacter : LogicUnit
         get { return mOwner.Data; }
     }
 
+    public void Equipment(EEquipType equipType, int idItem)
+    {
+        mOwner.Equipment(equipType, idItem);
+    }
+    public void Unequipment(EEquipType equipType)
+    {
+        mOwner.Unequipment(equipType);
+    }
 
     public Vector2 GetPosition()
     {

@@ -40,12 +40,30 @@ public enum EAttribute // number
     ExtraHerbProb = 28  // Tỷ lệ nhận thảo dược phụ trợ
 }
 
+public enum EEquipType
+{
+    None = 0,
+    Head = 1,
+    Cloth = 2,
+    Shoes = 3,
+    Necklace = 4,
+    Pendant = 5,
+    Weapon = 6
+}
+
+
 
 [System.Serializable]
 public class Attribute
 {
     public EAttribute attribute;
     public int value;
+}
+
+public class EquipType
+{
+    public EEquipType equipType;
+    public int idItem;
 }
 
 [System.Serializable]
@@ -60,11 +78,15 @@ public class CharacterCfgItem : ConfigItem
     public List<int> SkillsLearned = new();
     public List<int> SkillsEquipped = new();   // danh sách buff
 
-    public List<EnhanceCfgItem> items = new();
+    [SerializeField] private List<ItemUseCfgItem> items = new();
+    [JsonProperty] public Dictionary<int, ItemUseCfgItem> itemDict = new Dictionary<int, ItemUseCfgItem>();
+
+
+    [SerializeField] private List<EquipType> equipTypes = new();
+    [JsonProperty] public Dictionary<EEquipType, int> quipDict = new Dictionary<EEquipType, int>();
 
 
     public List<Attribute> attributes = new();
-
     [JsonIgnore] // tránh serialize thẳng Vector2
     public Dictionary<EAttribute, int> attrDict = new Dictionary<EAttribute, int>();
 
@@ -90,11 +112,26 @@ public class CharacterCfgItem : ConfigItem
 
     public void Init()
     {
-        foreach(var att in attributes)
+
+        foreach (var item in items)
+        {
+            itemDict[item.id] = item;
+        }
+
+
+
+        foreach (var att in attributes)
         {
             attrDict[att.attribute] = att.value;
             Debug.LogWarning($"{att.attribute.ToString()} --- {att.value}");
         }
+
+        foreach (var item in equipTypes)
+        {
+            quipDict[item.equipType] = item.idItem;
+            Debug.LogWarning($"{item.equipType.ToString()} --- {item.idItem}");
+        }
+
     }
 
     public override void ApplyFromRow(IDictionary<string, object> row) { }

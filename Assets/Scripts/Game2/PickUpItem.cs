@@ -13,7 +13,7 @@ public class PickUpItem : MonoBehaviour
     private const float PICK_UP_DISTANCE = 1.5f;
     private float mAliveTime = 10.0f;
 
-    private EnhanceCfgItem mPlayerItem;
+    private ItemUseCfgItem mPlayerItem;
    
 
     // Start is called before the first frame update
@@ -23,10 +23,10 @@ public class PickUpItem : MonoBehaviour
     }
 
 
-    public void SetItemPickUp(EnhanceCfgItem playerItem)
+    public void SetItemPickUp(ItemUseCfgItem playerItem)
     {
 
-        mPlayerItem = new EnhanceCfgItem();
+        mPlayerItem = new ItemUseCfgItem();
         mPlayerItem.CopyFrom(playerItem); // ✨ Copy thay vì giữ tham chiếu
        
         SpriteRenderer sr = GetComponent<SpriteRenderer>();

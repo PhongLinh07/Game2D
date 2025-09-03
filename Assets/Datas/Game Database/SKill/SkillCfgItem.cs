@@ -14,7 +14,6 @@ public enum EHeroSkillType
     FallingSword = 2,
     Teleport = 3,
 }
-
 //========== SkillCfgItem (Một dòng skill trong bảng) ==========
 
 [System.Serializable]
@@ -28,6 +27,8 @@ public class SkillCfgItem : ConfigItem
     public EHeroSkillType ESkillLg;
     public ASkillLogic Logic;
     public SkillInputType InputType;
+    public EWeaponType weaponType;
+
     public override void ApplyFromRow(IDictionary<string, object> row) { }
 
     internal void CopyFrom(SkillCfgItem other)
@@ -41,6 +42,7 @@ public class SkillCfgItem : ConfigItem
         ESkillLg = other.ESkillLg;
         Logic = other.Logic;
         InputType = other.InputType;
+        weaponType = other.weaponType;
     }
     public override string ToString()
     {
@@ -49,3 +51,9 @@ public class SkillCfgItem : ConfigItem
 
 
 }
+
+/*
+ * Item -> ItemUSer
+ * Skill ->SkillUser
+ * 
+ */

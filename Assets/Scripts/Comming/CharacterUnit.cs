@@ -1,4 +1,5 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
@@ -33,6 +34,17 @@ public class CharacterUnit : UnitStats
         {
             data.SkillsEquipped.Remove(idSkill);
         }
+    }
+
+    public void Equipment(EEquipType equipType, int idItem)
+    {
+        data.quipDict[equipType] = idItem;
+    }
+
+
+    public void Unequipment(EEquipType equipType)
+    {
+        data.quipDict.Remove(equipType);
     }
 
     public override void SetPosition(Vector2 position)
