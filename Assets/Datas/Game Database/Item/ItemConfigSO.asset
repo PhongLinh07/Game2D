@@ -14,51 +14,173 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   datas:
   - id: 0
-    Name: 0
-    Stackable: 0
+    Name: "Q\xF9a t\xE2n th\u1EE7"
+    Stackable: 1
     Icon: {fileID: 2022150672, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
-    Description: 
+    Description: "Phong kh\u1EDFi thi\xEAn tu"
+    itemType: 0
     equipType: 0
     weaponType: 0
   - id: 1
-    Name: 1
-    Stackable: 0
-    Icon: {fileID: 1248516281, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
-    Description: 
-    equipType: 0
-    weaponType: 0
-  - id: 2
-    Name: 2
+    Name: "Huy\u1EC1n linh ki\u1EBFm"
     Stackable: 0
     Icon: {fileID: -145948571, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
     Description: 
-    equipType: 6
-    weaponType: 0
-  - id: 3
-    Name: 3
-    Stackable: 0
-    Icon: {fileID: 1838109575, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
-    Description: 
-    equipType: 0
-    weaponType: 0
-  - id: 4
-    Name: 4
-    Stackable: 1
-    Icon: {fileID: 1338092406, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
-    Description: 
-    equipType: 0
-    weaponType: 0
-  - id: 5
-    Name: 5
-    Stackable: 0
-    Icon: {fileID: 1030419306, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
-    Description: 
-    equipType: 2
-    weaponType: 0
-  - id: 6
-    Name: 6
-    Stackable: 0
-    Icon: {fileID: 636506770, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
-    Description: 
+    itemType: 4
     equipType: 6
     weaponType: 1
+  - id: 2
+    Name: "X\xEDch long v\xE2n"
+    Stackable: 0
+    Icon: {fileID: -1570997516, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
+    Description: "Nh\u1EB9 l\u01B0\u1EDBt"
+    itemType: 3
+    equipType: 3
+    weaponType: 0
+  - id: 3
+    Name: "Thanh v\xE2n b\xE0o"
+    Stackable: 0
+    Icon: {fileID: -204967760, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
+    Description: "Nh\u1EB9 nh\xE0 thanh t\xFA"
+    itemType: 3
+    equipType: 2
+    weaponType: 0
+  - id: 4
+    Name: "Linh \xE2m tuy\u1EC1n"
+    Stackable: 0
+    Icon: {fileID: 636506770, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
+    Description: "Ki\u1EBFm huy\u1EC1n \xE2m"
+    itemType: 4
+    equipType: 6
+    weaponType: 1
+  - id: 5
+    Name: "Qu\xE0 ph\xFAc l\xE0nh"
+    Stackable: 1
+    Icon: {fileID: -504163039, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
+    Description: "Kh\u1EDFi \u0111\u1EA7u may m\u1EAFn"
+    itemType: 0
+    equipType: 0
+    weaponType: 0
+  - id: 6
+    Name: "L\u1EE5c \xE1m t\u1EED"
+    Stackable: 0
+    Icon: {fileID: -759583551, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
+    Description: "Dao g\u0103m \xE1m to\xE1n"
+    itemType: 4
+    equipType: 6
+    weaponType: 6
+  - id: 7
+    Name: "Thi\u1EBFt m\xE3 b\u0103ng h\xE0"
+    Stackable: 0
+    Icon: {fileID: 1519057406, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
+    Description: "Ki\u1EBFm ch\xED h\xE0n"
+    itemType: 4
+    equipType: 6
+    weaponType: 1
+  - id: 8
+    Name: "V\xE2n thoa"
+    Stackable: 0
+    Icon: {fileID: -951927395, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
+    Description: "L\u01B0\u1EDBt gi\xF3 m\xE0 \u0111i"
+    itemType: 3
+    equipType: 3
+    weaponType: 0
+  - id: 9
+    Name: "T\xE2n thanh b\xE0o"
+    Stackable: 0
+    Icon: {fileID: 1030419306, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
+    Description: "Trang ph\u1EE5c c\u1EE7a n\u1EEF nh\xE2n ( nam nhi th\u1EED m\u1EB7c
+      \u01B0? )"
+    itemType: 3
+    equipType: 2
+    weaponType: 0
+  - id: 10
+    Name: "B\u1EA1o s\u1EDB"
+    Stackable: 1
+    Icon: {fileID: -1831381271, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
+    Description: "Linh ph\xF9 b\u1EA1o k\xEDch"
+    itemType: 4
+    equipType: 6
+    weaponType: 7
+  - id: 11
+    Name: "Kim long g\u0103m"
+    Stackable: 0
+    Icon: {fileID: 726592786, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
+    Description: "L\u01B0\u1EE1i g\u0103m s\u1EAFc nh\u1ECDn"
+    itemType: 4
+    equipType: 6
+    weaponType: 6
+  - id: 12
+    Name: "M\u1ED9c anh s\xE2m"
+    Stackable: 1
+    Icon: {fileID: 910522517, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
+    Description: "Nguy\xEAn li\u1EC7u luy\u1EC7n ch\u1EBF \u0111an d\u01B0\u1EE3c
+      ph\u1ED5 th\xF4ng"
+    itemType: 2
+    equipType: 0
+    weaponType: 0
+  - id: 13
+    Name: "Th\u1EBB b\xE1o danh"
+    Stackable: 0
+    Icon: {fileID: 759959236, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
+    Description: "Th\u1EBB b\xE1o danh c\u1EE7a b\u1EA3ng h\u1EEFu(vpnv)"
+    itemType: 0
+    equipType: 0
+    weaponType: 0
+  - id: 14
+    Name: "Long ho\xE0n"
+    Stackable: 0
+    Icon: {fileID: 1931463597, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
+    Description: "Thu\u1ED9c t\xEDnh th\u1EE7y"
+    itemType: 3
+    equipType: 4
+    weaponType: 0
+  - id: 15
+    Name: "Huy\u1EC1n li\xEAn"
+    Stackable: 1
+    Icon: {fileID: -880637971, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
+    Description: "Nguy\xEAn li\u1EC7u luy\u1EC7n ch\u1EBF \u0111an d\u01B0\u1EE3c"
+    itemType: 2
+    equipType: 0
+    weaponType: 0
+  - id: 16
+    Name: "H\u1ECFa ho\xE0n \u0111an"
+    Stackable: 1
+    Icon: {fileID: 390374573, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
+    Description: "\u0110an d\u01B0\u1EE3c thu\u1ED9c t\xEDnh h\u1ECFa"
+    itemType: 1
+    equipType: 0
+    weaponType: 0
+  - id: 17
+    Name: "\xC2m huy\u1EC1n \u0111an"
+    Stackable: 1
+    Icon: {fileID: 1901241848, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
+    Description: "\u0110an d\u01B0\u1EE3c ch\u1EE9a m\u1ECB qu\u1EF7 ( th\xEDch h\u1EE3p
+      cho qu\u1EF7 tu )"
+    itemType: 1
+    equipType: 0
+    weaponType: 0
+  - id: 18
+    Name: "Thanh l\xE2n ho\xE0n"
+    Stackable: 0
+    Icon: {fileID: -1522614115, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
+    Description: "Linh ho\xE0n thu\u1ED9c t\xEDnh m\u1ED9c"
+    itemType: 3
+    equipType: 4
+    weaponType: 0
+  - id: 19
+    Name: "S\u1EDB linh ph\xF9"
+    Stackable: 0
+    Icon: {fileID: 1161007738, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
+    Description: "Linh ph\xF9 Khi\u1EC3n m\u1ED9c"
+    itemType: 4
+    equipType: 6
+    weaponType: 7
+  - id: 20
+    Name: "N\u1EEF linh k\xEC"
+    Stackable: 0
+    Icon: {fileID: 421152007, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
+    Description: "Tr\u1EADn k\xEC t\u1EA1o huy\u1EC1n k\xEC c\u1EA3nh"
+    itemType: 4
+    equipType: 6
+    weaponType: 8

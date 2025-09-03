@@ -42,15 +42,14 @@ public enum EAttribute // number
 
 public enum EEquipType
 {
-    None = 0,
-    Head = 1,
-    Cloth = 2,
-    Shoes = 3,
-    Necklace = 4,
-    Pendant = 5,
-    Weapon = 6
+    None = 0,      // Không trang bị (item không thể equip)
+    Head = 1,      // Trang bị cho đầu (mũ, mấn, băng đô...)
+    Cloth = 2,     // Trang bị cho thân (áo giáp, áo khoác, váy...)
+    Shoes = 3,     // Trang bị cho chân (giày, ủng, dép chiến)
+    Necklace = 4,  // Vòng cổ, tăng stat hoặc buff
+    Pendant = 5,   // Mặt dây, amulet, vật phẩm phụ trợ
+    Weapon = 6     // Vũ khí (kiếm, cung, quyền trượng, búa...)
 }
-
 
 
 [System.Serializable]
@@ -60,11 +59,14 @@ public class Attribute
     public int value;
 }
 
+
+[System.Serializable]
 public class EquipType
 {
     public EEquipType equipType;
     public int idItem;
 }
+
 
 [System.Serializable]
 public class CharacterCfgItem : ConfigItem
@@ -87,8 +89,7 @@ public class CharacterCfgItem : ConfigItem
 
 
     public List<Attribute> attributes = new();
-    [JsonIgnore] // tránh serialize thẳng Vector2
-    public Dictionary<EAttribute, int> attrDict = new Dictionary<EAttribute, int>();
+    [JsonIgnore] public Dictionary<EAttribute, int> attrDict = new Dictionary<EAttribute, int>();
 
 
     public float positionX = 0.0f;

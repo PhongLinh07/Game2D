@@ -1,17 +1,22 @@
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
 
+
+[System.Serializable]
 public enum EWeaponType
 {
     None = 0,
-    Sword = 1,
-    Thunder = 2,
-    Ice = 3,
-    Wind = 4,
-    Fire = 5
+    Sword = 1,      // Kiếm
+    Bow = 2,        // Cung
+    Staff = 3,      // Trượng/phép thuật
+    Axe = 4,        // Rìu
+    Spear = 5,      // Thương
+    Dagger = 6,     // Dao găm
+    Hammer = 7,     // Búa
+    Flag = 8,       // Cờ
 
 }
 

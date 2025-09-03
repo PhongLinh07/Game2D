@@ -17,6 +17,15 @@ public enum ItemRarity
     Divine = 4        // Thần phẩm
 }
 
+public enum EItemType
+{
+    None = 0,
+    Consumable = 1,  // 1. Thuốc/Item dùng một lần (HP potion, MP potion, buff tạm thời)
+    Material = 2,    // 2. Nguyên liệu, vật phẩm không dùng trực tiếp (thảo dược, quest item)
+    Armor = 3,       // 3. Trang bị phòng thủ (giáp, mũ, găng tay...)
+    Weapon = 4      // 4. Vũ khí (kiếm, cung, quyền trượng...)
+};
+
 [System.Serializable]
 public class ItemCfgItem : ConfigItem
 {
@@ -24,6 +33,7 @@ public class ItemCfgItem : ConfigItem
     public bool Stackable;
     public Sprite Icon;
     public string Description;
+    public EItemType itemType;
     public EEquipType equipType;
     public EWeaponType weaponType;
 
@@ -36,6 +46,7 @@ public class ItemCfgItem : ConfigItem
         Stackable = other.Stackable;
         Icon = other.Icon;
         Description = other.Description;
+        itemType = other.itemType;
         equipType = other.equipType;
         weaponType = other.weaponType;
     }
