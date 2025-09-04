@@ -10,7 +10,8 @@ public enum EAsset
     CharacterMale = 1,
     SkillConfigSO = 2,
     ItemConfigSO = 3,
-    CharacterConfigSO = 4
+    CharacterConfigSO = 4,
+    ItemUserConfigSO = 5
 
 }
 

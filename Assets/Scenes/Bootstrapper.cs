@@ -10,9 +10,8 @@ public class Bootstrapper : MonoBehaviour
 {
     public static Bootstrapper Instance;
 
-    [SerializeField] private SkillConfigSO skillConfigSO;
-    [SerializeField] private ItemConfigSO itemConfigSO;
     [SerializeField] private CharacterConfigSO charConfigSO;
+    [SerializeField] private ItemUserConfigSO itemUserConfigSO;
 
 
     public Action<LogicCharacter> eventWhenCloneCharacter;
@@ -34,7 +33,19 @@ public class Bootstrapper : MonoBehaviour
     {
         assetManager.LoadAsset<SkillConfigSO>(EAsset.SkillConfigSO, (data) => { data.LoadData(); });
         assetManager.LoadAsset<ItemConfigSO>(EAsset.ItemConfigSO, (data) => { data.LoadData();});
-        
+
+
+        if (ItemUserConfig.GetInstance.InitData() == null)
+        {
+            Debug.Log($"Created {typeof(ItemUserCfgItem).Name}!");
+            ItemUserConfig.GetInstance.ExportToJson(itemUserConfigSO.datas, typeof(ItemUserCfgItem).Name);
+            ItemUserConfig.GetInstance.InitData();
+        }
+        else
+        {
+            Debug.Log("Loaded ItemUserCfgItem!");
+
+        }
 
         if (CharacterConfig.GetInstance.InitData() == null)
         {

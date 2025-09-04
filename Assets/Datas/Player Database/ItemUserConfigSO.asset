@@ -1,0 +1,105 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a87ea655e6595d8458cb8e6d65ab915d, type: 3}
+  m_Name: ItemUserConfigSO
+  m_EditorClassIdentifier: 
+  datas:
+  - id: 0
+    idItem: 1
+    Level: 2
+    Rarity: 0
+    Quantity: 1
+    attributes:
+    - attribute: 16
+      value: 0
+  - id: 1
+    idItem: 1
+    Level: 3
+    Rarity: 1
+    Quantity: 1
+    attributes:
+    - attribute: 1
+      value: 1
+  - id: 2
+    idItem: 2
+    Level: 2
+    Rarity: 2
+    Quantity: 1
+    attributes:
+    - attribute: 2
+      value: 1
+  - id: 3
+    idItem: 2
+    Level: 6
+    Rarity: 3
+    Quantity: 1
+    attributes:
+    - attribute: 2
+      value: 0
+  - id: 4
+    idItem: 3
+    Level: 1
+    Rarity: 0
+    Quantity: 1
+    attributes:
+    - attribute: 0
+      value: 20
+  - id: 5
+    idItem: 6
+    Level: 2
+    Rarity: 2
+    Quantity: 1
+    attributes:
+    - attribute: 1
+      value: 4
+    - attribute: 3
+      value: 0.02
+  - id: 6
+    idItem: 10
+    Level: 0
+    Rarity: 1
+    Quantity: 1
+    attributes:
+    - attribute: 1
+      value: 20
+  - id: 7
+    idItem: 16
+    Level: 0
+    Rarity: 1
+    Quantity: 5
+    attributes:
+    - attribute: 0
+      value: 40
+  - id: 8
+    idItem: 19
+    Level: 0
+    Rarity: 2
+    Quantity: 5
+    attributes:
+    - attribute: 1
+      value: 25
+  - id: 9
+    idItem: 11
+    Level: 2
+    Rarity: 4
+    Quantity: 1
+    attributes:
+    - attribute: 1
+      value: 7
+    - attribute: 3
+      value: 0.07
+  - id: 10
+    idItem: 13
+    Level: 0
+    Rarity: 0
+    Quantity: 0
+    attributes: []

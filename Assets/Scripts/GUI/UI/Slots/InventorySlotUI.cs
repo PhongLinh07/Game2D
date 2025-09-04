@@ -25,7 +25,7 @@ using UnityEngine.UI;
 public class InventorySlotUI : ASlotUI, IPointerClickHandler
 {
     public RarityConfigSO rarityCell;
-    public ItemUseCfgItem dataOfSlot;
+    public ItemUserCfgItem dataOfSlot;
     private float doubleTapTime = 0.25f; // Khoảng thời gian tối đa giữa 2 lần tap
     private float lastTapTime = 0;
 
@@ -45,7 +45,7 @@ public class InventorySlotUI : ASlotUI, IPointerClickHandler
             return;
         }
 
-        dataOfSlot = data as ItemUseCfgItem;
+        dataOfSlot = data as ItemUserCfgItem;
 
         ItemCfgItem item = ItemConfig.GetInstance.GetConfigItem(dataOfSlot.idItem);
         gameObject.SetActive(true);
@@ -71,7 +71,7 @@ public class InventorySlotUI : ASlotUI, IPointerClickHandler
 
     public override void OnPointerClick(PointerEventData eventData)
     {
-        AContainer<ItemUseCfgItem> container = transform.parent.GetComponent<AContainer<ItemUseCfgItem>>();
+        AContainer<ItemUserCfgItem> container = transform.parent.GetComponent<AContainer<ItemUserCfgItem>>();
         // Gọi hàm Instance đã override từ hàm ảo ItemPanel
         container.OnClick(dataOfSlot.id);
 

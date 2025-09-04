@@ -75,8 +75,8 @@ public class CharacterCfgItem : ConfigItem
     public List<int> SkillsLearned = new();
     public List<int> SkillsEquipped = new();   // danh sách buff
 
-    [SerializeField] public List<ItemUseCfgItem> items = new();
-    public Dictionary<int, ItemUseCfgItem> itemDict = new Dictionary<int, ItemUseCfgItem>();
+    [JsonIgnore]
+    public Dictionary<int, ItemUserCfgItem> itemDict = new Dictionary<int, ItemUserCfgItem>();
 
 
     [SerializeField] public List<EquipType> equipTypes = new();
@@ -110,11 +110,7 @@ public class CharacterCfgItem : ConfigItem
     public void Init()
     {
 
-        foreach (var item in items)
-        {
-            item.Init();
-            itemDict[item.id] = item;
-        }
+        itemDict = ItemUserConfig.GetInstance.mCfgDict;
 
         foreach (var att in attributes)
         {

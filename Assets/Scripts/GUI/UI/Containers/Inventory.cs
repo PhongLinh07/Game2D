@@ -5,7 +5,7 @@ using System.Linq;
 using UnityEngine;
 
 
-public class Inventory : AContainer<ItemUseCfgItem>
+public class Inventory : AContainer<ItemUserCfgItem>
 {
     public DetailsItem details;
 
@@ -35,7 +35,7 @@ public class Inventory : AContainer<ItemUseCfgItem>
 
         foreach(var item in _logicCharacter.Data.itemDict)
         {
-            ItemUseCfgItem cpy = new ItemUseCfgItem();
+            ItemUserCfgItem cpy = new ItemUserCfgItem();
             cpy.CopyFrom(item.Value);
             datas.Add(cpy);
         }
@@ -43,7 +43,7 @@ public class Inventory : AContainer<ItemUseCfgItem>
         base.Init();
     }
 
-    public bool EquipItem(ItemUseCfgItem item)
+    public bool EquipItem(ItemUserCfgItem item)
     {
         ItemCfgItem itemCfg = ItemConfig.GetInstance.GetConfigItem(item.idItem);
 

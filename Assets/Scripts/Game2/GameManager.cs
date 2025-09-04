@@ -13,7 +13,6 @@ public class GameManager : MonoBehaviour
     public float saveInterval = 30f; // auto-save mỗi 30s
     private float lastSave = 0f;
 
-    public GameObject Character;
     public GameObject HighlightController;
 
     private void Awake()
@@ -44,6 +43,7 @@ public class GameManager : MonoBehaviour
 
     private async void SaveAsync()
     {
+        if (ItemUserConfig.GetInstance) await ItemUserConfig.GetInstance.SaveJsonAsync();
         if (CharacterConfig.GetInstance) await CharacterConfig.GetInstance.SaveJsonAsync();
     }
 }
