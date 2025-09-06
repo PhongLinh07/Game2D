@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   datas:
   - id: 0
-    idItem: 1
+    uuid: a4b5be9b-e952-40ba-9a2f-f72385ee6ef5
     Level: 2
     Rarity: 0
     Quantity: 1
@@ -22,7 +22,7 @@ MonoBehaviour:
     - attribute: 16
       value: 0
   - id: 1
-    idItem: 1
+    uuid: a2e58bf7-fa94-434e-ae54-70884b9c0e8c
     Level: 3
     Rarity: 1
     Quantity: 1
@@ -30,7 +30,7 @@ MonoBehaviour:
     - attribute: 1
       value: 1
   - id: 2
-    idItem: 2
+    uuid: fcf716d4-b3fd-4e29-836f-9c9ccf4302ed
     Level: 2
     Rarity: 2
     Quantity: 1
@@ -38,7 +38,7 @@ MonoBehaviour:
     - attribute: 2
       value: 1
   - id: 3
-    idItem: 2
+    uuid: 88833149-648c-4840-825c-a1ff1f88e89a
     Level: 6
     Rarity: 3
     Quantity: 1
@@ -46,7 +46,7 @@ MonoBehaviour:
     - attribute: 2
       value: 0
   - id: 4
-    idItem: 3
+    uuid: b63878e1-e63a-4fb5-9b8e-94c62bb4c907
     Level: 1
     Rarity: 0
     Quantity: 1
@@ -54,7 +54,7 @@ MonoBehaviour:
     - attribute: 0
       value: 20
   - id: 5
-    idItem: 6
+    uuid: 562d4827-ff65-47c8-bd58-7c7ddf189ffd
     Level: 2
     Rarity: 2
     Quantity: 1
@@ -64,7 +64,7 @@ MonoBehaviour:
     - attribute: 3
       value: 0.02
   - id: 6
-    idItem: 10
+    uuid: 99a7678f-0c78-4bb0-bff1-f204c7f62b58
     Level: 0
     Rarity: 1
     Quantity: 1
@@ -72,7 +72,7 @@ MonoBehaviour:
     - attribute: 1
       value: 20
   - id: 7
-    idItem: 16
+    uuid: 20bca151-1ebe-4519-9eaf-75f99a37b729
     Level: 0
     Rarity: 1
     Quantity: 5
@@ -80,7 +80,7 @@ MonoBehaviour:
     - attribute: 0
       value: 40
   - id: 8
-    idItem: 19
+    uuid: 29311714-9264-4364-b6a3-2d32214afdca
     Level: 0
     Rarity: 2
     Quantity: 5
@@ -88,7 +88,7 @@ MonoBehaviour:
     - attribute: 1
       value: 25
   - id: 9
-    idItem: 11
+    uuid: 0de91d31-e75e-4a01-8ed2-da8b68c119e8
     Level: 2
     Rarity: 4
     Quantity: 1
@@ -98,7 +98,7 @@ MonoBehaviour:
     - attribute: 3
       value: 0.07
   - id: 10
-    idItem: 13
+    uuid: 603cb850-0a00-47d2-843e-ae5907f7ff64
     Level: 0
     Rarity: 0
     Quantity: 0

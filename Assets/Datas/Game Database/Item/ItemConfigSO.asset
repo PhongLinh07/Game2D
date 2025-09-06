@@ -21,6 +21,7 @@ MonoBehaviour:
     itemType: 0
     equipType: 0
     weaponType: 0
+    attributes: []
   - id: 1
     Name: "Huy\u1EC1n linh ki\u1EBFm"
     Stackable: 0
@@ -29,6 +30,7 @@ MonoBehaviour:
     itemType: 4
     equipType: 6
     weaponType: 1
+    attributes: []
   - id: 2
     Name: "X\xEDch long v\xE2n"
     Stackable: 0
@@ -37,6 +39,7 @@ MonoBehaviour:
     itemType: 3
     equipType: 3
     weaponType: 0
+    attributes: []
   - id: 3
     Name: "Thanh v\xE2n b\xE0o"
     Stackable: 0
@@ -45,6 +48,7 @@ MonoBehaviour:
     itemType: 3
     equipType: 2
     weaponType: 0
+    attributes: []
   - id: 4
     Name: "Linh \xE2m tuy\u1EC1n"
     Stackable: 0
@@ -53,6 +57,7 @@ MonoBehaviour:
     itemType: 4
     equipType: 6
     weaponType: 1
+    attributes: []
   - id: 5
     Name: "Qu\xE0 ph\xFAc l\xE0nh"
     Stackable: 1
@@ -61,6 +66,7 @@ MonoBehaviour:
     itemType: 0
     equipType: 0
     weaponType: 0
+    attributes: []
   - id: 6
     Name: "L\u1EE5c \xE1m t\u1EED"
     Stackable: 0
@@ -69,6 +75,7 @@ MonoBehaviour:
     itemType: 4
     equipType: 6
     weaponType: 6
+    attributes: []
   - id: 7
     Name: "Thi\u1EBFt m\xE3 b\u0103ng h\xE0"
     Stackable: 0
@@ -77,6 +84,7 @@ MonoBehaviour:
     itemType: 4
     equipType: 6
     weaponType: 1
+    attributes: []
   - id: 8
     Name: "V\xE2n thoa"
     Stackable: 0
@@ -85,6 +93,7 @@ MonoBehaviour:
     itemType: 3
     equipType: 3
     weaponType: 0
+    attributes: []
   - id: 9
     Name: "T\xE2n thanh b\xE0o"
     Stackable: 0
@@ -94,6 +103,7 @@ MonoBehaviour:
     itemType: 3
     equipType: 2
     weaponType: 0
+    attributes: []
   - id: 10
     Name: "B\u1EA1o s\u1EDB"
     Stackable: 1
@@ -102,6 +112,7 @@ MonoBehaviour:
     itemType: 4
     equipType: 6
     weaponType: 7
+    attributes: []
   - id: 11
     Name: "Kim long g\u0103m"
     Stackable: 0
@@ -110,6 +121,7 @@ MonoBehaviour:
     itemType: 4
     equipType: 6
     weaponType: 6
+    attributes: []
   - id: 12
     Name: "M\u1ED9c anh s\xE2m"
     Stackable: 1
@@ -119,6 +131,7 @@ MonoBehaviour:
     itemType: 2
     equipType: 0
     weaponType: 0
+    attributes: []
   - id: 13
     Name: "Th\u1EBB b\xE1o danh"
     Stackable: 0
@@ -127,6 +140,7 @@ MonoBehaviour:
     itemType: 0
     equipType: 0
     weaponType: 0
+    attributes: []
   - id: 14
     Name: "Long ho\xE0n"
     Stackable: 0
@@ -135,6 +149,7 @@ MonoBehaviour:
     itemType: 3
     equipType: 4
     weaponType: 0
+    attributes: []
   - id: 15
     Name: "Huy\u1EC1n li\xEAn"
     Stackable: 1
@@ -143,6 +158,7 @@ MonoBehaviour:
     itemType: 2
     equipType: 0
     weaponType: 0
+    attributes: []
   - id: 16
     Name: "H\u1ECFa ho\xE0n \u0111an"
     Stackable: 1
@@ -151,6 +167,7 @@ MonoBehaviour:
     itemType: 1
     equipType: 0
     weaponType: 0
+    attributes: []
   - id: 17
     Name: "\xC2m huy\u1EC1n \u0111an"
     Stackable: 1
@@ -160,6 +177,7 @@ MonoBehaviour:
     itemType: 1
     equipType: 0
     weaponType: 0
+    attributes: []
   - id: 18
     Name: "Thanh l\xE2n ho\xE0n"
     Stackable: 0
@@ -168,6 +186,7 @@ MonoBehaviour:
     itemType: 3
     equipType: 4
     weaponType: 0
+    attributes: []
   - id: 19
     Name: "S\u1EDB linh ph\xF9"
     Stackable: 0
@@ -176,11 +195,13 @@ MonoBehaviour:
     itemType: 4
     equipType: 6
     weaponType: 7
+    attributes: []
   - id: 20
     Name: "N\u1EEF linh k\xEC"
     Stackable: 0
     Icon: {fileID: 421152007, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
     Description: "Tr\u1EADn k\xEC t\u1EA1o huy\u1EC1n k\xEC c\u1EA3nh"
     itemType: 4
-    equipType: 6
+    equipType: 7
     weaponType: 8
+    attributes: []

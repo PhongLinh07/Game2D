@@ -12,10 +12,10 @@ using UnityEngine;
 
 public abstract class AContainer<T> : MonoBehaviour where T : ConfigItem
 {
-    private bool isInitialized = false; // chưa khởi tạo
+    protected bool isInitialized = false; // chưa khởi tạo
     private int selectedSlot = 0;
-    [SerializeField] private Transform parent;
-    [SerializeField] private GameObject slotPrefab;
+    [SerializeField] protected Transform parent;
+    [SerializeField] protected GameObject slotPrefab;
     
 
     //protected List<ASlotUI> slotUIs = new();

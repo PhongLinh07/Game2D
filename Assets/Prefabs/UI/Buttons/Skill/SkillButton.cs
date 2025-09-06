@@ -62,7 +62,7 @@ public abstract class ISkillButton : MonoBehaviour
         cooldownOverlay.gameObject.SetActive(true);
         isOnCooldown = true;
 
-        float timer = data.attrDict[EAttribute.Cd];
+        float timer = data.attrDict[EAttribute.Cooldown];
 
         while (timer >= 0.0f)
         {

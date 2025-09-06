@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityHFSM;
+using static UnityEditor.Progress;
 
 public class LogicCharacter : LogicUnit
 {
@@ -76,11 +77,11 @@ public class LogicCharacter : LogicUnit
         get { return mOwner.Data; }
     }
 
-    public void Equipment(EEquipType equipType, int idItem)
+    public void Equipment(EEquipmentType equipType, ItemUserCfgItem item)
     {
-        mOwner.Equipment(equipType, idItem);
+        mOwner.Equipment(equipType, item);
     }
-    public void Unequipment(EEquipType equipType)
+    public void Unequipment(EEquipmentType equipType)
     {
         mOwner.Unequipment(equipType);
     }
@@ -119,7 +120,7 @@ public class LogicCharacter : LogicUnit
 
     public bool CantUseSkill(int idSkill)
     {
-       // float qiCons = SkillConfig.GetInstance.GetConfigItem(idSkill).attrDict[EAttribute.QiConsumption];
+       // float qiCons = SkillConfig.GetInstance.GetConfigItem(idSkill).attrDict[EAttribute.EnergyCost];
 
        // if(mOwner.Data.general.currEnergy < qiCons) return false;
         return true;

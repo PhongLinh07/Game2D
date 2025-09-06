@@ -3,6 +3,7 @@ using System.Linq;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
+using static UnityEditor.Progress;
 
 [System.Serializable]
 public class CharacterUnit : UnitStats
@@ -36,13 +37,13 @@ public class CharacterUnit : UnitStats
         }
     }
 
-    public void Equipment(EEquipType equipType, int idItem)
+    public void Equipment(EEquipmentType equipType, ItemUserCfgItem item)
     {
-        data.quipDict[equipType] = idItem;
+        data.quipDict[equipType] = item; 
     }
 
 
-    public void Unequipment(EEquipType equipType)
+    public void Unequipment(EEquipmentType equipType)
     {
         data.quipDict.Remove(equipType);
     }
@@ -63,7 +64,7 @@ public class CharacterUnit : UnitStats
 
     public override int UseSkill(int idSkill)
     {
-        float qiConsumption = SkillConfig.GetInstance.GetConfigItem(idSkill).attrDict[EAttribute.QiConsumption];
+        float qiConsumption = SkillConfig.GetInstance.GetConfigItem(idSkill).attrDict[EAttribute.EnergyCost];
         return data.general.currEnergy = Mathf.Clamp((int)(data.general.currEnergy - qiConsumption), 0, data.general.energy);
     }
 

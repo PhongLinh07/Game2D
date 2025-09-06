@@ -21,8 +21,8 @@ public class DetailsItem : MonoBehaviour
     {
         headerCard.sprite = data.rarityDict[playerItem.Rarity];
         bg.sprite = rarityCell.rarityDict[playerItem.Rarity];
-        icon.sprite = ItemConfig.GetInstance.GetConfigItem(playerItem.idItem).Icon;
-        nameItem.text = ItemConfig.GetInstance.GetConfigItem(playerItem.idItem).Name;
+        icon.sprite = ItemConfig.GetInstance.GetConfigItem(playerItem.id).Icon;
+        nameItem.text = ItemConfig.GetInstance.GetConfigItem(playerItem.id).Name;
         descriptionItem.text = playerItem.GetDescription();
     }
 }

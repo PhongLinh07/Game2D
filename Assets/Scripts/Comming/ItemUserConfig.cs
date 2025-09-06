@@ -6,7 +6,7 @@ using UnityEngine;
 
 public class ItemUserConfig : SingletonBase<ItemUserConfig>
 {
-    private List<ItemUserCfgItem> mDatas = new List<ItemUserCfgItem>();
+    public List<ItemUserCfgItem> mDatas = new List<ItemUserCfgItem>();
     public Dictionary<int, ItemUserCfgItem> mCfgDict { get; private set; } = new Dictionary<int, ItemUserCfgItem>();
 
     public string fileName { get; set; } = typeof(ItemUserCfgItem).Name;

@@ -47,7 +47,7 @@ public class InventorySlotUI : ASlotUI, IPointerClickHandler
 
         dataOfSlot = data as ItemUserCfgItem;
 
-        ItemCfgItem item = ItemConfig.GetInstance.GetConfigItem(dataOfSlot.idItem);
+        ItemCfgItem item = ItemConfig.GetInstance.GetConfigItem(dataOfSlot.id);
         gameObject.SetActive(true);
         background.sprite = rarityCell.rarityDict[dataOfSlot.Rarity];
         icon.sprite = item.Icon;
@@ -73,7 +73,7 @@ public class InventorySlotUI : ASlotUI, IPointerClickHandler
     {
         AContainer<ItemUserCfgItem> container = transform.parent.GetComponent<AContainer<ItemUserCfgItem>>();
         // Gọi hàm Instance đã override từ hàm ảo ItemPanel
-        container.OnClick(dataOfSlot.id);
+        container.OnClick(thisIndex);
 
         // ---------------- Double Tap logic ----------------
         if (Time.time < lastTapTime + doubleTapTime) TryEquipSkill();
@@ -83,9 +83,6 @@ public class InventorySlotUI : ASlotUI, IPointerClickHandler
 
     private void TryEquipSkill()
     {
-        if (inventory.EquipItem(dataOfSlot))
-            tick.gameObject.SetActive(true);
-        else
-            tick.gameObject.SetActive(false);
+        inventory.EquipItem(dataOfSlot);
     }
 }

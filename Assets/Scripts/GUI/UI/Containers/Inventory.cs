@@ -13,6 +13,7 @@ public class Inventory : AContainer<ItemUserCfgItem>
 
     private LogicCharacter _logicCharacter;
 
+    private List<InventorySlotUI> slots = new();
 
     // Start is called before the first frame update
 
@@ -26,6 +27,7 @@ public class Inventory : AContainer<ItemUserCfgItem>
     {
         Bootstrapper.Instance.eventWhenCloneCharacter -= Init;
         _logicCharacter = logicCharacter;
+
     }
 
     public override void Init()
@@ -33,43 +35,51 @@ public class Inventory : AContainer<ItemUserCfgItem>
         _logicCharacter = LogicCharacter.Instance;
         slotUIs.Clear();
 
-        foreach(var item in _logicCharacter.Data.itemDict)
+        for(int i = 0; i < _logicCharacter.Data.items.Count; i++)
         {
-            ItemUserCfgItem cpy = new ItemUserCfgItem();
-            cpy.CopyFrom(item.Value);
-            datas.Add(cpy);
+            InventorySlotUI newSlot = Instantiate(slotPrefab, parent).GetComponent<InventorySlotUI>();
+            newSlot.SetIndex(i);
+            newSlot.SetData<ItemUserCfgItem>(_logicCharacter.Data.items[i]);
+            slots.Add(newSlot);
+
         }
+
+        
+        isInitialized = true;
 
         base.Init();
     }
 
-    public bool EquipItem(ItemUserCfgItem item)
+    public void EquipItem(ItemUserCfgItem item)
     {
-        ItemCfgItem itemCfg = ItemConfig.GetInstance.GetConfigItem(item.idItem);
+        ItemCfgItem itemCfg = ItemConfig.GetInstance.GetConfigItem(item.id);
 
-        if(itemCfg.equipType == EEquipType.None) return false;
+        if(itemCfg.equipType == EEquipmentType.None) return;
 
         if (!_logicCharacter.Data.quipDict.ContainsKey(itemCfg.equipType)) // nếu key chưa tồn tại
         {
-            _logicCharacter.Equipment(itemCfg.equipType, item.id);
-            return true;
+            _logicCharacter.Equipment(itemCfg.equipType, item);
+          
 
         }
-        else
+        else // nếu key đã tồn tại
         {
-            if(_logicCharacter.Data.quipDict[itemCfg.equipType] == item.id) // nếu là lần 2 thì đảo ngược
+            if(_logicCharacter.Data.quipDict[itemCfg.equipType] != null) // nếu là lần 2 thì đảo ngược
             {
-                _logicCharacter.Unequipment(itemCfg.equipType);
-                return false;
+                _logicCharacter.Unequipment(itemCfg.equipType); 
             }
 
-            ((InventorySlotUI)slotUIs[_logicCharacter.Data.quipDict[itemCfg.equipType]]).Equip(false); // giải phóng item trước đó
-
-            _logicCharacter.Equipment(itemCfg.equipType, item.id); // Equipment
-            return true;
+            _logicCharacter.Equipment(itemCfg.equipType, item);
         }
 
-
+        UpdateContainer();
+    }
+    public override void UpdateContainer()
+    {
+        foreach(var slot in slots)
+        {
+            slot.Equip(_logicCharacter.Data.quipDict.ContainsValue(slot.dataOfSlot));
+        }
     }
 
     public override void OnClick(int id)

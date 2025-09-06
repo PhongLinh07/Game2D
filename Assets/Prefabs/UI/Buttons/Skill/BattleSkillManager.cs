@@ -63,17 +63,16 @@ public class BattleSkillManager : MonoBehaviour
 
     public bool EquipSKill(SkillCfgItem skill)
     {
-        if (skill.weaponType != EWeaponType.None && !_logicCharacter.Data.quipDict.ContainsKey(EEquipType.Weapon))
+        if (skill.weaponType != EWeaponType.None && !_logicCharacter.Data.quipDict.ContainsKey(EEquipmentType.Weapon))
         {
             Debug.LogWarning($"This skill need weapon: {skill.weaponType.ToString()}");
             return false;
         }
         else if(skill.weaponType != EWeaponType.None)
         {
-            int idItem = _logicCharacter.Data.quipDict[EEquipType.Weapon];
+            ItemUserCfgItem item = _logicCharacter.Data.quipDict[EEquipmentType.Weapon];
 
-            var item = _logicCharacter.Data.itemDict[idItem];
-            if (ItemConfig.GetInstance.GetConfigItem(item.idItem).weaponType != skill.weaponType)
+            if (ItemConfig.GetInstance.GetConfigItem(item.id).weaponType != skill.weaponType)
             {
                 Debug.LogWarning($"This skill need weapon: {skill.weaponType.ToString()}");
                 return false;

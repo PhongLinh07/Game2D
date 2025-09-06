@@ -26,8 +26,7 @@ public class PickUpItem : MonoBehaviour
     public void SetItemPickUp(ItemUserCfgItem playerItem)
     {
 
-        mPlayerItem = new ItemUserCfgItem();
-        mPlayerItem.CopyFrom(playerItem); // ✨ Copy thay vì giữ tham chiếu
+        mPlayerItem = new ItemUserCfgItem(playerItem);
        
         SpriteRenderer sr = GetComponent<SpriteRenderer>();
        // sr.sprite = mPlayerItem.Data.Icon;

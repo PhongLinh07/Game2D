@@ -28,16 +28,16 @@ public enum EItemType
 };
 
 [System.Serializable]
-public class ItemCfgItem : ConfigItem
+public class ItemCfgItem : ConfigItem //Template
 {
     public string Name;
     public bool Stackable;
     public Sprite Icon;
     public string Description;
     public EItemType itemType;
-    public EEquipType equipType;
+    public EEquipmentType equipType;
     public EWeaponType weaponType;
-
+    [SerializeField] public List<Attribute> attributes = new();
     public override void ApplyFromRow(IDictionary<string, object> row) { }
 
     internal void CopyFrom(ItemCfgItem other)
@@ -50,6 +50,7 @@ public class ItemCfgItem : ConfigItem
         itemType = other.itemType;
         equipType = other.equipType;
         weaponType = other.weaponType;
+        attributes = other.attributes;
     }
 }
 

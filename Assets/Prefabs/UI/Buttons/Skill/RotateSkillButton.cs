@@ -21,7 +21,7 @@ public class RotateSkillButton : ISkillButton, IPointerDownHandler, IPointerUpHa
         cooldownOverlay.gameObject.SetActive(true);
         isOnCooldown = true;
 
-        float timer = data.attrDict[EAttribute.Cd];
+        float timer = data.attrDict[EAttribute.Cooldown];
         while (timer > 0.0f)
         {
             timer -= Time.deltaTime;
