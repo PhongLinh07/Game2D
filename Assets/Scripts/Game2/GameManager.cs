@@ -45,5 +45,6 @@ public class GameManager : MonoBehaviour
     {
         if (ItemUserConfig.GetInstance) await ItemUserConfig.GetInstance.SaveJsonAsync();
         if (CharacterConfig.GetInstance) await CharacterConfig.GetInstance.SaveJsonAsync();
+        if (UUIDConfig.GetInstance) await UUIDConfig.GetInstance.SaveJsonAsync();
     }
 }

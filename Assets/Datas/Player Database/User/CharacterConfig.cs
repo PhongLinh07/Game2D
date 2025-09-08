@@ -29,7 +29,6 @@ public class CharacterConfig : SingletonBase<CharacterConfig>
         foreach (var row in mDatas)
         {
             if (row == null || row.id < 0) continue;
-            row.Init();
             mCfgDict[row.id] = row;
         }
 
@@ -73,6 +72,11 @@ public class CharacterConfig : SingletonBase<CharacterConfig>
 
     public async Task SaveJsonAsync()
     {
+        if (mDatas == null || mDatas.Count == 0)
+        {
+            Debug.LogWarning("Dữ liệu rỗng, không lưu JSON");
+            return; // dừng luôn, không lưu
+        }
         string path = Path.Combine(Application.persistentDataPath, fileName + ".json");
         string json = JsonConvert.SerializeObject(mDatas, Formatting.Indented);
 

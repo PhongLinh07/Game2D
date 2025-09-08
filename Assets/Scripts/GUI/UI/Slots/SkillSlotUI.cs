@@ -54,9 +54,6 @@ public class SkillSlotUI : ASlotUI, IPointerClickHandler
 
     private void TryEquipSkill()
     {
-        if (battleSkillManager.EquipSKill(dataOfSlot))
-            tick.gameObject.SetActive(true);
-        else
-            tick.gameObject.SetActive(false);
+        battleSkillManager.EquipSKill(dataOfSlot);
     }
 }

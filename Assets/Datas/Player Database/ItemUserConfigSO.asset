@@ -14,92 +14,224 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   datas:
   - id: 0
-    uuid: a4b5be9b-e952-40ba-9a2f-f72385ee6ef5
-    Level: 2
-    Rarity: 0
-    Quantity: 1
-    attributes:
-    - attribute: 16
-      value: 0
-  - id: 1
-    uuid: a2e58bf7-fa94-434e-ae54-70884b9c0e8c
+    id_Item: 14
     Level: 3
-    Rarity: 1
-    Quantity: 1
-    attributes:
-    - attribute: 1
-      value: 1
-  - id: 2
-    uuid: fcf716d4-b3fd-4e29-836f-9c9ccf4302ed
-    Level: 2
-    Rarity: 2
-    Quantity: 1
-    attributes:
-    - attribute: 2
-      value: 1
-  - id: 3
-    uuid: 88833149-648c-4840-825c-a1ff1f88e89a
-    Level: 6
-    Rarity: 3
-    Quantity: 1
-    attributes:
-    - attribute: 2
-      value: 0
-  - id: 4
-    uuid: b63878e1-e63a-4fb5-9b8e-94c62bb4c907
-    Level: 1
     Rarity: 0
-    Quantity: 1
-    attributes:
-    - attribute: 0
-      value: 20
-  - id: 5
-    uuid: 562d4827-ff65-47c8-bd58-7c7ddf189ffd
+    Quantity: 14
+    attributes: []
+  - id: 1
+    id_Item: 6
+    Level: 7
+    Rarity: 0
+    Quantity: 13
+    attributes: []
+  - id: 2
+    id_Item: 4
+    Level: 6
+    Rarity: 0
+    Quantity: 6
+    attributes: []
+  - id: 3
+    id_Item: 7
     Level: 2
+    Rarity: 3
+    Quantity: 6
+    attributes: []
+  - id: 4
+    id_Item: 18
+    Level: 8
+    Rarity: 3
+    Quantity: 9
+    attributes: []
+  - id: 5
+    id_Item: 18
+    Level: 6
     Rarity: 2
-    Quantity: 1
-    attributes:
-    - attribute: 1
-      value: 4
-    - attribute: 3
-      value: 0.02
+    Quantity: 16
+    attributes: []
   - id: 6
-    uuid: 99a7678f-0c78-4bb0-bff1-f204c7f62b58
-    Level: 0
-    Rarity: 1
-    Quantity: 1
-    attributes:
-    - attribute: 1
-      value: 20
+    id_Item: 3
+    Level: 5
+    Rarity: 0
+    Quantity: 18
+    attributes: []
   - id: 7
-    uuid: 20bca151-1ebe-4519-9eaf-75f99a37b729
-    Level: 0
+    id_Item: 2
+    Level: 2
     Rarity: 1
-    Quantity: 5
-    attributes:
-    - attribute: 0
-      value: 40
+    Quantity: 10
+    attributes: []
   - id: 8
-    uuid: 29311714-9264-4364-b6a3-2d32214afdca
-    Level: 0
+    id_Item: 6
+    Level: 4
     Rarity: 2
-    Quantity: 5
-    attributes:
-    - attribute: 1
-      value: 25
+    Quantity: 9
+    attributes: []
   - id: 9
-    uuid: 0de91d31-e75e-4a01-8ed2-da8b68c119e8
+    id_Item: 7
     Level: 2
     Rarity: 4
-    Quantity: 1
-    attributes:
-    - attribute: 1
-      value: 7
-    - attribute: 3
-      value: 0.07
+    Quantity: 5
+    attributes: []
   - id: 10
-    uuid: 603cb850-0a00-47d2-843e-ae5907f7ff64
-    Level: 0
+    id_Item: 14
+    Level: 9
+    Rarity: 1
+    Quantity: 16
+    attributes: []
+  - id: 11
+    id_Item: 13
+    Level: 1
     Rarity: 0
-    Quantity: 0
+    Quantity: 11
+    attributes: []
+  - id: 12
+    id_Item: 13
+    Level: 9
+    Rarity: 3
+    Quantity: 1
+    attributes: []
+  - id: 13
+    id_Item: 5
+    Level: 6
+    Rarity: 0
+    Quantity: 7
+    attributes: []
+  - id: 14
+    id_Item: 16
+    Level: 7
+    Rarity: 3
+    Quantity: 13
+    attributes: []
+  - id: 15
+    id_Item: 2
+    Level: 2
+    Rarity: 1
+    Quantity: 14
+    attributes: []
+  - id: 16
+    id_Item: 14
+    Level: 0
+    Rarity: 1
+    Quantity: 1
+    attributes: []
+  - id: 17
+    id_Item: 17
+    Level: 3
+    Rarity: 0
+    Quantity: 34
+    attributes: []
+  - id: 18
+    id_Item: 18
+    Level: 9
+    Rarity: 1
+    Quantity: 13
+    attributes: []
+  - id: 19
+    id_Item: 7
+    Level: 9
+    Rarity: 0
+    Quantity: 3
+    attributes: []
+  - id: 20
+    id_Item: 0
+    Level: 2
+    Rarity: 3
+    Quantity: 27
+    attributes: []
+  - id: 21
+    id_Item: 2
+    Level: 9
+    Rarity: 0
+    Quantity: 11
+    attributes: []
+  - id: 22
+    id_Item: 18
+    Level: 2
+    Rarity: 0
+    Quantity: 17
+    attributes: []
+  - id: 23
+    id_Item: 10
+    Level: 9
+    Rarity: 0
+    Quantity: 46
+    attributes: []
+  - id: 24
+    id_Item: 1
+    Level: 2
+    Rarity: 3
+    Quantity: 7
+    attributes: []
+  - id: 25
+    id_Item: 19
+    Level: 9
+    Rarity: 3
+    Quantity: 8
+    attributes: []
+  - id: 26
+    id_Item: 7
+    Level: 4
+    Rarity: 1
+    Quantity: 2
+    attributes: []
+  - id: 27
+    id_Item: 13
+    Level: 5
+    Rarity: 1
+    Quantity: 15
+    attributes: []
+  - id: 28
+    id_Item: 6
+    Level: 2
+    Rarity: 3
+    Quantity: 1
+    attributes: []
+  - id: 29
+    id_Item: 12
+    Level: 0
+    Rarity: 1
+    Quantity: 18
+    attributes: []
+  - id: 30
+    id_Item: 11
+    Level: 7
+    Rarity: 0
+    Quantity: 4
+    attributes: []
+  - id: 31
+    id_Item: 11
+    Level: 2
+    Rarity: 0
+    Quantity: 5
+    attributes: []
+  - id: 32
+    id_Item: 1
+    Level: 7
+    Rarity: 3
+    Quantity: 13
+    attributes: []
+  - id: 33
+    id_Item: 4
+    Level: 6
+    Rarity: 3
+    Quantity: 19
+    attributes: []
+  - id: 34
+    id_Item: 2
+    Level: 4
+    Rarity: 0
+    Quantity: 18
+    attributes: []
+  - id: 35
+    id_Item: 11
+    Level: 5
+    Rarity: 1
+    Quantity: 8
+    attributes: []
+  - id: 36
+    id_Item: 15
+    Level: 4
+    Rarity: 2
+    Quantity: 13
     attributes: []

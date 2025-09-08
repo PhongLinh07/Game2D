@@ -17,25 +17,25 @@ public class SkillBook : AContainer<SkillCfgItem>
         logicCharacter = LogicCharacter.Instance;
         slotUIs.Clear();
 
-        foreach(int id in logicCharacter.Data.SkillsLearned)
-        {
-            SkillCfgItem cpy = new SkillCfgItem();
-            cpy.CopyFrom(SkillConfig.GetInstance.GetConfigItem(logicCharacter.Data.SkillsLearned[id]));
-            datas.Add(cpy);
-      
+        foreach(var skill in logicCharacter.Data.SkillsLearnedDict)
+        {   
+            datas.Add(skill.Value);
         }
 
         base.Init();
     }
 
+    
     public override void UpdateContainer()
     {
-        base.UpdateContainer();
-
-        // Cập nhật vào UI
-        foreach(int id in logicCharacter.Data.SkillsLearned)
+        SkillSlotUI s;
+        SkillCfgItem i;
+        foreach (var slot in slotUIs)
         {
-            ((SkillSlotUI)slotUIs[id]).Equip(logicCharacter.Data.SkillsEquipped.Contains(id));
+            s = (SkillSlotUI)slot.Value;
+            i = s.dataOfSlot;
+
+            s.Equip(logicCharacter.Data.SkillsEquippedDict.ContainsKey(i.id));
         }
     }
     public override void OnClick(int id) 

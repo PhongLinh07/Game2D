@@ -26,21 +26,21 @@ public class HUDController : MonoBehaviour
     {
         Bootstrapper.Instance.eventWhenCloneCharacter -= Init;
 
-        _logicCharacter = LogicCharacter.Instance;
+        _logicCharacter = logicCharacter;
 
         if (logicCharacter == null) Debug.Log("Null");
-        hpBar.Init(_logicCharacter.Data.general.vitality, _logicCharacter.Data.general.currVitality);
-        mpBar.Init(_logicCharacter.Data.general.energy, _logicCharacter.Data.general.currEnergy);
+        hpBar.Init(_logicCharacter.Data.attributes[EAttribute.Hp].currValue, _logicCharacter.Data.attributes[EAttribute.Hp].value);
+        mpBar.Init(_logicCharacter.Data.attributes[EAttribute.Mana].currValue, _logicCharacter.Data.attributes[EAttribute.Mana].value);
         logicCharacter.OnStatsChanged += TakeDamage;
         logicCharacter.OnStatsChanged += UseSKill;
     }
     private void TakeDamage()
     {
-        hpBar.SetValue(_logicCharacter.Data.general.currVitality);
+        hpBar.SetValue(_logicCharacter.Data.attributes[EAttribute.Hp].currValue);
     }
 
     private void UseSKill()
     {
-        mpBar.SetValue(_logicCharacter.Data.general.currEnergy);
+        mpBar.SetValue(_logicCharacter.Data.attributes[EAttribute.Mana].currValue);
     }
 }

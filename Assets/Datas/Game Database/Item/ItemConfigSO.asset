@@ -28,7 +28,7 @@ MonoBehaviour:
     Icon: {fileID: -145948571, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
     Description: 
     itemType: 4
-    equipType: 6
+    equipType: 7
     weaponType: 1
     attributes: []
   - id: 2
@@ -55,7 +55,7 @@ MonoBehaviour:
     Icon: {fileID: 636506770, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
     Description: "Ki\u1EBFm huy\u1EC1n \xE2m"
     itemType: 4
-    equipType: 6
+    equipType: 7
     weaponType: 1
     attributes: []
   - id: 5
@@ -73,7 +73,7 @@ MonoBehaviour:
     Icon: {fileID: -759583551, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
     Description: "Dao g\u0103m \xE1m to\xE1n"
     itemType: 4
-    equipType: 6
+    equipType: 7
     weaponType: 6
     attributes: []
   - id: 7
@@ -82,7 +82,7 @@ MonoBehaviour:
     Icon: {fileID: 1519057406, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
     Description: "Ki\u1EBFm ch\xED h\xE0n"
     itemType: 4
-    equipType: 6
+    equipType: 7
     weaponType: 1
     attributes: []
   - id: 8
@@ -110,8 +110,8 @@ MonoBehaviour:
     Icon: {fileID: -1831381271, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
     Description: "Linh ph\xF9 b\u1EA1o k\xEDch"
     itemType: 4
-    equipType: 6
-    weaponType: 7
+    equipType: 7
+    weaponType: 8
     attributes: []
   - id: 11
     Name: "Kim long g\u0103m"
@@ -119,7 +119,7 @@ MonoBehaviour:
     Icon: {fileID: 726592786, guid: 9664a592b235ec1428d8ebc9eef451ca, type: 3}
     Description: "L\u01B0\u1EE1i g\u0103m s\u1EAFc nh\u1ECDn"
     itemType: 4
-    equipType: 6
+    equipType: 7
     weaponType: 6
     attributes: []
   - id: 12

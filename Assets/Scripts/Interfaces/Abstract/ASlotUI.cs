@@ -39,6 +39,7 @@ public abstract class ASlotUI : MonoBehaviour, IPointerDownHandler, IEventSystem
       tick.gameObject.SetActive(false);
 
     }
+
     public void Reset()//Temporary
     {
         gameObject.SetActive(false);

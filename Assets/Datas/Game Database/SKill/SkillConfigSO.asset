@@ -19,12 +19,15 @@ MonoBehaviour:
     Description: "Chi\xEAu th\u1EE9c c\u01A1 b\u1EA3n ph\xF3ng ra phi ki\u1EBFm.
       (Ph\xE1p kh\xED c\u1EA7n: Ki\u1EBFm)"
     attributes:
-    - attribute: 29
+    - attribute: 3
       value: 0
+      currValue: 0
     - attribute: 1
       value: 7
-    - attribute: 8
+      currValue: 0
+    - attribute: 27
       value: 0
+      currValue: 0
     ESkillLg: 0
     InputType: 3
     weaponType: 1
@@ -36,10 +39,13 @@ MonoBehaviour:
     attributes:
     - attribute: 29
       value: 10
+      currValue: 0
     - attribute: 1
       value: 10
-    - attribute: 8
+      currValue: 0
+    - attribute: 27
       value: 0
+      currValue: 0
     ESkillLg: 1
     InputType: 3
     weaponType: 1
@@ -49,12 +55,15 @@ MonoBehaviour:
     Description: "Tri\u1EC7u h\u1ED3i ki\u1EBFm tr\u1EADn t\u1EA1i v\u1ECB tr\xED
       ch\u1EC9 \u0111\u1ECBnh . (Ph\xE1p kh\xED c\u1EA7n: Ki\u1EBFm)"
     attributes:
-    - attribute: 29
+    - attribute: 3
       value: 5
+      currValue: 0
     - attribute: 1
       value: 7
-    - attribute: 8
+      currValue: 0
+    - attribute: 27
       value: 0
+      currValue: 0
     ESkillLg: 2
     InputType: 1
     weaponType: 1
@@ -64,12 +73,15 @@ MonoBehaviour:
     Description: "D\u1ECBch chuy\u1EC3n t\u1EE9c th\u1EDDi t\u1EDBi v\u1ECB tr\xED
       ch\u1EC9 \u0111\u1ECBnh"
     attributes:
-    - attribute: 29
+    - attribute: 3
       value: 5
+      currValue: 0
     - attribute: 1
       value: 0
-    - attribute: 8
+      currValue: 0
+    - attribute: 27
       value: 0
+      currValue: 0
     ESkillLg: 3
     InputType: 1
     weaponType: 0
@@ -81,10 +93,13 @@ MonoBehaviour:
     attributes:
     - attribute: 0
       value: 0
+      currValue: 0
     - attribute: 0
       value: 0
+      currValue: 0
     - attribute: 8
       value: 0
+      currValue: 0
     ESkillLg: 3
     InputType: 3
     weaponType: 0

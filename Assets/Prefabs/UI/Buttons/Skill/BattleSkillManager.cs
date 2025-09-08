@@ -44,20 +44,19 @@ public class BattleSkillManager : MonoBehaviour
         Bootstrapper.Instance.eventWhenCloneCharacter -= Init;
         _logicCharacter = logicCharacter;
 
-        for (int i = 0; i < _logicCharacter.Data.SkillsEquipped.Count; i++)
+        foreach(var skill in _logicCharacter.Data.SkillsEquippedDict)
         {
-            SkillCfgItem skill = SkillConfig.GetInstance.GetConfigItem(_logicCharacter.Data.SkillsEquipped[i]);
-            if (skill == null)
+            if (skill.Value == null)
             {
                 Debug.Log("skill Null");
                 continue;
             }
 
-            ISkillButton newSkillButton = GetSkillButton((SkillInputType)skill.InputType);
+            ISkillButton newSkillButton = GetSkillButton((SkillInputType)skill.Value.InputType);
 
             newSkillButton.gameObject.SetActive(true);
-            newSkillButton.SetData(_logicCharacter, skill);
-            skillButtons.Add(skill.id, newSkillButton);
+            newSkillButton.SetData(_logicCharacter, skill.Value);
+            skillButtons[skill.Value.id] = newSkillButton;
         }
     }
 
@@ -72,7 +71,7 @@ public class BattleSkillManager : MonoBehaviour
         {
             ItemUserCfgItem item = _logicCharacter.Data.quipDict[EEquipmentType.Weapon];
 
-            if (ItemConfig.GetInstance.GetConfigItem(item.id).weaponType != skill.weaponType)
+            if (item.GetTemplate().weaponType != skill.weaponType)
             {
                 Debug.LogWarning($"This skill need weapon: {skill.weaponType.ToString()}");
                 return false;
@@ -80,7 +79,7 @@ public class BattleSkillManager : MonoBehaviour
         }
             
 
-        if (_logicCharacter.Data.SkillsEquipped.Contains(skill.id)) // nếu đã tồn tại thì remove
+        if (_logicCharacter.Data.SkillsEquippedDict.ContainsKey(skill.id)) // nếu đã tồn tại thì remove
         {
             _logicCharacter.UnequipSkill(skill.id); 
             if (skillButtons.ContainsKey(skill.id))
@@ -92,7 +91,7 @@ public class BattleSkillManager : MonoBehaviour
         }
         else
         {
-            if (_logicCharacter.Data.SkillsEquipped.Count >= 7) return false;
+            if (_logicCharacter.Data.SkillsEquippedDict.Count >= 7) return false;
 
             _logicCharacter.EquipSkill(skill.id); // gán skill vào list
             skillButtons[skill.id] = GetSkillButton((SkillInputType)skill.InputType);
@@ -103,6 +102,7 @@ public class BattleSkillManager : MonoBehaviour
 
         
     }
+
 
     private ISkillButton GetSkillButton(SkillInputType type)
     {

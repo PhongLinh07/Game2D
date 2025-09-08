@@ -13,8 +13,6 @@ public class Inventory : AContainer<ItemUserCfgItem>
 
     private LogicCharacter _logicCharacter;
 
-    private List<InventorySlotUI> slots = new();
-
     // Start is called before the first frame update
 
     private void Awake()
@@ -23,7 +21,7 @@ public class Inventory : AContainer<ItemUserCfgItem>
         Bootstrapper.Instance.eventWhenCloneCharacter += Init;
     }
 
-    private void  Init(LogicCharacter logicCharacter)
+    private void Init(LogicCharacter logicCharacter)
     {
         Bootstrapper.Instance.eventWhenCloneCharacter -= Init;
         _logicCharacter = logicCharacter;
@@ -35,24 +33,21 @@ public class Inventory : AContainer<ItemUserCfgItem>
         _logicCharacter = LogicCharacter.Instance;
         slotUIs.Clear();
 
-        for(int i = 0; i < _logicCharacter.Data.items.Count; i++)
+        foreach(var item in _logicCharacter.Data.items)
         {
             InventorySlotUI newSlot = Instantiate(slotPrefab, parent).GetComponent<InventorySlotUI>();
-            newSlot.SetIndex(i);
-            newSlot.SetData<ItemUserCfgItem>(_logicCharacter.Data.items[i]);
-            slots.Add(newSlot);
+            newSlot.SetData<ItemUserCfgItem>(item.Value);
+            slotUIs[item.Key] = newSlot;
 
         }
-
         
         isInitialized = true;
 
-        base.Init();
     }
 
     public void EquipItem(ItemUserCfgItem item)
     {
-        ItemCfgItem itemCfg = ItemConfig.GetInstance.GetConfigItem(item.id);
+        ItemCfgItem itemCfg = item.GetTemplate();
 
         if(itemCfg.equipType == EEquipmentType.None) return;
 
@@ -60,25 +55,45 @@ public class Inventory : AContainer<ItemUserCfgItem>
         {
             _logicCharacter.Equipment(itemCfg.equipType, item);
           
-
         }
         else // nếu key đã tồn tại
         {
-            if(_logicCharacter.Data.quipDict[itemCfg.equipType] != null) // nếu là lần 2 thì đảo ngược
+            if(_logicCharacter.Data.quipDict[itemCfg.equipType].id == item.id) // nếu là lần 2 thì đảo ngược
             {
+                Debug.LogWarning("sdfsdfsdfssfsfgsgfs");
                 _logicCharacter.Unequipment(itemCfg.equipType); 
             }
+            else
+            {
+                Debug.LogWarning("??????????????????????//");
 
-            _logicCharacter.Equipment(itemCfg.equipType, item);
+                _logicCharacter.Equipment(itemCfg.equipType, item);
+            }
+
+                
         }
 
         UpdateContainer();
     }
     public override void UpdateContainer()
     {
-        foreach(var slot in slots)
+        InventorySlotUI s;
+        ItemUserCfgItem i;
+        foreach (var slot in slotUIs)
         {
-            slot.Equip(_logicCharacter.Data.quipDict.ContainsValue(slot.dataOfSlot));
+            s = (InventorySlotUI)slot.Value;
+            i = s.dataOfSlot;
+
+            if(_logicCharacter.Data.quipDict.ContainsKey(i.GetTemplate().equipType))
+            {
+                s.Equip(_logicCharacter.Data.quipDict[i.GetTemplate().equipType].id == i.id);
+            }
+            else
+            {
+                s.Equip(false);
+            }
+            
+            
         }
     }
 

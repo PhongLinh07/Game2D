@@ -5,7 +5,7 @@ using UnityEngine;
 [System.Serializable]
 public abstract class ConfigItem
 {
-    public int id;
+    public int id = -1;
     public abstract void ApplyFromRow(IDictionary<string, object> row);
 }
 

@@ -1,8 +1,8 @@
 ﻿public enum EAttribute
 {
     // ===================== Tư chất =====================
-    MaxHp = 0,          // Máu tối đa của nhân vật
-    MaxMana = 1,        // Mana hoặc linh lực tối đa
+    Hp = 0,          // Máu tối đa của nhân vật
+    Mana = 1,        // Mana hoặc linh lực tối đa
     Speed = 2,          // Tốc độ di chuyển hoặc hành động
     Attack = 3,         // Lực tấn công vật lý
     Defense = 4,        // Phòng thủ vật lý, giảm sát thương nhận vào
@@ -36,7 +36,10 @@
     Duration = 26,           // Thời gian duy trì hiệu ứng, buff, pháp thuật
     Cooldown = 27,           // Thời gian hồi chiêu hoặc thời gian chờ
     EnergyCost = 28,         // Năng lượng/linh lực tiêu hao khi dùng skill
-    HpCost = 29              // Máu tiêu hao khi dùng skill đặc biệt
+    HpCost = 29,              // Máu tiêu hao khi dùng skill đặc biệt
+    Lifespan = 30
+
+
 }
 
 public enum EEquipmentType

@@ -34,6 +34,15 @@ public class Bootstrapper : MonoBehaviour
         assetManager.LoadAsset<SkillConfigSO>(EAsset.SkillConfigSO, (data) => { data.LoadData(); });
         assetManager.LoadAsset<ItemConfigSO>(EAsset.ItemConfigSO, (data) => { data.LoadData();});
 
+        if (!UUIDConfig.GetInstance.InitData())
+        {
+            Debug.LogError($"Load file: {typeof(UUIDCfgItem).Name} failed!");
+        }
+        else
+        {
+            Debug.Log("Loaded UUIDCfgItem!");
+        }
+
 
         if (ItemUserConfig.GetInstance.InitData() == null)
         {

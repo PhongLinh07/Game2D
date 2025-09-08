@@ -52,7 +52,7 @@ public class LogicCharacter : LogicUnit
             onEnter: ctx => { animatorController.SetState(EAnimParametor.Run); },
             onLogic: ctx =>
             {
-                rb.velocity = playerInputHandler.moveInput * mOwner.Data.combat.agility;
+                rb.velocity = playerInputHandler.moveInput * mOwner.GetAttributes(EAttribute.Speed).value;
                 if (playerInputHandler.moveInput.magnitude < 0.01f) fsm?.RequestStateChange(EAnimParametor.Idle);
             },
             onExit: ctx => rb.velocity = Vector2.zero
@@ -72,9 +72,9 @@ public class LogicCharacter : LogicUnit
         mOwner.SetPosition(transform.position);
     }
 
-    public CharacterCfgItem Data
+    public CharacterUnit Data
     {
-        get { return mOwner.Data; }
+        get { return mOwner; }
     }
 
     public void Equipment(EEquipmentType equipType, ItemUserCfgItem item)

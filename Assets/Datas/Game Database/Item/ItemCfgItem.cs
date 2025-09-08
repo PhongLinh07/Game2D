@@ -59,5 +59,6 @@ public class Attribute
 {
     public EAttribute attribute;
     public float value;
+    public float currValue;
 }
 

@@ -1,4 +1,4 @@
-using Newtonsoft.Json;
+﻿using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
 using System.Threading.Tasks;
@@ -73,6 +73,12 @@ public class ItemUserConfig : SingletonBase<ItemUserConfig>
 
     public async Task SaveJsonAsync()
     {
+        if (mDatas == null || mDatas.Count == 0)
+        {
+            Debug.LogWarning("Dữ liệu rỗng, không lưu JSON");
+            return; // dừng luôn, không lưu
+        }
+
         string path = Path.Combine(Application.persistentDataPath, fileName + ".json");
         string json = JsonConvert.SerializeObject(mDatas, Formatting.Indented);
 
