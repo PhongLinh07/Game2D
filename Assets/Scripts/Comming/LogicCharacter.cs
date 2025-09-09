@@ -19,6 +19,7 @@ public class LogicCharacter : LogicUnit
     public Transform transCenter;
 
     public Action OnStatsChanged; // only ui stats
+    public Action<EWeaponType> OnWeaponChanged; // only ui stats
     
 
     private void Awake()
@@ -33,6 +34,8 @@ public class LogicCharacter : LogicUnit
         playerInputHandler = GetComponent<PlayerInputHandler>();
         if (!mOwner) Debug.Log("null");
         InitData();
+
+        OnWeaponChanged += mOwner.IsWeaponValid;
     }
     public override void InitData()
     {
@@ -77,13 +80,18 @@ public class LogicCharacter : LogicUnit
         get { return mOwner; }
     }
 
-    public void Equipment(EEquipmentType equipType, ItemUserCfgItem item)
+    public bool Equipment(EEquipmentType equipType, ItemUserCfgItem item)
     {
-        mOwner.Equipment(equipType, item);
+        bool cantEquip = false;
+        cantEquip = mOwner.Equipment(equipType, item);
+        OnWeaponChanged(mOwner.GetWeaponCurrent());
+
+        return cantEquip;
     }
     public void Unequipment(EEquipmentType equipType)
     {
         mOwner.Unequipment(equipType);
+        OnWeaponChanged(mOwner.GetWeaponCurrent());
     }
 
     public Vector2 GetPosition()
@@ -108,14 +116,14 @@ public class LogicCharacter : LogicUnit
         UpdateUI();
     }
 
-    public void EquipSkill(int idSkill)
+    public bool EquipSkill(SkillCfgItem skill)
     {
-        mOwner.EquipSkill(idSkill);
+        return mOwner.EquipSkill(skill);
     }
 
-    public void UnequipSkill(int idSkill)
+    public void UnequipSkill(SkillCfgItem skill)
     {
-        mOwner.UnequipSkill(idSkill);
+        mOwner.UnequipSkill(skill);
     }
 
     public bool CantUseSkill(int idSkill)

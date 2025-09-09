@@ -33,7 +33,7 @@ public class Inventory : AContainer<ItemUserCfgItem>
         _logicCharacter = LogicCharacter.Instance;
         slotUIs.Clear();
 
-        foreach(var item in _logicCharacter.Data.items)
+        foreach(var item in _logicCharacter.Data.itemsOwned)
         {
             InventorySlotUI newSlot = Instantiate(slotPrefab, parent).GetComponent<InventorySlotUI>();
             newSlot.SetData<ItemUserCfgItem>(item.Value);
@@ -45,33 +45,13 @@ public class Inventory : AContainer<ItemUserCfgItem>
 
     }
 
-    public void EquipItem(ItemUserCfgItem item)
+    public void EquipItem(ItemUserCfgItem item) //toggle
     {
         ItemCfgItem itemCfg = item.GetTemplate();
 
         if(itemCfg.equipType == EEquipmentType.None) return;
 
-        if (!_logicCharacter.Data.quipDict.ContainsKey(itemCfg.equipType)) // nếu key chưa tồn tại
-        {
-            _logicCharacter.Equipment(itemCfg.equipType, item);
-          
-        }
-        else // nếu key đã tồn tại
-        {
-            if(_logicCharacter.Data.quipDict[itemCfg.equipType].id == item.id) // nếu là lần 2 thì đảo ngược
-            {
-                Debug.LogWarning("sdfsdfsdfssfsfgsgfs");
-                _logicCharacter.Unequipment(itemCfg.equipType); 
-            }
-            else
-            {
-                Debug.LogWarning("??????????????????????//");
-
-                _logicCharacter.Equipment(itemCfg.equipType, item);
-            }
-
-                
-        }
+        _logicCharacter.Equipment(itemCfg.equipType, item);
 
         UpdateContainer();
     }
@@ -84,9 +64,9 @@ public class Inventory : AContainer<ItemUserCfgItem>
             s = (InventorySlotUI)slot.Value;
             i = s.dataOfSlot;
 
-            if(_logicCharacter.Data.quipDict.ContainsKey(i.GetTemplate().equipType))
+            if(_logicCharacter.Data.itemsEquipped.ContainsKey(i.GetTemplate().equipType))
             {
-                s.Equip(_logicCharacter.Data.quipDict[i.GetTemplate().equipType].id == i.id);
+                s.Equip(_logicCharacter.Data.itemsEquipped[i.GetTemplate().equipType].id == i.id);
             }
             else
             {

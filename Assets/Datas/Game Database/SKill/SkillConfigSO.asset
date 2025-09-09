@@ -20,7 +20,7 @@ MonoBehaviour:
       (Ph\xE1p kh\xED c\u1EA7n: Ki\u1EBFm)"
     attributes:
     - attribute: 3
-      value: 0
+      value: 7
       currValue: 0
     - attribute: 1
       value: 7
@@ -37,7 +37,7 @@ MonoBehaviour:
     Description: "Ph\xF3ng ra phi ki\u1EBFm theo h\u01B0\u1EDBng ch\u1EC9 \u0111\u1ECBnh.
       (Ph\xE1p kh\xED c\u1EA7n: Ki\u1EBFm)"
     attributes:
-    - attribute: 29
+    - attribute: 3
       value: 10
       currValue: 0
     - attribute: 1

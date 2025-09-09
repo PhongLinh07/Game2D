@@ -55,5 +55,6 @@ public class SkillSlotUI : ASlotUI, IPointerClickHandler
     private void TryEquipSkill()
     {
         battleSkillManager.EquipSKill(dataOfSlot);
+        transform.parent.GetComponent<AContainer<SkillCfgItem>>().UpdateContainer();
     }
 }

@@ -2,21 +2,24 @@
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 using UnityEngine.Rendering;
 using static UnityEditor.Progress;
 using static UnityEditor.ShaderGraph.Internal.KeywordDependentCollection;
+using static UnityEngine.Rendering.DebugUI;
 
 [System.Serializable]
 public class CharacterUnit : UnitStats // Dữ liệu dưới dạng object
 {
     [SerializeField] private CharacterCfgItem data;
 
-    public Dictionary<int, ItemUserCfgItem> items = new();
-    public Dictionary<EEquipmentType, ItemUserCfgItem> quipDict = new Dictionary<EEquipmentType, ItemUserCfgItem>();
-    public Dictionary<int, SkillCfgItem> SkillsLearnedDict = new();
-    public Dictionary<int, SkillCfgItem> SkillsEquippedDict = new();   // danh sách buff
+    public Dictionary<int, ItemUserCfgItem> itemsOwned = new();
+    public Dictionary<EEquipmentType, ItemUserCfgItem> itemsEquipped = new Dictionary<EEquipmentType, ItemUserCfgItem>();
+    public Dictionary<int, SkillCfgItem> SkillsLearned = new();
+    public Dictionary<int, SkillCfgItem> SkillsEquipped = new();   // danh sách buff
     public Dictionary<EAttribute, Attribute> attributes = new();   // danh sách buff
+
 
 
     private void Awake()
@@ -26,22 +29,22 @@ public class CharacterUnit : UnitStats // Dữ liệu dưới dạng object
         List<ItemUserCfgItem> itemsSO = ItemUserConfig.GetInstance.mDatas;
         foreach (var item in itemsSO)
         {
-            items[item.id] = item;
+            itemsOwned[item.id] = item;
         }
 
         foreach (var idItem in data.itemsEquipped)
         {
-            quipDict[items[idItem].GetTemplate().equipType] = items[idItem];
+            itemsEquipped[itemsOwned[idItem].GetTemplate().equipType] = itemsOwned[idItem];
         }
 
         foreach (var skill in data.SkillsLearned)
         {
-            SkillsLearnedDict[skill] = SkillConfig.GetInstance.GetConfigItem(skill);
+            SkillsLearned[skill] = SkillConfig.GetInstance.GetConfigItem(skill);
         }
 
         foreach (var skill in data.SkillsEquipped)
         {
-            SkillsEquippedDict[skill] = SkillConfig.GetInstance.GetConfigItem(skill);
+            SkillsEquipped[skill] = SkillConfig.GetInstance.GetConfigItem(skill);
         }
 
         foreach (var attr in data.attributes)
@@ -50,53 +53,127 @@ public class CharacterUnit : UnitStats // Dữ liệu dưới dạng object
         }
     }
 
-    public CharacterCfgItem Data
-    {
-        get { return data; }       // bên ngoài chỉ đọc
-        private set { data = value; } // chỉ class này mới gán
-    }
 
     public Attribute GetAttributes(EAttribute attributeType)
     {
         return attributes[attributeType];
     }
 
-    public void EquipSkill(int idSkill)
+
+    public bool EquipSkill(SkillCfgItem skill)
     {
-        SkillsEquippedDict[idSkill] = SkillsLearnedDict[idSkill];
-        if (!data.SkillsEquipped.Contains(idSkill))
+        if (SkillsEquipped.Count >= 7) return false;
+
+        // if existed => Unequip
+        if (SkillsEquipped.ContainsKey(skill.id))
         {
-            data.SkillsEquipped.Add(idSkill);
+            UnequipSkill(skill);
+            return false;
+        }
+
+        // not yet equip then check EWeaponType
+        itemsEquipped.TryGetValue(EEquipmentType.Weapon, out var item);
+
+        // if skill need weapon
+        if (skill.weaponType != EWeaponType.None) 
+        {
+            //if not yet equip weapon or Weapons do not meet requirements
+            if (GetWeaponCurrent() == EWeaponType.None || skill.weaponType != item.GetTemplate().weaponType)
+            {  
+                Debug.LogWarning($"This skill need weapon: {skill.weaponType.ToString()}");
+                return false;
+            }
+        }
+
+        SkillsEquipped[skill.id] = SkillsLearned[skill.id];
+
+        //sync
+        if (!data.SkillsEquipped.Contains(skill.id))
+        {
+            data.SkillsEquipped.Add(skill.id);
+        }
+        return true;
+    }
+
+
+    public void UnequipSkill(SkillCfgItem skill)
+    {
+        SkillsEquipped.Remove(skill.id);
+
+        //sync
+        if (data.SkillsEquipped.Contains(skill.id))
+        {
+            data.SkillsEquipped.Remove(skill.id);
         }
     }
 
-    public void UnequipSkill(int idSkill)
+
+    public EWeaponType GetWeaponCurrent()
     {
-        SkillsEquippedDict.Remove(idSkill);
-        if (data.SkillsEquipped.Contains(idSkill))
+        //if equipped
+        if (itemsEquipped.TryGetValue(EEquipmentType.Weapon, out var value) && value != null)
         {
-            data.SkillsEquipped.Remove(idSkill);
+            return value.GetTemplate().weaponType;
         }
+
+        return EWeaponType.None;
     }
 
-    public void Equipment(EEquipmentType equipType, ItemUserCfgItem item)
+    public bool Equipment(EEquipmentType equipType, ItemUserCfgItem item)
     {
-        if(quipDict.ContainsKey(equipType) && quipDict[equipType] != null) data.itemsEquipped.Remove(quipDict[equipType].id);
-        quipDict[equipType] = item; 
+        ItemCfgItem template = item.GetTemplate();
+
+        if (template.equipType == EEquipmentType.None) return false;
+
+        itemsEquipped.TryGetValue(equipType, out var value);
+
+        if (value != null && value.id == item.id) // nếu là lần 2 thì đảo ngược
+        {
+            Unequipment(equipType);
+            return false;
+        }
+
+        //sync
+        if (value != null)
+        {
+            data.itemsEquipped.Remove(value.id);
+        }
+
+        itemsEquipped[equipType] = item; 
         data.itemsEquipped.Add(item.id);
-        
-    }
 
+        IsWeaponValid(GetWeaponCurrent());
+
+        return true;
+    }
 
     public void Unequipment(EEquipmentType equipType)
     {
-        if (quipDict.ContainsKey(equipType) && quipDict[equipType] != null) data.itemsEquipped.Remove(quipDict[equipType].id);
-        Debug.LogWarning(quipDict[equipType].id);
-        quipDict.Remove(equipType);
+        //sync
+        if (itemsEquipped.TryGetValue(equipType, out var value) && value != null)
+        {
+            data.itemsEquipped.Remove(value.id);
+        }
+  
+        itemsEquipped.Remove(equipType);
+
+        IsWeaponValid(GetWeaponCurrent());
+    }
+
+    public void IsWeaponValid(EWeaponType weaponType)
+    {
+        foreach (var pair in SkillsEquipped.ToList())
+        {
+            if(pair.Value.weaponType != EWeaponType.None && pair.Value.weaponType != weaponType)
+            {
+                UnequipSkill(pair.Value);
+            }
+        }
     }
 
     public override void SetPosition(Vector2 position)
     {
+        //sysnc
         data.position = position;
     }
     public override int TakeDamage(int damage)

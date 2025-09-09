@@ -17,7 +17,7 @@ public class SkillBook : AContainer<SkillCfgItem>
         logicCharacter = LogicCharacter.Instance;
         slotUIs.Clear();
 
-        foreach(var skill in logicCharacter.Data.SkillsLearnedDict)
+        foreach(var skill in logicCharacter.Data.SkillsLearned)
         {   
             datas.Add(skill.Value);
         }
@@ -35,7 +35,7 @@ public class SkillBook : AContainer<SkillCfgItem>
             s = (SkillSlotUI)slot.Value;
             i = s.dataOfSlot;
 
-            s.Equip(logicCharacter.Data.SkillsEquippedDict.ContainsKey(i.id));
+            s.Equip(logicCharacter.Data.SkillsEquipped.ContainsKey(i.id));
         }
     }
     public override void OnClick(int id) 
