@@ -70,7 +70,7 @@ public class LogicMonster : LogicUnit
             onEnter: ctx =>
             {
                 animatorController.SetState(EAnimParametor.Idle);
-                rb.velocity = Vector2.zero;
+                rb.linearVelocity = Vector2.zero;
             },
             onLogic: ctx =>
             {
@@ -96,14 +96,14 @@ public class LogicMonster : LogicUnit
             onEnter: ctx => { animatorController.SetState(EAnimParametor.Run); },
             onLogic: ctx =>
             {
-                rb.velocity = directionToTarget * mOwner.combat.agility;
+                rb.linearVelocity = directionToTarget * mOwner.combat.agility;
 
                 if (distanceToTarget <= attackRadius || distanceToTarget > chaseRadius)
                 {
                     fsm?.RequestStateChange(EAnimParametor.Idle);
                 }
             },
-            onExit: ctx => rb.velocity = Vector2.zero
+            onExit: ctx => rb.linearVelocity = Vector2.zero
         );
 
 

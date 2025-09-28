@@ -16,7 +16,7 @@ public class RangedEnemyCombat : EnemyCombatBase
             onEnter: ctx =>
             {
                 _logicMonster.animatorController.SetState(EAnimParametor.Attack);
-                _logicMonster.rb.velocity = Vector2.zero;
+                _logicMonster.rb.linearVelocity = Vector2.zero;
 
                  _logicMonster.isAttacking = true;
       

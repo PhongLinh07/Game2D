@@ -29,8 +29,8 @@ public class HUDController : MonoBehaviour
         _logicCharacter = logicCharacter;
 
         if (logicCharacter == null) Debug.Log("Null");
-        hpBar.Init(_logicCharacter.Data.attributes[EAttribute.Hp].currValue, _logicCharacter.Data.attributes[EAttribute.Hp].value);
-        mpBar.Init(_logicCharacter.Data.attributes[EAttribute.Mana].currValue, _logicCharacter.Data.attributes[EAttribute.Mana].value);
+        hpBar.Init(_logicCharacter.Data.attributes[EAttribute.Hp].value, _logicCharacter.Data.attributes[EAttribute.Hp].currValue);
+        mpBar.Init(_logicCharacter.Data.attributes[EAttribute.Mana].value, _logicCharacter.Data.attributes[EAttribute.Mana].currValue);
         logicCharacter.OnStatsChanged += TakeDamage;
         logicCharacter.OnStatsChanged += UseSKill;
     }

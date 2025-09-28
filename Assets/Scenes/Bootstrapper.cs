@@ -28,7 +28,7 @@ public class Bootstrapper : MonoBehaviour
 
         InitData();
     }
-
+    
     public void InitData()
     {
         assetManager.LoadAsset<SkillConfigSO>(EAsset.SkillConfigSO, (data) => { data.LoadData(); });
@@ -37,6 +37,9 @@ public class Bootstrapper : MonoBehaviour
         if (!UUIDConfig.GetInstance.InitData())
         {
             Debug.LogError($"Load file: {typeof(UUIDCfgItem).Name} failed!");
+           // Debug.Log($"Created {typeof(ItemUserCfgItem).Name}!");
+           // UUIDConfig.GetInstance.ExportToJson(UUIDConfig.GetInstance.template, typeof(UUIDCfgItem).Name);
+           // UUIDConfig.GetInstance.InitData();
         }
         else
         {

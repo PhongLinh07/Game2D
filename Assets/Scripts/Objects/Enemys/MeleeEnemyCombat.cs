@@ -24,13 +24,13 @@ public class MeleeEnemyCombat : EnemyCombatBase
             {
                 _logicMonster.animatorController.SetState(EAnimParametor.Attack);
 
-                _logicMonster.rb.velocity = Vector2.zero;
+                _logicMonster.rb.linearVelocity = Vector2.zero;
 
                 _logicMonster.isAttacking = true;
             },
             onLogic: ctx =>
             {
-                _logicMonster.rb.velocity = isAttackPhase * _logicMonster.direction * _logicMonster.mOwner.combat.agility * 10.0f;
+                _logicMonster.rb.linearVelocity = isAttackPhase * _logicMonster.direction * _logicMonster.mOwner.combat.agility * 10.0f;
                 PivotNormalized();
             },
             onExit: ctx =>

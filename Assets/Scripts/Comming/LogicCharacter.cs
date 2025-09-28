@@ -55,10 +55,10 @@ public class LogicCharacter : LogicUnit
             onEnter: ctx => { animatorController.SetState(EAnimParametor.Run); },
             onLogic: ctx =>
             {
-                rb.velocity = playerInputHandler.moveInput * mOwner.GetAttributes(EAttribute.Speed).value;
+                rb.linearVelocity = playerInputHandler.moveInput * mOwner.GetAttributes(EAttribute.Speed).value;
                 if (playerInputHandler.moveInput.magnitude < 0.01f) fsm?.RequestStateChange(EAnimParametor.Idle);
             },
-            onExit: ctx => rb.velocity = Vector2.zero
+            onExit: ctx => rb.linearVelocity = Vector2.zero
         );
 
         // TRANSITIONS
