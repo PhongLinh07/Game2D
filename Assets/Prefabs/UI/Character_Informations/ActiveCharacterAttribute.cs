@@ -21,7 +21,7 @@ public class ActiveCharacterAttribute : MonoBehaviour
         HUDController.Instance.avatar.onClick.AddListener(OpenThis);
     }
 
-    public void OpenThis()
+    private void OpenThis()
     {
         panel.SetActive(true);
     }

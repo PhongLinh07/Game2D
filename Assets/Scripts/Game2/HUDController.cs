@@ -20,6 +20,7 @@ public class HUDController : MonoBehaviour
     {
         Instance = this;
         Bootstrapper.Instance.eventWhenCloneCharacter += Init;
+
     }
 
     public void Init(LogicCharacter logicCharacter)

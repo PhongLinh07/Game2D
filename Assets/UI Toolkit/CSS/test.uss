@@ -1,0 +1,14 @@
+:root {
+}
+
+.scrollview-content {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+}
+
+.scroll-item {
+    width: 20%;
+    margin: 0;
+    flex-shrink: 5;
+}
