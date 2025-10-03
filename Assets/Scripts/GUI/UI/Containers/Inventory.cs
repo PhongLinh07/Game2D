@@ -1,19 +1,14 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Linq;
+﻿using System.Collections.Generic;
 using UnityEngine;
-
+using UnityEngine.UIElements;
 
 public class Inventory : AContainer<ItemUserCfgItem>
 {
-    public DetailsItem details;
+    
+    public RarityConfigSO rarityCell;
 
     public static Inventory Instance;
-
     private LogicCharacter _logicCharacter;
-
-    // Start is called before the first frame update
 
     private void Awake()
     {
@@ -26,35 +21,46 @@ public class Inventory : AContainer<ItemUserCfgItem>
         Bootstrapper.Instance.eventWhenCloneCharacter -= Init;
         _logicCharacter = logicCharacter;
 
+        Init();
+        UpdateContainer();
     }
 
     public override void Init()
     {
-        _logicCharacter = LogicCharacter.Instance;
+        base.Init();
+        uiDocument = GetComponent<UIDocument>();
+        var root = uiDocument.rootVisualElement;
+
+        // ScrollView có sẵn trong UXML
+        var scroll = root.Q<VisualElement>("Btn_Inventory").Q<ScrollView>("ScrollView");
         slotUIs.Clear();
 
-        foreach(var item in _logicCharacter.Data.itemsOwned)
+
+        // Tạo container grid bên trong
+        var gridContainer = new VisualElement();
+        gridContainer.style.flexDirection = FlexDirection.Row;
+        gridContainer.style.flexWrap = Wrap.Wrap;
+        // gridContainer.style.justifyContent = Justify.Center; // căn giữa grid
+        gridContainer.style.flexGrow = 1;
+
+        // Clear và add container vào ScrollView
+        scroll.contentContainer.Clear();
+        scroll.contentContainer.Add(gridContainer);
+
+
+
+        foreach (var item in _logicCharacter.Data.itemsOwned)
         {
-            InventorySlotUI newSlot = Instantiate(slotPrefab, parent).GetComponent<InventorySlotUI>();
-            newSlot.SetData<ItemUserCfgItem>(item.Value);
+            var newSlot = new InventorySlotUI(slotTemplate, rarityCell);
+            newSlot.SetData(item.Value);
+
             slotUIs[item.Key] = newSlot;
-
+            gridContainer.Add(newSlot.Root);
         }
-        
-        isInitialized = true;
+
 
     }
 
-    public void EquipItem(ItemUserCfgItem item) //toggle
-    {
-        ItemCfgItem itemCfg = item.GetTemplate();
-
-        if(itemCfg.equipType == EEquipmentType.None) return;
-
-        _logicCharacter.Equipment(itemCfg.equipType, item);
-
-        UpdateContainer();
-    }
     public override void UpdateContainer()
     {
         InventorySlotUI s;
@@ -64,7 +70,7 @@ public class Inventory : AContainer<ItemUserCfgItem>
             s = (InventorySlotUI)slot.Value;
             i = s.dataOfSlot;
 
-            if(_logicCharacter.Data.itemsEquipped.ContainsKey(i.GetTemplate().equipType))
+            if (_logicCharacter.Data.itemsEquipped.ContainsKey(i.GetTemplate().equipType))
             {
                 s.Equip(_logicCharacter.Data.itemsEquipped[i.GetTemplate().equipType].id == i.id);
             }
@@ -72,15 +78,19 @@ public class Inventory : AContainer<ItemUserCfgItem>
             {
                 s.Equip(false);
             }
-            
-            
+
+
         }
     }
-
-    public override void OnClick(int id)
+    public void EquipItem(ItemUserCfgItem item) //toggle
     {
-        base.OnClick(id);
-        details.SetData(((InventorySlotUI)slotUIs[id]).dataOfSlot);
+        ItemCfgItem itemCfg = item.GetTemplate();
+
+        if (itemCfg.equipType == EEquipmentType.None) return;
+
+        _logicCharacter.Equipment(itemCfg.equipType, item);
+
+        UpdateContainer();
     }
 
 }

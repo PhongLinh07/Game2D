@@ -1,12 +1,14 @@
 ﻿using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
+using static UnityEditor.Progress;
 
 /// <summary>
 /// Slot or Cell
 /// This is elementUI of Inventory
 /// </summary>
-public class SkillSlotUI : ASlotUI, IPointerClickHandler
+public class SkillSlotUI : ASlotUI
 {
     
     public SkillCfgItem dataOfSlot;
@@ -16,17 +18,12 @@ public class SkillSlotUI : ASlotUI, IPointerClickHandler
     private float doubleTapTime = 0.25f; // Khoảng thời gian tối đa giữa 2 lần tap
     private float lastTapTime = 0;
 
-    private void Awake()
+    public SkillSlotUI(VisualTreeAsset template) : base(template)
     {
         battleSkillManager = BattleSkillManager.Instance;      // ScriptableObject chứa info skill
-        base.Init();
     }
 
 
-    public void Equip(bool state)
-    {
-        tick.gameObject.SetActive(state);
-    }
 
     public override void SetData<T>(T data)
     {
@@ -36,15 +33,14 @@ public class SkillSlotUI : ASlotUI, IPointerClickHandler
             return;
         }
         dataOfSlot = data as SkillCfgItem;
-        gameObject.SetActive(true);
-        icon.sprite = dataOfSlot.Icon;
+        Icon.style.backgroundImage = new StyleBackground(dataOfSlot.Icon);
+
     }
 
-    public override void OnPointerClick(PointerEventData eventData)
+    protected override void OnClick(ClickEvent evt)
     {
         // Gọi container click bình thường
-        AContainer<SkillCfgItem> container = transform.parent.GetComponent<AContainer<SkillCfgItem>>();
-        container.OnClick(thisIndex);
+        SkillBook.Instance.OnClick(dataOfSlot.id);
 
         // ---------------- Double Tap logic ----------------
         if (Time.time < lastTapTime + doubleTapTime) TryEquipSkill();
@@ -55,6 +51,6 @@ public class SkillSlotUI : ASlotUI, IPointerClickHandler
     private void TryEquipSkill()
     {
         battleSkillManager.EquipSKill(dataOfSlot);
-        transform.parent.GetComponent<AContainer<SkillCfgItem>>().UpdateContainer();
+        SkillBook.Instance.UpdateContainer();
     }
 }

@@ -5,6 +5,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 
 /// <summary>
 /// Slot or Cell
@@ -18,56 +19,61 @@ using UnityEngine.UI;
 */
 /// </summary>
 
-public abstract class ASlotUI : MonoBehaviour, IPointerDownHandler, IEventSystemHandler, IPointerUpHandler, IPointerClickHandler
+public abstract class ASlotUI
 {
-    [Header("UI References")]
-    [SerializeField] public Image background;
-    [SerializeField] public Image icon;
-    [SerializeField] public TextMeshProUGUI countText;
-    [SerializeField] public Image border;
-    [SerializeField] public Image highlight;
-    [SerializeField] public Image tick; //try
+    public VisualElement Root { get; private set; }
+    protected VisualElement Background { get; private set; }
+    protected VisualElement _Highlight { get; private set; }
+    protected VisualElement Icon { get; private set; }
+    protected VisualElement Tick { get; private set; }
 
-   
-    public int thisIndex;
+  
 
-    protected void Init()
+    protected ASlotUI(VisualTreeAsset template)
     {
-      countText?.gameObject.SetActive(false);
-      border?.gameObject.SetActive(false);
-      highlight?.gameObject.SetActive(false);
-      tick.gameObject.SetActive(false);
+        Root = template.Instantiate();
 
+        // Trong ItemSlotUI
+        Root.style.width = 128;
+        Root.style.height = 128;
+        Root.style.marginRight = 4;
+        Root.style.marginBottom = 4;
+
+        Background = Root.Q<VisualElement>("Background");
+        Icon = Root.Q<VisualElement>("Icon");
+        _Highlight = Root.Q<VisualElement>("Highlight");
+        Tick = Root.Q<VisualElement>("Tick");
+
+        _Highlight.style.display = DisplayStyle.None;
+        Tick.style.display = DisplayStyle.None;
+        // Đăng ký event click
+        Root.RegisterCallback<ClickEvent>(OnClick);
+
+    }
+
+    public void Equip(bool state)
+    {
+        Tick.style.display = state ? DisplayStyle.Flex : DisplayStyle.None;
     }
 
     public void Reset()//Temporary
     {
-        gameObject.SetActive(false);
-        highlight.gameObject.SetActive(false);
+      
+       // highlight.gameObject.SetActive(false);
     }
 
-    public void SetIndex(int index)
+   
+    protected virtual void OnClick(ClickEvent evt)
     {
-        thisIndex = index;
+       // Debug.Log("Slot Clicked");
     }
 
     public void Highlight(bool state)
     {
-        highlight.gameObject.SetActive(state);
+        _Highlight.style.display = state ? DisplayStyle.Flex : DisplayStyle.None;
     }
 
     public abstract void SetData<T>(T data);
 
-    public virtual void OnPointerDown(PointerEventData eventData)
-    {
-    }
-
-    public virtual void OnPointerClick(PointerEventData eventData)
-    {
-    }
-
-    public virtual void OnPointerUp(PointerEventData eventData)
-    {
-    }
 }
 

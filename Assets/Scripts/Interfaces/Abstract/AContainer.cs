@@ -5,6 +5,7 @@ using System.Linq;
 using System.Xml;
 using Unity.VisualScripting.Antlr3.Runtime.Misc;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 /*
  dung cho tui tru vat, sach skil
@@ -12,32 +13,23 @@ using UnityEngine;
 
 public abstract class AContainer<T> : MonoBehaviour where T : ConfigItem
 {
+    [SerializeField] protected UIDocument uiDocument;
+    [SerializeField] protected VisualTreeAsset slotTemplate;
     protected bool isInitialized = false; // chưa khởi tạo
-    private int selectedSlot = 0;
-    [SerializeField] protected Transform parent;
-    [SerializeField] protected GameObject slotPrefab;
+    protected int selectedSlot = 0;
+
     
 
     //protected List<ASlotUI> slotUIs = new();
     protected Dictionary<int, ASlotUI> slotUIs = new();
-    protected List<T> datas = new(); 
 
     private void OnEnable()
     {
-        if(!isInitialized)Init();
+      //  if(!isInitialized)Init();
         UpdateContainer();
     }
     public virtual void Init()
     {
-
-        for (int i = 0; i < datas.Count; i++)
-        {    
-            ASlotUI newSlot = Instantiate(slotPrefab, parent).GetComponent<ASlotUI>();
-            newSlot.SetIndex(i);
-            newSlot.SetData<T>(datas[i]);
-            slotUIs.Add(datas[i].id, newSlot);
-            
-        }
 
         isInitialized = true;
     }

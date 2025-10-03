@@ -1,11 +1,7 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using TMPro;
-using Unity.VisualScripting;
-using UnityEditor;
-using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
+﻿using UnityEngine;
+using UnityEngine.UIElements;
+
+
 
 /// <summary>
 /// Slot or Cell
@@ -22,58 +18,58 @@ using UnityEngine.UI;
 */
 /// </summary>
 
-public class InventorySlotUI : ASlotUI, IPointerClickHandler
+
+public class InventorySlotUI : ASlotUI
 {
     public RarityConfigSO rarityCell;
     public ItemUserCfgItem dataOfSlot;
+
+    public Label Quantity { get; private set; }
+
     private float doubleTapTime = 0.25f; // Khoảng thời gian tối đa giữa 2 lần tap
     private float lastTapTime = 0;
-
-    private Inventory inventory;      // ScriptableObject chứa info skill
-
-    private void Awake()
+    public InventorySlotUI(VisualTreeAsset template, RarityConfigSO rarity) : base(template)
     {
-        inventory = Inventory.Instance;      // ScriptableObject chứa info skill
-        base.Init();
+
+        Quantity = Root.Q<Label>("Quantity");
+        Quantity.style.display = DisplayStyle.None;
+        rarityCell = rarity;
+
     }
 
     public override void SetData<T>(T data)
     {
         if (data == null)
         {
-            Reset();
             return;
         }
 
         dataOfSlot = data as ItemUserCfgItem;
 
         ItemCfgItem item = ItemConfig.GetInstance.GetConfigItem(dataOfSlot.id_Item);
-        gameObject.SetActive(true);
-        background.sprite = rarityCell.rarityDict[dataOfSlot.Rarity];
-        icon.sprite = item.Icon;
-        
+
+        Background.style.backgroundImage = new StyleBackground(rarityCell.rarityDict[dataOfSlot.Rarity]);
+        Icon.style.backgroundImage = new StyleBackground(item.Icon);
+
         if (item.Stackable)
         {
-            countText.gameObject.SetActive(true);
-            countText.text = dataOfSlot.Quantity.ToString();
+            Quantity.style.display = DisplayStyle.Flex;
+            Quantity.text = dataOfSlot.Quantity.ToString();
         }
         else
         {
-            countText.gameObject.SetActive(false);
+            Quantity.style.display = DisplayStyle.None;
         }
 
     }
 
-    public void Equip(bool state)
-    {
-        tick.gameObject.SetActive(state);
-    }
+   
 
-    public override void OnPointerClick(PointerEventData eventData)
+    protected override void OnClick(ClickEvent evt)
     {
-        AContainer<ItemUserCfgItem> container = transform.parent.GetComponent<AContainer<ItemUserCfgItem>>();
-        // Gọi hàm Instance đã override từ hàm ảo ItemPanel
-        container.OnClick(dataOfSlot.id);
+        Debug.Log("Slot Clicked");
+
+        Inventory.Instance.OnClick(dataOfSlot.id);
 
         // ---------------- Double Tap logic ----------------
         if (Time.time < lastTapTime + doubleTapTime) TryEquipSkill();
@@ -81,8 +77,9 @@ public class InventorySlotUI : ASlotUI, IPointerClickHandler
         lastTapTime = Time.time;
     }
 
+
     private void TryEquipSkill()
     {
-        inventory.EquipItem(dataOfSlot);
+        Inventory.Instance.EquipItem(dataOfSlot);
     }
 }
