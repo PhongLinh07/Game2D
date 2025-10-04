@@ -1,14 +1,22 @@
 ﻿using System.Collections.Generic;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UIElements;
 
 public class Inventory : AContainer<ItemUserCfgItem>
 {
-    
     public RarityConfigSO rarityCell;
+    public RarityConfigSO data;
 
     public static Inventory Instance;
     private LogicCharacter _logicCharacter;
+
+    private VisualElement Header;
+    private VisualElement Preview;
+    private VisualElement Icon;
+    private Label Information;
+    private Label Description;
+
 
     private void Awake()
     {
@@ -59,6 +67,16 @@ public class Inventory : AContainer<ItemUserCfgItem>
         }
 
 
+
+
+        var detail = root.Q<VisualElement>("Btn_Inventory").Q<VisualElement>("Detail");
+
+        Header = detail.Q<VisualElement>("Head");
+        Preview = detail.Q<VisualElement>("Preview");
+        Icon = detail.Q<VisualElement>("Icon");
+        Information = detail.Q<Label>("Information");
+        Description = detail.Q<Label>("Description");
+
     }
 
     public override void UpdateContainer()
@@ -93,4 +111,21 @@ public class Inventory : AContainer<ItemUserCfgItem>
         UpdateContainer();
     }
 
+
+
+    public override void OnClick(int index)
+    {
+        base.OnClick(index);
+        UpdateDetail(_logicCharacter.Data.itemsOwned[index]);
+    }
+
+
+    private void UpdateDetail(ItemUserCfgItem item)
+    {
+        Header.style.backgroundImage = new StyleBackground(data.rarityDict[item.Rarity]);
+        Preview.style.backgroundImage = new StyleBackground(rarityCell.rarityDict[item.Rarity]);
+        Icon.style.backgroundImage = new StyleBackground(ItemConfig.GetInstance.GetConfigItem(item.id_Item).Icon);
+        Information.text =  ItemConfig.GetInstance.GetConfigItem(item.id_Item).Name;
+        Description.text = item.GetDescription();
+    }
 }

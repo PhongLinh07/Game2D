@@ -215190,6 +215190,7 @@ MonoBehaviour:
   uiDocument: {fileID: 0}
   slotTemplate: {fileID: 9197481963319205126, guid: 1fb1885a555022c498d463b673e8d335, type: 3}
   rarityCell: {fileID: 11400000, guid: 47f7df23bb8d0324c885c733b5c6c5e3, type: 2}
+  data: {fileID: 11400000, guid: ddec8a274d3ed33418b3f588c1939966, type: 2}
 --- !u!114 &1784483441
 MonoBehaviour:
   m_ObjectHideFlags: 0

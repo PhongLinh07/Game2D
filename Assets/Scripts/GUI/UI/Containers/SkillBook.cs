@@ -1,4 +1,5 @@
 ﻿
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
@@ -8,8 +9,15 @@ public class SkillBook : AContainer<SkillCfgItem>
     public DetailsSkill details;
     public static SkillBook Instance;
 
+
     [SerializeField]
     private LogicCharacter _logicCharacter;
+
+
+    private VisualElement Icon;
+    private Label Information;
+    private Label Description;
+
 
     private void Awake()
     {
@@ -22,6 +30,7 @@ public class SkillBook : AContainer<SkillCfgItem>
         _logicCharacter = logicCharacter;
 
         Init();
+        UpdateContainer();
     }
     public override void Init()
     {
@@ -58,6 +67,10 @@ public class SkillBook : AContainer<SkillCfgItem>
             gridContainer.Add(newSlot.Root);
         }
 
+        var detail = root.Q<VisualElement>("Btn_Skill").Q<VisualElement>("Detail");
+        Icon = detail.Q<VisualElement>("Icon");
+        Information = detail.Q<Label>("Information");
+        Description = detail.Q<Label>("Description");
     }
 
     
@@ -76,7 +89,15 @@ public class SkillBook : AContainer<SkillCfgItem>
     public override void OnClick(int id) 
     {
         base.OnClick(id);
-       // details.SetData(((SkillSlotUI)slotUIs[id]).dataOfSlot);
+        UpdateDetail(_logicCharacter.Data.SkillsLearned[id]);
+    }
+
+    private void UpdateDetail(SkillCfgItem skill)
+    {
+      
+        Icon.style.backgroundImage = new StyleBackground(skill.Icon);
+        Information.text = skill.Name;
+        Description.text = skill.Description;
     }
 
 }

@@ -4,7 +4,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class DetailsItem : MonoBehaviour
+public class DetailsItem
 {
     public RarityConfigSO data;
     public RarityConfigSO rarityCell;
@@ -19,10 +19,10 @@ public class DetailsItem : MonoBehaviour
     // Start is called before the first frame updatehuws trong scrip 
     public void SetData(ItemUserCfgItem playerItem)
     {
-        headerCard.sprite = data.rarityDict[playerItem.Rarity];
-        bg.sprite = rarityCell.rarityDict[playerItem.Rarity];
-        icon.sprite = ItemConfig.GetInstance.GetConfigItem(playerItem.id_Item).Icon;
-        nameItem.text = ItemConfig.GetInstance.GetConfigItem(playerItem.id_Item).Name;
-        descriptionItem.text = playerItem.GetDescription();
+        headerCard.sprite =      data.rarityDict[playerItem.Rarity];
+        bg.sprite =              rarityCell.rarityDict[playerItem.Rarity];
+        icon.sprite =            ItemConfig.GetInstance.GetConfigItem(playerItem.id_Item).Icon;
+        nameItem.text =          ItemConfig.GetInstance.GetConfigItem(playerItem.id_Item).Name;
+        descriptionItem.text =   playerItem.GetDescription();
     }
 }
