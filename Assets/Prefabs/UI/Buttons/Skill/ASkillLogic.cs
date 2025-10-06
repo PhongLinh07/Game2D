@@ -47,6 +47,6 @@ public abstract class ASkillLogic
     public string tagOfTarget;
     public SkillCfgItem owner;
 
-    public abstract IEnumerator Cast(params object[] args);
+    public abstract IEnumerator Cast(IndicatorData indicator);
 }
 

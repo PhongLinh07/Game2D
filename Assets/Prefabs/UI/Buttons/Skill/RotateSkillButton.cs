@@ -1,75 +1,44 @@
 ﻿using System.Collections;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.EventSystems;
-using UnityEngine.UI;
+using UnityEngine.UIElements;
 
-public class RotateSkillButton : ISkillButton, IPointerDownHandler, IPointerUpHandler, IDragHandler
+public class RotateSkillButton : ISkillButton
 {
 
-    [SerializeField] private const float distanceWithOwner = 20.0f;
-    [SerializeField] private const float angleOffset = -180.0f;
-
-    protected override void CastSkill(params object[] args)
+    public RotateSkillButton(VisualTreeAsset template) : base(template) 
     {
-        if (data?.Logic == null) return;
-        StartCoroutine(data.Logic.Cast((Vector2)logicCharacter.transCenter.position, args[0]));
-    }
-
-    private IEnumerator StartCooldown()
-    {
-        cooldownOverlay.gameObject.SetActive(true);
-        isOnCooldown = true;
-
-        float timer = data.attrDict[EAttribute.Cooldown];
-        while (timer > 0.0f)
-        {
-            timer -= Time.deltaTime;
-            cooldownText.text = Mathf.CeilToInt(timer).ToString();
-            yield return null;
-        }
-
-        cooldownOverlay.gameObject.SetActive(false);
-        isOnCooldown = false;
+        inputType = SkillInputType.Rotate;
     }
 
     // ============================
     // Drag handlers
     // ============================
-    public void OnPointerDown(PointerEventData eventData)
+    protected override void OnPointerDown(PointerDownEvent evt)
     {
         if (inputType != SkillInputType.Rotate || isOnCooldown) return;
 
         isDragging = true;
-        dragWorld.gameObject.SetActive(true);
-        ShowDragUI(eventData);
-
+        Root.CaptureMouse(); // 🔒 Giữ chuột dù ra ngoài vùng
+        IndicatorManager.Instance.Show(SkillInputType.Rotate, indicatorData.OriginPosition, indicatorData.Rotation);
     }
 
-    public void OnDrag(PointerEventData eventData)
+    protected override void OnPointerMove(PointerMoveEvent evt)
     {
         if (!isDragging) return;
-        ShowDragUI(eventData);
+        IndicatorManager.Instance.UpdateIndicator(SkillInputType.Rotate, indicatorData.OriginPosition, indicatorData.Rotation);
     }
 
-    public void OnPointerUp(PointerEventData eventData)
+    protected override void OnPointerUp(PointerUpEvent evt)
     {
         if (!isDragging) return;
         isDragging = false;
-        dragWorld.gameObject.SetActive(false);
+        Root.ReleaseMouse(); // 🔓 Trả chuột lại
 
-        if (!logicCharacter.CantUseSkill(data.id)) return;
+        IndicatorManager.Instance.Hide(SkillInputType.Rotate);
 
-        CastSkill(eventData.position -  RectTransformUtility.WorldToScreenPoint(null, rectTransform.position));
-        StartCoroutine(StartCooldown());
+        CastSkill();
+
     }
 
-    private void ShowDragUI(PointerEventData eventData)
-    {
-        Vector2 buttonScreenPos = RectTransformUtility.WorldToScreenPoint(null, rectTransform.position);
-        Vector2 dir = (eventData.position - RectTransformUtility.WorldToScreenPoint(null, rectTransform.position)).normalized;
-        dragWorld.transform.position = (Vector2)Camera.main.WorldToScreenPoint(logicCharacter.transCenter.position) + dir * distanceWithOwner;
-        float angle = Mathf.Atan2(dir.y, dir.x) * Mathf.Rad2Deg;
-        dragWorld.rectTransform.localRotation = Quaternion.Euler(0f, 0f, angle - angleOffset);
-    }
+
 }

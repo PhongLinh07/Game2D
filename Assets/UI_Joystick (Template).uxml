@@ -1,0 +1,5 @@
+<ui:UXML xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:ui="UnityEngine.UIElements" xmlns:uie="UnityEditor.UIElements" noNamespaceSchemaLocation="../UIElementsSchema/UIElements.xsd" editor-extension-mode="False">
+    <ui:VisualElement name="root" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Art/UI/FirstPkgs/battlea_atlas0.png?fileID=-1018530694&amp;guid=7b6ff46c54ae7744aa1de4a9b3779a45&amp;type=3#battlea_atlas0_9&quot;); width: 256px; height: 256px; align-self: flex-start; align-content: auto; justify-content: space-evenly; align-items: auto; flex-direction: column-reverse; top: 769px; left: 58px;">
+        <ui:VisualElement name="Handle" style="flex-grow: 0; background-image: url(&quot;project://database/Assets/Art/UI/FirstPkgs/battlea_atlas0.png?fileID=-28598455&amp;guid=7b6ff46c54ae7744aa1de4a9b3779a45&amp;type=3#battlea_atlas0_10&quot;); width: 128px; height: 128px; align-self: center; position: absolute; top: 62px;" />
+    </ui:VisualElement>
+</ui:UXML>

@@ -15,10 +15,10 @@ public class BaseAttack : ASkillLogic
         data = skill;
     }
 
-    public override IEnumerator Cast(params object[] args)
+    public override IEnumerator Cast(IndicatorData indicator)
     {
-        posCast = (Vector2)args[0]; // ép kiểu thủ công
-        dirCast = (Vector2)args[1];
+        posCast = (Vector2)indicator.OriginPosition;
+        dirCast = (Vector2)indicator.Direction;
 
         Attack();
         yield return null;

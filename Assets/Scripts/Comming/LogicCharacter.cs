@@ -16,6 +16,7 @@ public class LogicCharacter : LogicUnit
 
     public Transform transBottom;
     public Transform transCenter;
+    public Transform transCastSkill;
 
     public Action OnStatsChanged; // only ui stats
     public Action<EWeaponType> OnWeaponChanged; // only ui stats
@@ -96,6 +97,10 @@ public class LogicCharacter : LogicUnit
     public Vector2 GetPosition()
     {
         return transform.position;
+    }
+    public Vector2 GetCastSkilPosition()
+    {
+        return transCastSkill.position;
     }
 
     public override void Teleport(Vector2 position)

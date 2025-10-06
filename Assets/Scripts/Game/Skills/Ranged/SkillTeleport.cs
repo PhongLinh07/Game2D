@@ -13,9 +13,9 @@ public class SkillTeleport : ASkillLogic
         data = skill;
     }
 
-    public override IEnumerator Cast(params object[] args)
+    public override IEnumerator Cast(IndicatorData indicator)
     {
-        posCast = (Vector2)args[0]; // ép kiểu thủ công
+        posCast = (Vector2)indicator.Position;
 
         Teleport();
         yield return null;

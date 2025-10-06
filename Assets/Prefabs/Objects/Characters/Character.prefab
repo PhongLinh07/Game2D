@@ -610,3 +610,4 @@ MonoBehaviour:
   mOwner: {fileID: 6958870959373250566}
   transBottom: {fileID: 2272246444133695629}
   transCenter: {fileID: 498900352617796342}
+  transCastSkill: {fileID: 5572081228284524254}
