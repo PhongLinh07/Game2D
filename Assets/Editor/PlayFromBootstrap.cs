@@ -22,13 +22,13 @@ public class PlayFromBootstrap
                 if (EditorSceneManager.GetActiveScene().name != "Bootstrap")
                 {
                     EditorSceneManager.SaveCurrentModifiedScenesIfUserWantsTo();
-                    EditorSceneManager.OpenScene("Assets/Scenes/Bootstrap.unity");
+                    EditorSceneManager.OpenScene("Assets/Modules/Scenes/Bootstrap.unity");
                 }
                 break;
 
             case PlayModeStateChange.EnteredEditMode:
                 // Sau khi thoát Play, load lại scene trước đó
-                EditorSceneManager.OpenScene("Assets/Scenes/GamePlay.unity");
+                EditorSceneManager.OpenScene("Assets/Modules/Scenes/GamePlay.unity");
                 break;
         }
     }
