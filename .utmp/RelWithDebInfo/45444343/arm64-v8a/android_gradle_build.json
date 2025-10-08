@@ -5,14 +5,14 @@
   ],
   "cleanCommandsComponents": [
     [
-      "D:\\User\\Unity\\Setup\\Editors\\6000.2.6f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\cmake\\3.22.1\\bin\\ninja.exe",
+      "D:\\User\\Unity\\Setup\\Editors\\6000.2.6f2\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\cmake\\3.22.1\\bin\\ninja.exe",
       "-C",
       "D:\\User\\Unity\\Projects\\Game2D\\.utmp\\RelWithDebInfo\\45444343\\arm64-v8a",
       "clean"
     ]
   ],
   "buildTargetsCommandComponents": [
-    "D:\\User\\Unity\\Setup\\Editors\\6000.2.6f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\cmake\\3.22.1\\bin\\ninja.exe",
+    "D:\\User\\Unity\\Setup\\Editors\\6000.2.6f2\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\SDK\\cmake\\3.22.1\\bin\\ninja.exe",
     "-C",
     "D:\\User\\Unity\\Projects\\Game2D\\.utmp\\RelWithDebInfo\\45444343\\arm64-v8a",
     "{LIST_OF_TARGETS_TO_BUILD}"
@@ -28,8 +28,8 @@
   },
   "toolchains": {
     "toolchain": {
-      "cCompilerExecutable": "D:\\User\\Unity\\Setup\\Editors\\6000.2.6f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\NDK\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
-      "cppCompilerExecutable": "D:\\User\\Unity\\Setup\\Editors\\6000.2.6f1\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\NDK\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
+      "cCompilerExecutable": "D:\\User\\Unity\\Setup\\Editors\\6000.2.6f2\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\NDK\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang.exe",
+      "cppCompilerExecutable": "D:\\User\\Unity\\Setup\\Editors\\6000.2.6f2\\Editor\\Data\\PlaybackEngines\\AndroidPlayer\\NDK\\toolchains\\llvm\\prebuilt\\windows-x86_64\\bin\\clang++.exe"
     }
   },
   "cFileExtensions": [],

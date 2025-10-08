@@ -4,7 +4,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class DragSkillButton : ISkillButton
+public class DragSkillButton : SkillButtonBase
 {
 
     public DragSkillButton(VisualTreeAsset template) : base(template) { }

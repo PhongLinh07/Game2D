@@ -66,7 +66,7 @@
 				{
 					"directoryIndex" : 1,
 					"id" : "swappywrapper::@7e25bd1f32ce224db4e9",
-					"jsonFile" : "target-swappywrapper-RelWithDebInfo-565225d1d8dd4fb86ba4.json",
+					"jsonFile" : "target-swappywrapper-RelWithDebInfo-ae89cac0bec3042dcc89.json",
 					"name" : "swappywrapper",
 					"projectIndex" : 1
 				}
@@ -76,7 +76,7 @@
 	"kind" : "codemodel",
 	"paths" : 
 	{
-		"build" : "D:/User/Unity/Projects/Game2D/.utmp/RelWithDebInfo/45444343/arm64-v8a",
+		"build" : "D:/User/Unity/Projects/Game2D/.utmp/RelWithDebInfo/45444343/armeabi-v7a",
 		"source" : "D:/User/Unity/Projects/Game2D/Library/Bee/Android/Prj/IL2CPP/Gradle/unityLibrary/src/main/cpp"
 	},
 	"version" : 

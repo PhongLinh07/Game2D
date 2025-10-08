@@ -2,7 +2,7 @@
 using UnityEngine;
 using UnityEngine.UIElements;
 
-public class RotateSkillButton : ISkillButton
+public class RotateSkillButton : SkillButtonBase
 {
 
     public RotateSkillButton(VisualTreeAsset template) : base(template) 

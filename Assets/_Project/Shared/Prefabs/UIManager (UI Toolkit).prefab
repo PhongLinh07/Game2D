@@ -328,6 +328,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 8796531529516411227, guid: 272cfb0c59cc0a94885774121458ffa9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 1826050491, guid: ca9473889b18140419542e81d70b8e33, type: 3}
+    - target: {fileID: 8796531529516411227, guid: 272cfb0c59cc0a94885774121458ffa9, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8836359524114483735, guid: 272cfb0c59cc0a94885774121458ffa9, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: -1018530694, guid: ca9473889b18140419542e81d70b8e33, type: 3}
+    - target: {fileID: 8836359524114483735, guid: 272cfb0c59cc0a94885774121458ffa9, type: 3}
+      propertyPath: m_WasSpriteAssigned
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 9154184613506087131, guid: 272cfb0c59cc0a94885774121458ffa9, type: 3}
       propertyPath: m_Name
       value: IndicatorManager

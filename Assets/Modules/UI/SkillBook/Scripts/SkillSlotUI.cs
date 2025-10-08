@@ -2,7 +2,6 @@
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
 using UnityEngine.UIElements;
-using static UnityEditor.Progress;
 
 /// <summary>
 /// Slot or Cell

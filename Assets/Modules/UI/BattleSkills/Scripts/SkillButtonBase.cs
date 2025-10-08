@@ -18,7 +18,7 @@ public struct IndicatorData
 
 
 
-public abstract class ISkillButton : MonoBehaviour
+public abstract class SkillButtonBase
 {
    
     [Header("UI Elements")]
@@ -44,7 +44,7 @@ public abstract class ISkillButton : MonoBehaviour
         
     }
 
-    protected ISkillButton(VisualTreeAsset template)
+    protected SkillButtonBase(VisualTreeAsset template)
     {
         Root = template.Instantiate();
 

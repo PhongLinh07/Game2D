@@ -16,7 +16,6 @@ public class IndicatorManager : MonoBehaviour
     private void Awake()
     {
         Instance = this;
-        DontDestroyOnLoad(gameObject);
 
         // ✅ Khởi tạo sẵn từng prefab
         if (targetPrefab != null)

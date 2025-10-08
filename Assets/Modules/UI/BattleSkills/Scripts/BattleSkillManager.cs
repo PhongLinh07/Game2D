@@ -12,7 +12,7 @@ public class BattleSkillManager : MonoBehaviour
     [SerializeField] protected VisualTreeAsset uiTemplate;
     [SerializeField] protected VisualElement root;
 
-    public Dictionary<int, ISkillButton> skillButtons = new();
+    public Dictionary<int, SkillButtonBase> skillButtons = new();
 
     
     [SerializeField]
@@ -48,7 +48,7 @@ public class BattleSkillManager : MonoBehaviour
                 continue;
             }
 
-            ISkillButton newSkillButton = GetSkillButton((SkillInputType)skill.Value.InputType);
+            SkillButtonBase newSkillButton = GetSkillButton((SkillInputType)skill.Value.InputType);
             newSkillButton.SetData(_logicCharacter, skill.Value);
             skillButtons[skill.Value.id] = newSkillButton;
             root.Add(newSkillButton.Root);
@@ -69,7 +69,7 @@ public class BattleSkillManager : MonoBehaviour
         }
 
         // if equiped don't succes
-        if (skillButtons.TryGetValue(skill.id, out var slot) && slot)
+        if (skillButtons.TryGetValue(skill.id, out var slot) && slot != null)
         {
             root.Remove(slot.Root);
             skillButtons.Remove(skill.id);
@@ -93,9 +93,9 @@ public class BattleSkillManager : MonoBehaviour
     }
 
 
-    private ISkillButton GetSkillButton(SkillInputType type)
+    private SkillButtonBase GetSkillButton(SkillInputType type)
     {
-        ISkillButton skillButton;
+        SkillButtonBase skillButton;
 
         switch (type)
         {
