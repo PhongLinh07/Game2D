@@ -25,12 +25,6 @@
                 <ui:Label text="Inventory" focusable="true" style="bottom: -34px; left: 155px; width: 219px; top: 38px;" />
                 <ui:VisualElement name="Content" style="flex-grow: 1; position: absolute; height: 823px; width: 1461px; top: -146px; left: 383px; flex-direction: row; align-self: flex-start; justify-content: space-between; flex-wrap: nowrap; align-items: stretch; display: none;">
                     <ui:ScrollView mode="Vertical" tabindex="0" scroll-deceleration-rate="1.95" vertical-scroller-visibility="Auto" horizontal-scroller-visibility="AlwaysVisible" nested-interaction-kind="StopScrolling" focusable="true" vertical-page-size="-1.28" enabled="true" elastic-animation-interval-ms="5" name="ScrollView" style="height: 798px; width: 709px; flex-direction: row; flex-shrink: 5; flex-grow: 0; justify-content: space-around; align-self: flex-start; flex-wrap: wrap;">
-                        <ui:Button text="Button" style="width: 128px; height: 128px; position: relative; flex-shrink: 1; -unity-slice-type: sliced;" />
-                        <ui:Button text="Button" style="width: 128px; height: 128px; position: relative; flex-shrink: 1;" />
-                        <ui:Button text="Button" style="width: 128px; height: 128px; flex-direction: column;" />
-                        <ui:Button text="Button" style="width: 128px; height: 128px;" />
-                        <ui:Button text="Button" style="width: 128px; height: 128px;" />
-                        <ui:Button text="Button" style="width: 128px; height: 128px;" />
                         <ui:Button text="Button" style="width: 128px; height: 128px;" />
                         <ui:Button text="Button" style="width: 128px; height: 128px;" />
                         <ui:Button text="Button" style="width: 128px; height: 128px;" />

@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
-public class RotateSkillButton : SkillButtonBase
+public class RotateSkillButton : ASkillButton, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
 
-    public RotateSkillButton(VisualTreeAsset template) : base(template) 
+    private void Start()
     {
         inputType = SkillInputType.Rotate;
     }
@@ -13,29 +14,27 @@ public class RotateSkillButton : SkillButtonBase
     // ============================
     // Drag handlers
     // ============================
-    protected override void OnPointerDown(PointerDownEvent evt)
+    public void OnPointerDown(PointerEventData eventData)
     {
         if (inputType != SkillInputType.Rotate || isOnCooldown) return;
-
         isDragging = true;
-        Root.CaptureMouse(); // 🔒 Giữ chuột dù ra ngoài vùng
+        UpdateLogic(eventData.position);
         IndicatorManager.Instance.Show(SkillInputType.Rotate, indicatorData.OriginPosition, indicatorData.Rotation);
     }
 
-    protected override void OnPointerMove(PointerMoveEvent evt)
+    public void OnDrag(PointerEventData eventData)
     {
         if (!isDragging) return;
+        UpdateLogic(eventData.position);
         IndicatorManager.Instance.UpdateIndicator(SkillInputType.Rotate, indicatorData.OriginPosition, indicatorData.Rotation);
     }
 
-    protected override void OnPointerUp(PointerUpEvent evt)
+    public void OnPointerUp(PointerEventData eventData)
     {
         if (!isDragging) return;
         isDragging = false;
-        Root.ReleaseMouse(); // 🔓 Trả chuột lại
-
+        UpdateLogic(eventData.position);
         IndicatorManager.Instance.Hide(SkillInputType.Rotate);
-
         CastSkill();
 
     }

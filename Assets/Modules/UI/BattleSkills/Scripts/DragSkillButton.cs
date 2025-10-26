@@ -2,40 +2,39 @@
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UIElements;
 
-public class DragSkillButton : SkillButtonBase
+public class DragSkillButton : ASkillButton, IDragHandler, IPointerUpHandler, IPointerDownHandler
 {
-
-    public DragSkillButton(VisualTreeAsset template) : base(template) { }
-
-    protected override void OnPointerDown(PointerDownEvent evt)
+    
+    public void OnPointerDown(PointerEventData eventData)
     {
-        Root.CaptureMouse(); // 👈 Giữ chuột
-
         if (inputType != SkillInputType.Drag || isOnCooldown) return;
 
         isDragging = true;
+        UpdateLogic(eventData.position);
         IndicatorManager.Instance.Show(SkillInputType.Drag, indicatorData.Position, Quaternion.identity);
     }
 
-    protected override void OnPointerMove(PointerMoveEvent evt)
+    public void OnDrag(PointerEventData eventData)
     {
 
         if (!isDragging) return;
+        UpdateLogic(eventData.position);
         IndicatorManager.Instance.UpdateIndicator(SkillInputType.Drag, indicatorData.Position, Quaternion.identity);
     }
 
-    protected override void OnPointerUp(PointerUpEvent evt)
+    public void OnPointerUp(PointerEventData eventData)
     {
-        Root.ReleaseMouse(); // 👈 Trả chuột về bình thường
-
+        
         if (!isDragging) return;
         isDragging = false;
+        UpdateLogic(eventData.position);
         IndicatorManager.Instance.Hide(SkillInputType.Drag);
 
         CastSkill();
-  
+
     }
 
 

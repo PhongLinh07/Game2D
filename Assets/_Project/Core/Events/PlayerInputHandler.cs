@@ -8,7 +8,7 @@ public class PlayerInputHandler : MonoBehaviour
 
     void Update()
     {
-        moveInput = new Vector2(Joystick.Instance.Input.x, Joystick.Instance.Input.y).normalized;
+        moveInput = new Vector2(Joystick_uGUI.Instance.Input.x, Joystick_uGUI.Instance.Input.y).normalized;
     }
 
     public void ClearOneTimeInputs()

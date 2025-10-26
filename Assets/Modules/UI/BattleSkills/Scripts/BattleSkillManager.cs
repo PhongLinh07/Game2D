@@ -4,17 +4,26 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using UnityEngine;
-using UnityEngine.UIElements;
 
 public class BattleSkillManager : MonoBehaviour
 {
-    [SerializeField] protected UIDocument uiDocument;
-    [SerializeField] protected VisualTreeAsset uiTemplate;
-    [SerializeField] protected VisualElement root;
+    [Header("GameObject chứa danh sách buttons")]
+    public Transform parent;
 
-    public Dictionary<int, SkillButtonBase> skillButtons = new();
+    [Header("Danh sách các nút skill")]
+    //public List<ISkillButton> skillButtons = new();
+    public Dictionary<int, ASkillButton> skillButtons = new();
 
-    
+    [Header("Data of Player")]
+    // public PlayerData player;
+
+
+    [Header("Skill button UI Prefab")]
+
+   // public GameObject skillButtonPrefab;
+    public GameObject dragSkillButtonPrefab;
+    public GameObject rotateSkillButtonPrefab;
+
     [SerializeField]
     private LogicCharacter _logicCharacter;
 
@@ -26,10 +35,6 @@ public class BattleSkillManager : MonoBehaviour
         Instance = this;
         Bootstrapper.Instance.eventWhenCloneCharacter += Init;
 
-        uiDocument = GetComponent<UIDocument>();
-
-        root = uiDocument.rootVisualElement.Q<VisualElement>("SkillButtons");
-       
     }
 
 
@@ -48,10 +53,11 @@ public class BattleSkillManager : MonoBehaviour
                 continue;
             }
 
-            SkillButtonBase newSkillButton = GetSkillButton((SkillInputType)skill.Value.InputType);
+            ASkillButton newSkillButton = GetSkillButton((SkillInputType)skill.Value.InputType);
+
+            newSkillButton.gameObject.SetActive(true);
             newSkillButton.SetData(_logicCharacter, skill.Value);
             skillButtons[skill.Value.id] = newSkillButton;
-            root.Add(newSkillButton.Root);
         }
     }
 
@@ -61,17 +67,16 @@ public class BattleSkillManager : MonoBehaviour
         if (_logicCharacter.EquipSkill(skill))
         {
             skillButtons[skill.id] = GetSkillButton((SkillInputType)skill.InputType);
-            skillButtons[skill.id].Root.style.display = DisplayStyle.Flex;
+            skillButtons[skill.id].gameObject.SetActive(true);
             skillButtons[skill.id].SetData(_logicCharacter, skill);
-            root.Add(skillButtons[skill.id].Root);
 
             return true;
         }
 
         // if equiped don't succes
-        if (skillButtons.TryGetValue(skill.id, out var slot) && slot != null)
+        if (skillButtons.TryGetValue(skill.id, out var slot) && slot)
         {
-            root.Remove(slot.Root);
+            Destroy(slot.gameObject);
             skillButtons.Remove(skill.id);
         }
         return false;
@@ -84,23 +89,22 @@ public class BattleSkillManager : MonoBehaviour
         {
             if (pair.Value.data.weaponType != EWeaponType.None && pair.Value.data.weaponType != weaponType)
             {
-                root.Remove(pair.Value.Root);
+                Destroy(pair.Value.gameObject);
                 skillButtons.Remove(pair.Key);
             }
         }
-
-        SkillBook.Instance.UpdateContainer();
     }
 
 
-    private SkillButtonBase GetSkillButton(SkillInputType type)
+    private ASkillButton GetSkillButton(SkillInputType type)
     {
-        SkillButtonBase skillButton;
+        ASkillButton skillButton;
 
         switch (type)
         {
-            case SkillInputType.Drag: skillButton = new DragSkillButton(uiTemplate); break;
-            case SkillInputType.Rotate: skillButton = new RotateSkillButton(uiTemplate); break;
+           // case SkillInputType.Tap: skillButton = Instantiate(skillButtonPrefab, parent).GetComponent<ASkillButton>(); break;
+            case SkillInputType.Drag: skillButton = Instantiate(dragSkillButtonPrefab, parent).GetComponent<ASkillButton>(); break;
+            case SkillInputType.Rotate: skillButton = Instantiate(rotateSkillButtonPrefab, parent).GetComponent<ASkillButton>(); break;
             default: skillButton = null; break;
         }
 
